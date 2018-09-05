@@ -7,6 +7,7 @@ const title = "Title"
 ReactDOM.render(
     <div>
         <Greeter name="Seb" />
+        
     </div>,
     document.getElementById("app")
 )
