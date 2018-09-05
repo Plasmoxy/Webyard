@@ -11,7 +11,7 @@ ReactDOM.render(
         </div>
         <Greeter name="Seb" />
 
-        <button className="btn btn-primary" onClick={() => {alert("Cliccked !")}}>
+        <button className="btn btn-warning" onClick={() => {alert("Cliccked !")}}>
             Clicc
         </button>
         
