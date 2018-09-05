@@ -5,8 +5,15 @@ import Greeter from './components/Greet';
 const title = "Title"
 
 ReactDOM.render(
-    <div>
+    <div className="container">
+        <div className="text-center">
+            <h1>{title}</h1>
+        </div>
         <Greeter name="Seb" />
+
+        <button className="btn btn-primary" onClick={() => {alert("Cliccked !")}}>
+            Clicc
+        </button>
         
     </div>,
     document.getElementById("app")
