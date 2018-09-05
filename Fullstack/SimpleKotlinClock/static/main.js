@@ -1,7 +1,6 @@
 
 function refresh() {
-    $.post("/time", (data) => {
-        let obj = JSON.parse(data);
+    $.post("/time", (obj) => {
         $("#time").text(obj.value);
     });
     setTimeout(refresh, 100);
