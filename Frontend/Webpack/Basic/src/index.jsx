@@ -2,12 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import 'bootstrap/dist/css/bootstrap.css' // import bootstrap as css
-import { Container, Button } from 'reactstrap' // import shorthand react components
+import { Container, Button, Card } from 'reactstrap' // import shorthand react components
 import '../src/style.sass'
 
 const title = "Minimal React"
 
-class TheButton extends Button {
+class TheButton extends React.Component {
     
     constructor() {
         super()
@@ -32,10 +32,16 @@ class CoreComponent extends React.Component {
         return <Container>
             Hello ! <br/>
             Buttons - <TheButton />
-            <TheButton color="primary" />
+            <TheButton />
             <TheButton />
 
-            <Button color="primary">asd</Button>
+            <Card className="border-primary bg-dark p-5">
+                <h1>LOLOLOLO !</h1>
+                <Button color="primary" size="lg"> asd</Button><br></br>
+                <Button color="primary" size="lg">asddd</Button>
+            </Card>
+
+
         </Container>
     }
 }
