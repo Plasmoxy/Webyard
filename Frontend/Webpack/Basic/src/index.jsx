@@ -1,9 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import 'bootstrap/dist/css/bootstrap.css' // import bootstrap as css
+import { Container, Button } from 'reactstrap' // import shorthand react components
+import '../src/style.sass'
+
 const title = "Minimal React"
 
-class TheButton extends React.Component {
+class TheButton extends Button {
     
     constructor() {
         super()
@@ -25,16 +29,18 @@ class TheButton extends React.Component {
 class CoreComponent extends React.Component {
 
     render() {
-        return <div>
+        return <Container>
             Hello ! <br/>
             Buttons - <TheButton />
+            <TheButton color="primary" />
             <TheButton />
-            <TheButton />
-        </div>
+
+            <Button color="primary">asd</Button>
+        </Container>
     }
 }
 
 ReactDOM.render(
-    <CoreComponent/>,
+    <CoreComponent />,
     document.getElementById("app")
 )

@@ -23,13 +23,18 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
-      // CSS Files
-      /*
+      // SASS Files
+      
+      {
+        test: /\.sass$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       }
-      */
+      
     ]
   },
   
