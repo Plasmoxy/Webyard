@@ -8,7 +8,7 @@ export default class TheTable extends React.Component {
           name: 'Tanner Linsley',
           age: 26,
           friend: {
-            name: 'Jason Maurer',
+            name: 'Jason Maurner',
             age: 23,
           }
         }]
@@ -32,7 +32,7 @@ export default class TheTable extends React.Component {
         }]
       
         return <ReactTable
-        className="bg-danger m-2"
+          className="bg-danger m-2"
           data={data}
           columns={columns} />
       }
