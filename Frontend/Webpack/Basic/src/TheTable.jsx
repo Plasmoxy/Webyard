@@ -15,18 +15,20 @@ export default class TheTable extends React.Component {
       
         const columns = [{
           Header: 'Name',
-          accessor: 'name'
+          accessor: 'name',
+          Cell: props => <input type="text" className="form-control" defaultValue={props.value} />
         }, {
           Header: 'Age',
           accessor: 'age',
-          Cell: props => <input type="text"></input> // Custom cell components!
+          Cell: props => <input type="text" className="form-control" defaultValue={props.value} />
         }, {
-          id: 'friendName', // Required because our accessor is not a string
           Header: 'Friend Name',
-          accessor: d => d.friend.name // Custom value accessors!
-        }, {
-          Header: props => <span>Friend Age</span>, // Custom header components!
-          accessor: 'friend.age'
+          accessor: 'friend.name',
+          Cell: props => <input type="text" className="form-control" defaultValue={props.value} />
+        },{
+          Header: 'Friend age',
+          accessor: 'friend.age',
+          Cell: props => <input type="text" className="form-control" defaultValue={props.value} /> 
         }]
       
         return <ReactTable
