@@ -1,0 +1,19 @@
+{
+  "name": "typescriptbasic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "webpack-dev-server --mode development"
+  },
+  "author": "",
+  "license": "ISC"
+}
