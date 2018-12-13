@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Button, Row, Col } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../src/style.sass'
 
@@ -13,7 +14,7 @@ export class IncreasingButton extends React.Component<{}, {}> {
     count: number = 0
 
     render() {
-        return <button className="btn btn-primary" onClick={this.increase.bind(this)}>
+        return <button className="btn btn-primary w-100" onClick={this.increase.bind(this)}>
             count = {this.count}
         </button>
     }
@@ -31,7 +32,9 @@ export default () => <div className="container">
     <Greeter name="Filip" />
     <span className="text-danger">asds</span>
 
-    <div>
-        <IncreasingButton />
-    </div>
+    <Row>
+        <Col><IncreasingButton /></Col>
+        <Col><IncreasingButton /></Col>
+        <Col><IncreasingButton /></Col>
+    </Row>
 </div>
