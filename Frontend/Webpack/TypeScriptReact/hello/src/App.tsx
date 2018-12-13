@@ -1,7 +1,5 @@
 import * as React from 'react'
 import { Button, Row, Col } from 'reactstrap'
-import 'bootstrap/dist/css/bootstrap.css'
-import '../src/style.sass'
 
 export const Greeter = (p: {name: string}) => (
     <div className="text-warning">
@@ -9,7 +7,7 @@ export const Greeter = (p: {name: string}) => (
     </div>
 )
 
-export class IncreasingButton extends React.Component<{}, {}> {
+export class IncreasingButton extends React.Component {
 
     count: number = 0
 
@@ -30,7 +28,7 @@ export default () => <div className="container">
     <h1> Greeter </h1>
     <Greeter name="Sebo" />
     <Greeter name="Filip" />
-    <span className="text-danger">asds</span>
+    <span className="text-boom">asds</span>
 
     <Row>
         <Col><IncreasingButton /></Col>

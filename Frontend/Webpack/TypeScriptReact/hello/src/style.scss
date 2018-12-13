@@ -1,0 +1,17 @@
+
+// overrides
+$theme-colors: (
+    "dark": #111111,
+    "boom": rgb(255, 230, 0)
+);
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+body {
+    @extend .text-white;
+    @extend .bg-dark;
+}
+
+.text-boom {
+    color: map-get($theme-colors, "boom");
+}
