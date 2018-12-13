@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 const Greeter = (p: {children: string}) => <div>
-    Hello, {p.children} !
+    Hello, {p.children}!
 </div>
 
 

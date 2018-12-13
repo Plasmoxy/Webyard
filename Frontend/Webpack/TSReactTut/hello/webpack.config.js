@@ -3,24 +3,29 @@ const dist = path.resolve(__dirname, 'dist')
 
 module.exports = {
     entry: './src/index.tsx',
+
     devServer: {
-        publicPath: "/",
-        contentBase: "./dist",
+        publicPath: '/',
+        contentBase: dist,
         hot: false
     },
+
     output: {
         filename: '[name].bundle.js',
         path: dist,
     },
+
     devtool: 'source-map',
+
     resolve: {
         extensions: ['.js', '.json', '.ts', '.tsx'],
     },
+
     module: {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
-                loader: 'awesome-typescript-loader',
+                use: [ 'awesome-typescript-loader' ]
             },
         ],
     },
