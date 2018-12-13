@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { render } from 'react-dom'
-import App from './components/App'
+import App from './App'
 
 render(
-    <App message="Worldd asdasd" />,
+    <App />,
     document.getElementById('app'),
 )
