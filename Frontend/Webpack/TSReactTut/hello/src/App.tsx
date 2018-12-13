@@ -1,12 +1,37 @@
 import * as React from 'react'
+import 'bootstrap/dist/css/bootstrap.css'
+import '../src/style.sass'
 
-const Greeter = (p: {children: string}) => <div>
-    Hello, {p.children}!
-</div>
+export const Greeter = (p: {name: string}) => (
+    <div className="text-warning">
+        Hello, {p.name}!
+    </div>
+)
 
+export class IncreasingButton extends React.Component<{}, {}> {
 
-export default () => <div>
+    count: number = 0
+
+    render() {
+        return <button className="btn btn-primary" onClick={this.increase.bind(this)}>
+            count = {this.count}
+        </button>
+    }
+
+    increase() {
+        this.count += 1
+        this.forceUpdate()
+    }
+
+}
+
+export default () => <div className="container">
     <h1> Greeter </h1>
-    <Greeter>Sebu</Greeter>
-    <Greeter>Filip</Greeter>
+    <Greeter name="Sebo" />
+    <Greeter name="Filip" />
+    <span className="text-danger">asds</span>
+
+    <div>
+        <IncreasingButton />
+    </div>
 </div>
