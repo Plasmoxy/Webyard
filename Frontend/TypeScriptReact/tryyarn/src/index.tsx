@@ -7,8 +7,8 @@ interface AppProps {
     
 }
 
-export const App = (p: AppProps) => <div className="container">
-
+export const App = (p: AppProps) => <div className="container mt-5">
+    
 </div>
 
 
