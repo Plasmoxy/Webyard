@@ -1,8 +1,9 @@
 
 // overrides
 $theme-colors: (
+    "primary": rgb(0, 255, 21),
     "dark": #111111,
-    "boom": rgb(255, 230, 0)
+    "boom": rgb(0, 238, 255)
 );
 
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
