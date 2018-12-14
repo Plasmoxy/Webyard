@@ -7,8 +7,10 @@ interface AppProps {
     
 }
 
-export const App = (p: AppProps) => <div className="container">
-
+export const App = (p: AppProps) => <div>
+    <h1 className="text-warning">
+        Hello !!
+    </h1>
 </div>
 
 
