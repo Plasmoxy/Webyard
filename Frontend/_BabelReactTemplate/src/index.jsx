@@ -3,12 +3,8 @@ import * as React from 'react'
 import { render } from 'react-dom'
 import '../src/style.scss'
 
-interface AppProps {
+export const App = () => <div className="container mt-3">
     
-}
-
-export const App = (p: AppProps) => <div className="container mt-3">
-
 </div>
 
 
