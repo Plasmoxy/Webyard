@@ -1,8 +1,14 @@
+import './style.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+
+export const App = () => <div className="container pt-2">
+    asd
+</div>
+
 ReactDOM.render(
-    <div>Happy coding !</div>,
+    <App />,
     document.getElementById("app")
 )
 

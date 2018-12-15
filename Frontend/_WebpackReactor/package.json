@@ -1,8 +1,8 @@
 {
-  "name": "WebPackTest",
-  "version": "1.0.0",
+  "name": "",
+  "version": "",
   "description": "",
-  "main": "index.js",
+  "main": "src/App.jsx",
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack -p"
@@ -10,26 +10,30 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ]
-  },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "react-hot-loader": "^4.3.6",
-    "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.7"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+
+    "babel-loader": "^8.0.4",
+    "react-hot-loader": "^4.6.0",
+
+    "css-loader": "^2.0.1",
+    "node-sass": "^4.11.0",
+    "file-loader": "^2.0.0",
+    "url-loader": "^1.1.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+
+    "webpack": "^4.27.1"
   },
   "dependencies": {
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6",
+    "bootstrap": "^4.1.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "reactstrap": "^6.5.0"
   }
 }
