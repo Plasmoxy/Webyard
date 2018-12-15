@@ -20,14 +20,14 @@ module.exports = {
     devtool: 'source-map',
 
     resolve: {
-        extensions: ['.js', '.json', '.ts', '.tsx'],
+        extensions: ['.js', '.json', '.jsx'],
     },
 
     module: {
         rules: [
             {
-                test: /\.(ts|tsx)$/,
-                use: [ 'ts-loader' ]
+                test: /\.(js|jsx)$/,
+                use: [ 'babel-loader' ]
             },
             {
                 test: /\.css$/,
