@@ -1,19 +1,19 @@
 // react
+import './style.scss'
 import * as React from 'react'
 import { render } from 'react-dom'
-import 'semantic-ui-css/semantic.min.css'
-import '../src/style.scss'
+import { Button } from 'reactstrap'
 
-interface AppProps {
+
+export class App extends React.Component {
     
+    render() {
+        return <div className="container">
+            asd
+        </div>
+    }
+
 }
-
-export const App = (p: AppProps) => <div className="container mt-3">
-    <div className="ui button">
-    BOI
-    </div>
-</div>
-
 
 render(
     <App />,
