@@ -10,25 +10,32 @@
   "author": "",
   "license": "",
   "description": "",
+
   "dependencies": {
-    "bootstrap": "^4.1.3",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.6",
+
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+
+    "bootstrap": "^4.1.3",
     "reactstrap": "^6.5.0"
   },
+
   "devDependencies": {
-    "@types/react": "^16.7.17",
-    "@types/react-dom": "^16.0.11",
-    "@types/reactstrap": "^6.4.3",
+
     "css-loader": "^2.0.1",
     "node-sass": "^4.11.0",
     "file-loader": "^2.0.0",
     "url-loader": "^1.1.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+
     "ts-loader": "^5.3.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+
+    "@types/react": "^16.7.17",
+    "@types/react-dom": "^16.0.11",
+    "@types/reactstrap": "^6.4.3"
   }
 }
