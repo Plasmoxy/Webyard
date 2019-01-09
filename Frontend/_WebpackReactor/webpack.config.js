@@ -1,3 +1,8 @@
+/*
+ * WebpackReactor
+ * Plasmoxy's React Babel Webpack config.
+ */
+
 const webpack = require('webpack')
 
 module.exports = {
