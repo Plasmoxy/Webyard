@@ -2,9 +2,8 @@ import './style.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-
 export const App = () => <div className="container pt-2">
-    kys
+    <h1>{Math.random() + 1}</h1>
 </div>
 
 ReactDOM.render(
