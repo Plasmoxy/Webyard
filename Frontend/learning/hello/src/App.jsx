@@ -14,7 +14,7 @@ class Increaser extends React.Component {
 
     handleClick() {
         this.setState({
-            count: this.state.count ** 2,
+            count: this.state.count + 1,
             color: this.state.color == "primary" ? "danger" : "primary"
         })
         console.log(this.state)
