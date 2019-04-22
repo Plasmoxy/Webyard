@@ -1,0 +1,12 @@
+
+// bootstrap color overrides
+$theme-colors: (
+    
+);
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+body {
+    @extend .text-white;
+    @extend .bg-dark;
+}
