@@ -1,10 +1,12 @@
-// universal webpack config of Plasmoxy
+/* 
+ * The amazing Plasmoxy's TypeScript React WebPack config!
+ */
 
 const path = require('path')
 const dist = path.resolve(__dirname, 'dist')
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './src/App.tsx',
 
     devServer: {
         publicPath: '/',
