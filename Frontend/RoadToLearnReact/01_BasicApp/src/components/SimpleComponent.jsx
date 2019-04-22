@@ -1,33 +1,67 @@
 import React from 'react'
-class Person {
-    constructor(name, age) {
-        this.name = name
-        this.age = age
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+
+class Note {
+    constructor(text) {
+        this.text = text
+        this.date = Date()
+
+        Note.lastId += 1
+        this.id = Note.lastId
     }
 }
-
-let peopleList = [
-    new Person("Seb", 18),
-    new Person("Ashley", 13)
-]
+Note.lastId = 0
 
 export default class SimpleComponent extends React.Component {
+
     constructor(props) {
         super(props)
         this.state = {
-            people: peopleList
+            notes: [new Note("XD")],
+            newNoteInput: ""
         }
     }
     
     render() {
-        return (<div className="card bg-dark text-light m-3 p-2 text-center">
-            {this.state.people.map(p => <div key={p.name}>
-                {p.name} is {p.age} years old.
+        const { notes, newNoteInput } = this.state
+
+        return (<div className="card bg-dark text-light m-3 p-2 text-center spacing-3">
+            
+            {notes.map(p => <div className="my-2" key={p.id}>
+                <span className="my-auto">{p.text}</span>
+                <FontAwesomeIcon className="mx-2" color="yellow" size="2x" icon={faTimesCircle} onClick={() => this.onDismiss(p.id)} />
             </div>)}
-            <div><button type="button" className="btn btn-primary px-4" onClick={() => {
-                this.state.people.push(new Person("Jack", 13))
-                this.forceUpdate()
-            }}>Add</button></div>
+
+            <div>
+                <input
+                    type="text"
+                    className="form-control mx-2"
+                    value={newNoteInput}
+                    onChange={(e) =>
+                        this.setState({newNoteInput: e.target.value})
+                    } />
+                        
+                <button
+                    className="btn btn-primary m-2"
+                    onClick={() =>this.newNote()} >Add</button>
+            </div>
+
         </div>)
+    }
+
+    onDismiss(id) {
+        console.log(id)
+        this.setState({
+            notes: this.state.notes.filter(x => x.id != id)
+        })
+    }
+
+
+    newNote(text) {
+        this.setState((state) => ({
+            notes: [...state.notes, new Note(state.newNoteInput)],
+            newNoteInput: ""
+        }))
     }
 }
