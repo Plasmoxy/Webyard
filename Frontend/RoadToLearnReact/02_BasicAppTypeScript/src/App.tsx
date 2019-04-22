@@ -1,6 +1,7 @@
-import * as React from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import './App.scss'
+import NotesComponent from './NotesComponent';
 
 interface AppProps {
     
@@ -19,7 +20,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
     render() {
         return <div className="container mt-3">
-            
+            <NotesComponent />
         </div>
     }
 }
