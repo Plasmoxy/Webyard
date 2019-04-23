@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import './App.scss'
+import * as serviceWorker from './serviceWorker'
 
 interface AppProps {
     
@@ -24,8 +25,11 @@ export default class App extends React.Component<AppProps, AppState> {
     }
 }
 
-
+// render into DOM
 render(
     <App />,
     document.getElementById('app'),
 )
+
+// register/unregister service worker
+serviceWorker.unregister()

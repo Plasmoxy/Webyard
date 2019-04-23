@@ -1,5 +1,5 @@
 /* 
- * WebpackReactorTypeScript - The amazing Plasmoxy's TypeScript React WebPack config!
+ * The amazing Plasmoxy's TypeScript React WebPack config!
  */
 
 const path = require('path')
