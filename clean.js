@@ -1,3 +1,8 @@
+/*
+ * Node clean script by Plasmoxy.
+ * This script cleans all node_module directories recursively.
+ */
+
 const glob = require("glob") // for finding files/directories
 const rimraf = require("rimraf") // for removing recursively
 
