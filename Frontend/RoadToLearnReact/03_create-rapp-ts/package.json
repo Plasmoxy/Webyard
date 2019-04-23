@@ -1,5 +1,6 @@
 {
   "name": "03_create-rapp-ts",
+  "homepage" : "https://shardbytes.com/reactapp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
