@@ -3,11 +3,11 @@ import { render } from 'react-dom'
 import './App.scss'
 import * as serviceWorker from './serviceWorker'
 
-interface AppProps {
+type AppProps = {
     
 }
 
-interface AppState {
+type AppState = {
 
 }
 
