@@ -8,7 +8,7 @@ interface State {
 }
 
 export default class extends React.Component<Props, State> {
-    
+
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -17,7 +17,10 @@ export default class extends React.Component<Props, State> {
     }
 
     render() {
+        let x = 7
+
         return <div>
+            <p>x a sdasda s= {x + 13}</p>
             <Button variant="contained" color="primary" onClick={this.btnClick.bind(this)}>Count: {this.state.count}</Button>
         </div>
     }
