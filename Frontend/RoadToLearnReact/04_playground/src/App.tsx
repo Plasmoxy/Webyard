@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import './App.scss'
 import * as serviceWorker from './serviceWorker'
+import Button from 'reactstrap/lib/Button';
 
 type AppProps = {
     
@@ -20,7 +21,9 @@ export default class App extends React.Component<AppProps, AppState> {
 
     render() {
         return <div className="container mt-3">
-            
+            <Button color="primary" >
+                Yeet
+            </Button>
         </div>
     }
 }
