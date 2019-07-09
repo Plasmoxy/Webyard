@@ -6,7 +6,7 @@ type Item {
 
 type Query {
     allItems: [Item!]
-    item(id: Int!): Item
+    item(id: Int, name: String, price: Float): Item
 }
 
 type Mutation {

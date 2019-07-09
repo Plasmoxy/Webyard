@@ -8,7 +8,7 @@ const db = bettersqlite("./sqlite.db")
 const resolvers = ({
     Query: {
         allItems: () => db.prepare("select * from items").all(),
-        item: (p, a) => db.prepare("select * from items where id=?").get(a.id)
+        item: (p, a) => db.prepare("select * from items where id=? or name=? or price=?").get(a.id, a.name, a.price)
     },
     Mutation: {
         createItem: (parent, args) => {
