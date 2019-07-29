@@ -1,0 +1,11 @@
+{
+  "name": "parceltest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^12.6.8",
+    "@types/p5": "^0.7.3",
+    "p5": "^0.9.0"
+  }
+}

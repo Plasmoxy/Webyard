@@ -8,7 +8,11 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^12.6.8",
     "glob": "^7.1.3",
     "rimraf": "^2.6.3"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.3"
   }
 }
