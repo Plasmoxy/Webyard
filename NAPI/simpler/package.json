@@ -1,0 +1,15 @@
+{
+  "name": "simpler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "gypfile": true,
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^12.7.2",
+    "node-addon-api": "^1.7.1"
+  },
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "clean": "node-gyp clean"
+  }
+}
