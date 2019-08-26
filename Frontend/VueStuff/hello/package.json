@@ -1,0 +1,17 @@
+{
+  "name": "hello",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.3"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "pug": "^2.0.4",
+    "sass": "^1.22.10",
+    "typescript": "^3.5.3",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
