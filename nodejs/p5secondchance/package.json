@@ -1,0 +1,14 @@
+{
+  "name": "p5secondchance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "p5": "^0.10.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.11",
+    "@types/p5": "^0.9.0",
+    "typescript": "^3.7.2"
+  }
+}
