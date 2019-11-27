@@ -1,0 +1,32 @@
+dependencies:
+  p5: 0.10.2
+devDependencies:
+  '@types/node': 12.12.11
+  '@types/p5': 0.9.0
+  typescript: 3.7.2
+lockfileVersion: 5.1
+packages:
+  /@types/node/12.12.11:
+    dev: true
+    resolution:
+      integrity: sha512-O+x6uIpa6oMNTkPuHDa9MhMMehlxLAd5QcOvKRjAFsBVpeFWTOPnXbDvILvFgFFZfQ1xh1EZi1FbXxUix+zpsQ==
+  /@types/p5/0.9.0:
+    dev: true
+    resolution:
+      integrity: sha512-GhI0ctGdKlnf1oUEYqE+sTWuGHhjQCZXQPxazdI9Lx2eE6z7qO6T55FGFenOY3wpL8jSzLWRmt83RHGblr4AWg==
+  /p5/0.10.2:
+    dev: false
+    resolution:
+      integrity: sha512-kZnC7JllCEnEUTB3sv2iETUg1ulNvB60h3MHb63u7W/nCJc3XIlMGXcKk28cuezdQ7TOlKScm0qmWCsol+302Q==
+  /typescript/3.7.2:
+    dev: true
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-ml7V7JfiN2Xwvcer+XAf2csGO1bPBdRbFCkYBczNZggrBZ9c7G3riSUeJmqEU5uOtXNPMhE3n+R4FA/3YOAWOQ==
+specifiers:
+  '@types/node': ^12.12.11
+  '@types/p5': ^0.9.0
+  p5: ^0.10.2
+  typescript: ^3.7.2
