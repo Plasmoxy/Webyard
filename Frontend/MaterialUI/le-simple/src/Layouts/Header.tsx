@@ -49,11 +49,11 @@ export const Header: React.FC = props => {
         > <MenuIcon /> </IconButton>
 
         <Typography variant="h6" className={classes.title}>
-          Simple App !!! Fajna!!
+          Simple App
         </Typography>
 
         <Typography variant="subtitle1" style={{marginRight: 30}}>
-          List length: {movies.length}
+          L={movies.length}
         </Typography>
 
         <Typography variant="h6" style={{marginRight: 30}}>
