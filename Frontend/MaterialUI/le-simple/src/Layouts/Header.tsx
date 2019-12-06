@@ -1,23 +1,11 @@
-import React, {useState, useContext} from "react"
-
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-  Snackbar
-} from "@material-ui/core"
-
-import {
-  Menu as MenuIcon,
-  Close as CloseIcon
-} from "@material-ui/icons"
-
-import { makeStyles } from "@material-ui/core/styles"
+import { AppBar, Button, IconButton, Snackbar, Toolbar, Typography } from "@material-ui/core"
 import { grey } from "@material-ui/core/colors"
+import { makeStyles } from "@material-ui/core/styles"
+import { Close as CloseIcon, Menu as MenuIcon } from "@material-ui/icons"
+import React, { useContext, useState } from "react"
 import { LoginDialog } from "../Components/LoginDialog"
 import { MovieContext } from "../Context/MovieContext"
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +24,7 @@ export const Header: React.FC = props => {
   const classes = useStyles()
   
   const [uname, setUname] = useState("logged off")
-  const [movies, setMovies] = useContext(MovieContext)!!
+  const [movies] = useContext(MovieContext)!!
 
   const [loginDialogOpen, setLoginDialogOpen] = useState(false)
   function handleDialogClose(value: string) {

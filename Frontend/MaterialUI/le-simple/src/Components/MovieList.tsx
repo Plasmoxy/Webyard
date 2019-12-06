@@ -1,20 +1,9 @@
-import React, { useState, useContext } from "react"
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  createStyles,
-  Card,
-  CardContent,
-  Box,
-  Button,
-  Typography
-} from "@material-ui/core"
+import { Button, Card, CardContent, List, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core"
 import MovieIcon from "@material-ui/icons/Movie"
 import { makeStyles } from "@material-ui/styles"
+import React, { useContext } from "react"
+import { MovieContext } from "../Context/MovieContext"
 import { Movie } from '../Model'
-import { MovieProvider, MovieContext } from "../Context/MovieContext"
 
 const useStyles = makeStyles({
 
@@ -32,11 +21,11 @@ const useStyles = makeStyles({
 
 export const MovieListItem: React.FC<{ movie: Movie }> = ({ movie }) => {
   const { round } = useStyles()
-  const [movies, setMovies] = useContext(MovieContext)!!
+  const [, setMovies] = useContext(MovieContext)!!
 
   function deleteMovie() {
     // allow all movies that aren't that movie
-    setMovies(movies.filter(m => m.id != movie.id))
+    setMovies(prev => prev.filter(m => m.id !== movie.id))
   }
 
   return (
@@ -57,7 +46,7 @@ export const MovieList: React.FC = () => {
   
   function addNewMovie() {
     console.log("CLICC")
-    setMovies([...movies, new Movie("kys", Math.random()) ])
+    setMovies(prev => [...prev, new Movie("kys", Math.random()) ])
   }
 
   return <>

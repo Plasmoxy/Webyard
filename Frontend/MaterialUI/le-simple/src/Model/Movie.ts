@@ -7,6 +7,6 @@ export class Movie {
         public name: string,
         public price: number,
     ){
-        console.log("Movie created" + String(this))
+        console.log("Movie created with id " + String(this.id))
     }
 }
