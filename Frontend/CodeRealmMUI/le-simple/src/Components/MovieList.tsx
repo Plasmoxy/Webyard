@@ -38,7 +38,7 @@ export const MovieListItem: React.FC<{movie: Movie}> = ({movie}) => {
 }
     
 
-export const MovieList: React.FC = props => {
+export const MovieList: React.FC = () => {
     
     const [movies, setMovies] = useState([
         new Movie("Harry Potter", 10),

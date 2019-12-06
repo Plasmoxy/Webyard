@@ -8,10 +8,11 @@ export const App: React.FC = () => {
   return <>
     <Header />
 
-    <MovieList />
-
-    <Exercises />
-    <Footer />
+    <div style={{margin: 20}}>
+      <MovieList />
+      <Exercises />
+      <Footer />
+    </div>
   </>
 }
 

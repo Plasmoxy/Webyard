@@ -42,7 +42,7 @@ export function LoginDialog(props: SimpleDialogProps) {
 
   return (
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-      <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+      <DialogTitle id="simple-dialog-title">Vyber sobie učet....</DialogTitle>
       <List>
         {emails.map(email => (
           <ListItem button onClick={() => handleListItemClick(email)} key={email}>
