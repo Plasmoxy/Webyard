@@ -25,7 +25,8 @@ const useStyles = makeStyles({
     marginBottom: 30
   },
 
-  round: { borderRadius: 7 }
+  round: { borderRadius: 7 },
+  centered: { textAlign: 'center' },
 
 })
 
@@ -72,7 +73,9 @@ export const MovieList: React.FC = () => {
         </CardContent>
     </Card>
 
-    <Button variant="contained" color="primary" onClick={addNewMovie}>Add new movie</Button>
+    <div className={classes.centered}>
+      <Button variant="contained" color="primary" onClick={addNewMovie}>Add new movie</Button>
+    </div>
 
   </>
 }

@@ -50,7 +50,7 @@ export const Header: React.FC = props => {
   }
 
   return <>
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar>
         <IconButton
           edge="start"
