@@ -1,5 +1,6 @@
-import { Button, Card, CardContent, List, ListItem, ListItemIcon, ListItemText, Typography } from "@material-ui/core"
+import { Button, Card, CardContent, List, ListItem, ListItemIcon, ListItemText, Typography, IconButton } from "@material-ui/core"
 import MovieIcon from "@material-ui/icons/Movie"
+import CloseIcon from '@material-ui/icons/Close'
 import { makeStyles } from "@material-ui/styles"
 import React, { useContext } from "react"
 import { MovieContext } from "../Context/MovieContext"
@@ -29,12 +30,20 @@ export const MovieListItem: React.FC<{ movie: Movie }> = ({ movie }) => {
   }
 
   return (
-    <ListItem button className={round} onClick={deleteMovie}>
+    <ListItem button className={round} >
       <ListItemIcon>
         <MovieIcon />
       </ListItemIcon>
       <ListItemText primary={movie.name} secondary={"Price: " + movie.price} />
       {"id=" + movie.id}
+      <IconButton
+        key="close"
+        aria-label="close"
+        style={{marginLeft: 10}}
+        onClick={deleteMovie}
+        color="inherit">
+        <CloseIcon/>
+      </IconButton>
     </ListItem>
   )
 }
