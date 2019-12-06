@@ -1,0 +1,8 @@
+{
+  "appId": "com.plasmoxy.lesimple",
+  "appName": "LeSimple",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "build",
+  "cordova": {}
+}
