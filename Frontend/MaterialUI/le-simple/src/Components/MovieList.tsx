@@ -30,7 +30,7 @@ export const MovieListItem: React.FC<{ movie: Movie }> = ({ movie }) => {
   }
 
   return (
-    <ListItem button className={round} >
+    <ListItem className={round} >
       <ListItemIcon>
         <MovieIcon />
       </ListItemIcon>
