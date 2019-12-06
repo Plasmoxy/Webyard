@@ -7,18 +7,16 @@ import { MovieProvider } from './Context/MovieContext';
 
 export const App: React.FC = () => {
 
-  return <>
+  return <MovieProvider>
     <Header />
 
     <div style={{margin: 20}}>
       
-      <MovieProvider>
-        <MovieList />
-      </MovieProvider>
+      <MovieList />
 
       <Exercises />
       <Footer />
     </div>
-  </>
+  </MovieProvider>
 }
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 
 import {
   AppBar,
@@ -17,6 +17,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles"
 import { grey } from "@material-ui/core/colors"
 import { LoginDialog } from "../Components/LoginDialog"
+import { MovieContext } from "../Context/MovieContext"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,6 +36,7 @@ export const Header: React.FC = props => {
   const classes = useStyles()
   
   const [uname, setUname] = useState("logged off")
+  const [movies, setMovies] = useContext(MovieContext)!!
 
   const [loginDialogOpen, setLoginDialogOpen] = useState(false)
   function handleDialogClose(value: string) {
@@ -63,7 +65,7 @@ export const Header: React.FC = props => {
         </Typography>
 
         <Typography variant="subtitle1" style={{marginRight: 30}}>
-          List length: {0}
+          List length: {movies.length}
         </Typography>
 
         <Typography variant="h6" style={{marginRight: 30}}>
