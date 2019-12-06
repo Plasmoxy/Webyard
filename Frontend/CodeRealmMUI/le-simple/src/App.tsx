@@ -1,11 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Header } from './Layouts';
+import { Header, Footer } from './Layouts';
+import Exercises from './Exercises';
+import { MovieList } from './Components/MovieList';
 
 export const App: React.FC = () => {
-  return (
+  return <>
     <Header />
-  );
+
+    <MovieList />
+
+    <Exercises />
+    <Footer />
+  </>
 }
 
