@@ -10,7 +10,6 @@ import { Footer, Header } from './Layouts';
 
 const { Toast, LocalNotifications } = Plugins;
 
-
 const useStyles = makeStyles({
   input: {
     height: 40

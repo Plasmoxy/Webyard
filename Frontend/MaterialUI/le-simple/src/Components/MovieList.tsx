@@ -1,16 +1,16 @@
-import { Button, Card, CardContent, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography, Fade } from "@material-ui/core"
+import { Button, Card, CardContent, Fade, IconButton, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core"
 import { grey } from "@material-ui/core/colors"
 import CloseIcon from '@material-ui/icons/Close'
 import MovieIcon from "@material-ui/icons/Movie"
 import { makeStyles } from "@material-ui/styles"
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { MovieContext } from "../Context/MovieContext"
 import { Movie } from '../Model'
 
 const useStyles = makeStyles({
 
   card: {
-    maxWidth: 360,
+    maxWidth: 700,
     margin: "auto",
     marginTop: 30,
     marginBottom: 30
@@ -75,7 +75,6 @@ export const MovieList: React.FC = () => {
             ))}
             
           </List>
-          <Typography variant="subtitle1" align="center">(click to delete)</Typography>
         </CardContent>
     </Card>
 

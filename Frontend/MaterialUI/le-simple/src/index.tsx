@@ -1,12 +1,14 @@
+import { AppUrlOpen, Plugins } from '@capacitor/core';
+import { indigo } from '@material-ui/core/colors';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { App as ReactApp } from './App';
+import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-import { Plugins, AppUrlOpen } from '@capacitor/core'
-const { SplashScreen, App } = Plugins
+const { SplashScreen, App, StatusBar } = Plugins
 
+StatusBar.setBackgroundColor({color: indigo[700]})
 
 ReactDOM.render(<ReactApp />, document.getElementById('root'));
 SplashScreen.hide()

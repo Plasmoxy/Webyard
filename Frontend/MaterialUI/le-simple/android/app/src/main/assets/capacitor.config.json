@@ -5,12 +5,13 @@
   "npmClient": "yarn",
   "webDir": "build",
   "cordova": {},
-
   "server": {
     "url": "http://192.168.0.169:3000",
     "hostname": "app",
     "iosScheme": "ionic",
     "androidScheme": "http",
-    "allowNavigation": ["192.168.*.*"]
+    "allowNavigation": [
+      "192.168.*.*"
+    ]
   }
 }
