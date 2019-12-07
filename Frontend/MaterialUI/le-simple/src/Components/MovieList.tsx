@@ -63,7 +63,6 @@ export const MovieList: React.FC = () => {
   const [movies, setMovies] = useContext(MovieContext)!!
   
   function addNewMovie() {
-    console.log("CLICC")
     setMovies(prev => [...prev, new Movie("kys", Math.random()) ])
   }
 
