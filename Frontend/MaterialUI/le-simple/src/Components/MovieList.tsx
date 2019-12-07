@@ -1,8 +1,9 @@
-import { Button, Card, CardContent, List, ListItem, ListItemIcon, ListItemText, Typography, IconButton } from "@material-ui/core"
-import MovieIcon from "@material-ui/icons/Movie"
+import { Button, Card, CardContent, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography, Fade } from "@material-ui/core"
+import { grey } from "@material-ui/core/colors"
 import CloseIcon from '@material-ui/icons/Close'
+import MovieIcon from "@material-ui/icons/Movie"
 import { makeStyles } from "@material-ui/styles"
-import React, { useContext } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { MovieContext } from "../Context/MovieContext"
 import { Movie } from '../Model'
 
@@ -17,12 +18,18 @@ const useStyles = makeStyles({
 
   round: { borderRadius: 7 },
   centered: { textAlign: 'center' },
+  greyBg: { backgroundColor: grey[100] },
 
 })
 
 export const MovieListItem: React.FC<{ movie: Movie }> = ({ movie }) => {
-  const { round } = useStyles()
+  const { round, greyBg } = useStyles()
   const [, setMovies] = useContext(MovieContext)!!
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    setVisible(true)
+  }, [])
 
   function deleteMovie() {
     // allow all movies that aren't that movie
@@ -30,21 +37,23 @@ export const MovieListItem: React.FC<{ movie: Movie }> = ({ movie }) => {
   }
 
   return (
-    <ListItem className={round} >
-      <ListItemIcon>
-        <MovieIcon />
-      </ListItemIcon>
-      <ListItemText primary={movie.name} secondary={"Price: " + movie.price} />
-      {"id=" + movie.id}
-      <IconButton
-        key="close"
-        aria-label="close"
-        style={{marginLeft: 10}}
-        onClick={deleteMovie}
-        color="inherit">
-        <CloseIcon/>
-      </IconButton>
-    </ListItem>
+    <Fade in={visible} timeout={500}>
+      <ListItem className={[round, greyBg].join(" ")} style={{marginTop: 5}} >
+        <ListItemIcon>
+          <MovieIcon />
+        </ListItemIcon>
+        <ListItemText primary={movie.name} secondary={"Price: " + movie.price} />
+        {"id=" + movie.id}
+        <IconButton
+          key="close"
+          aria-label="close"
+          style={{marginLeft: 10}}
+          onClick={deleteMovie}
+          color="inherit">
+          <CloseIcon/>
+        </IconButton>
+      </ListItem>
+    </Fade>
   )
 }
 
