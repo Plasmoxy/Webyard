@@ -1,4 +1,4 @@
-import { AppUrlOpen, Plugins } from '@capacitor/core';
+import { AppUrlOpen, Plugins, Capacitor } from '@capacitor/core';
 import { indigo } from '@material-ui/core/colors';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -6,9 +6,13 @@ import { App as ReactApp } from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const { SplashScreen, App, StatusBar } = Plugins
+const { SplashScreen, App, StatusBar} = Plugins
 
-StatusBar.setBackgroundColor({color: indigo[700]})
+console.log("Running platform: " + Capacitor.platform)
+
+if (Capacitor.platform === "android") {
+    StatusBar.setBackgroundColor({color: indigo[700]})
+}
 
 ReactDOM.render(<ReactApp />, document.getElementById('root'));
 SplashScreen.hide()
