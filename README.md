@@ -1,3 +1,3 @@
-# WebKopa
-halu dis is javascript
-yeet
+# Webyard
+
+feel free to take anything, I use this to teach myself React and stuff
