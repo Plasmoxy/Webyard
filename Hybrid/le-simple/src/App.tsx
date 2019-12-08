@@ -1,12 +1,13 @@
 import { Plugins } from '@capacitor/core';
-import { Button, TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { Button, TextField, Container } from '@material-ui/core';
+import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import React, { useState } from 'react';
 import './App.css';
 import { MovieList } from './Components/MovieList';
 import { MovieProvider } from './Context/MovieContext';
 import Exercises from './Exercises';
 import { Footer, Header } from './Layouts';
+import muiTheme from './Style/Theme'
 
 const { Toast, LocalNotifications } = Plugins;
 
@@ -49,10 +50,10 @@ export const App: React.FC = props => {
     notify("Logging in as " + inputName)
   }
 
-  return <MovieProvider>
+  return <ThemeProvider theme={muiTheme}><MovieProvider>
     <Header />
 
-    <div style={{margin: 20}}>
+    <Container>
       
       <MovieList />
 
@@ -67,6 +68,7 @@ export const App: React.FC = props => {
         <TextField value={inputPassword} onChange={e => setInputPassword(e.target.value)} className={c.m} label="Heslo" variant="outlined" type="password" /><br></br>
         <Button className={c.m} type="submit" variant="contained" color="primary">Prihlásiť sa</Button><br></br>
       </form>
-    </div>
-  </MovieProvider>
+    </Container>
+
+  </MovieProvider></ThemeProvider>
 }

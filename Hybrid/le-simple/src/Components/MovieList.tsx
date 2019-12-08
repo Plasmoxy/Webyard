@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Fade, IconButton, List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core"
+import { Button, Card, CardContent, Fade, IconButton, List, ListItem, ListItemIcon, ListItemText, TextField, Container, Box } from "@material-ui/core"
 import { grey } from "@material-ui/core/colors"
 import CloseIcon from '@material-ui/icons/Close'
 import MovieIcon from "@material-ui/icons/Movie"
@@ -8,21 +8,13 @@ import { MovieContext } from "../Context/MovieContext"
 import { Movie } from '../Model'
 
 const useStyles = makeStyles({
-
-  card: {
-    maxWidth: 700,
-    margin: "auto",
-    marginTop: 30,
-    marginBottom: 30
-  },
-
   round: { borderRadius: 7 },
-  centered: { textAlign: 'center' },
   greyBg: { backgroundColor: grey[100] },
 
 })
 
 export const MovieListItem: React.FC<{ movie: Movie }> = ({ movie }) => {
+
   const { round, greyBg } = useStyles()
   const [, setMovies] = useContext(MovieContext)!!
   const [visible, setVisible] = useState(false)
@@ -59,15 +51,18 @@ export const MovieListItem: React.FC<{ movie: Movie }> = ({ movie }) => {
 
 export const MovieList: React.FC = () => {
 
-  const classes = useStyles()
+  const ss = useStyles()
   const [movies, setMovies] = useContext(MovieContext)!!
+  const [nameText, setNameText] = useState("")
+  
   
   function addNewMovie() {
     setMovies(prev => [...prev, new Movie("kys", Math.random()) ])
   }
 
-  return <>
-    <Card className={classes.card}>
+  return <Container maxWidth="md">
+
+    <Card>
         <CardContent>
           <List component="nav">
             {movies.map(movie => (
@@ -78,9 +73,10 @@ export const MovieList: React.FC = () => {
         </CardContent>
     </Card>
 
-    <div className={classes.centered}>
+    <Box>
+      <TextField variant="outlined" value={nameText} onChange={e => setNameText(e.target.value)} />
       <Button variant="contained" color="primary" onClick={addNewMovie}>Add new movie</Button>
-    </div>
+    </Box>
 
-  </>
+  </Container>
 }
