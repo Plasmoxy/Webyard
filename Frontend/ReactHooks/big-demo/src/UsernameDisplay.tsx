@@ -4,8 +4,7 @@ import { AppContext } from './AppContext'
 
 export function UsernameDisplay() {
 
-    const {state, setState} = useContext(AppContext)
-    const {username} = state
+    const {username} = useContext(AppContext)
 
     return useMemo(() => <>
         {console.log("UsernameDisplay render")}

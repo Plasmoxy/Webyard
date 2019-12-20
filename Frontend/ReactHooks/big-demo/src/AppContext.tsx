@@ -1,21 +1,22 @@
 import React, { createContext, Props, useState, SetStateAction, Dispatch } from "react"
 
-class ContextState {
-    public username = ""
-    public subscribers = 0
+interface ContextState {
+    username: string,
+    setUsername: Dispatch<SetStateAction<string>>
+
+    subscribers: number,
+    setSubscribers: Dispatch<SetStateAction<number>>
 }
 
-type ContextValue = {
-    state: ContextState,
-    setState: Dispatch<SetStateAction<ContextState>>
-}
-
-export const AppContext = createContext<ContextValue>({} as any)
+export const AppContext = createContext<ContextState>({} as any)
 
 export const AppProvider = (props: Props<any>) => {
-    const [state, setState] = useState(new ContextState())
+    const [username, setUsername] = useState("")
+    const [subscribers, setSubscribers] = useState(0)
 
-    return <AppContext.Provider value={{state, setState}}>
+    return <AppContext.Provider value={{
+        username, setUsername, subscribers, setSubscribers
+    }}>
         {props.children}
     </AppContext.Provider>
 }
