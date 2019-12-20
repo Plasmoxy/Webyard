@@ -8,7 +8,7 @@ type State = {
 }
 
 const actions = {
-    default: (s: State) => {throw new Error()},
+    default: (s: State) => s,
     incrementA: (s: State) => ({
         a: s.a + 1
     }),
