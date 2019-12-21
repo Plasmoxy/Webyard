@@ -17,13 +17,19 @@ export default function() {
     }
     
     useEffect(() => {
-        fetchData()
+        const tm = setTimeout(fetchData, 3000)
+        return () => clearTimeout(tm)
     }, [])
 
     return <div className="shop">
         <h1>helo now we buy persons in 1830</h1>
-        {displayItems.map(i => 
-            <ShopItemDisplay key={i.name} item={i} />
-        )}
+        {displayItems.length > 0 ?
+            displayItems.map(i => 
+                <ShopItemDisplay key={i.name} item={i} />
+            )
+        : <span style={{color: "red"}}>
+            "Loadong wit fake delay xddd wait.........."
+        </span>
+        }
     </div>
 }

@@ -23,7 +23,7 @@ export default function({item}: Props) {
                 {item.description}
             </p>
             <p style={{display: "flex", alignItems: "center"}}>
-                Cena: <span style={{color: "cyan"}}>{item.price}</span>
+                Cena:&ensp;<span style={{color: "cyan"}}>{item.price}</span>
                 <FontAwesomeIcon icon={faCoffee} color="cyan" />
             </p>
             Na sklade: {item.amount} ks
