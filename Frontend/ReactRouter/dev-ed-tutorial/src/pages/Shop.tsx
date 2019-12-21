@@ -1,18 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { API_ITEM } from '../Meta'
+import { ShopItem } from '../model/ApiModel'
+import ShopItemDisplay from '../components/ShopItemDisplay'
 
-export function Shop() {
+export default function() {    
 
-    async function fetchItems() {
-        const userdata = await fetch("https://reqres.in/api/users?page=1")
+    const [displayItems, setDisplayItems] = useState<ShopItem[]>([])
 
-        console.log(userdata)
+    async function fetchData() {
+        const resp = await axios.post(API_ITEM + "all")
+        console.log("Response:", resp)
+        if (resp.status === 200) {
+            setDisplayItems(resp.data as ShopItem[])
+        }
     }
-
+    
     useEffect(() => {
-        fetchItems()
+        fetchData()
     }, [])
 
-    return <div className="about">
-        <h1>Shopp</h1>
+    return <div className="shop">
+        <h1>helo now we buy persons in 1830</h1>
+        {displayItems.map(i => 
+            <ShopItemDisplay key={i.name} item={i} />
+        )}
     </div>
 }

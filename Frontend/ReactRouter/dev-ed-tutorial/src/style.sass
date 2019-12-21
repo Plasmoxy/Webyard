@@ -1,27 +1,40 @@
 body
     background: #111112
     color: white
-
 nav
     display: flex
     justify-content: space-around
     align-items: center
     min-height: 5vh
     background: #1a1a1d
-
 .nav-links
     width: 20%
     display: flex
     justify-content: space-evenly
     align-items: center
     list-style: none
-    
-
 nav a
     text-decoration: none
-    font-weight: bold
-
 a
-    color: white
+    color: white   
 a:active
     color: cyan
+.NavLink-active
+    font-weight: bolder
+    color: cyan
+
+.shopitem-display
+    display: flex
+    align-items: center
+    border: 1px solid white
+    border-radius: 10px
+    margin: 10px
+    padding: 10px
+    
+    &>*
+        display: block
+        margin: 10px
+    
+    &>*>img
+        display: block
+        width: 20vw
