@@ -13,7 +13,7 @@ export default function({item}: Props) {
 
     return <div className="shopitem-display">
         <LazyLoadImage
-            effect="opacity"
+            effect="black-and-white"
             alt="item"
             src={API_STATIC_IMAGE(item.imageId)}/>
 

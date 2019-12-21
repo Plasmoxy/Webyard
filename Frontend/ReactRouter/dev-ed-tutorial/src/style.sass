@@ -1,34 +1,56 @@
+$cardcolor: #131314 
+$navbg: #1a1a1d
+
 body
-    background: #111112
+    font-family: Consolas
+    background: black
     color: white
+    margin: 50px
 nav
     display: flex
     justify-content: space-around
     align-items: center
     min-height: 5vh
-    background: #1a1a1d
+    background: $navbg
+    border-radius: 10px
 .nav-links
     width: 20%
     display: flex
-    justify-content: space-evenly
+    justify-content: flex-end
     align-items: center
     list-style: none
+
+    &>*
+        display: block
+        margin: 0px 10px
+        border: 10px solid $navbg
+        border-radius: 10px
+
+.NavLink-active
+    color: $cardcolor
+    background: cyan
+    border: 7px solid cyan
+    border-radius: 10px    
+
 nav a
     text-decoration: none
+    font-weight: bold
 a
     color: white   
 a:active
     color: cyan
-.NavLink-active
-    font-weight: bolder
-    color: cyan
+
+.shop
+    text-align: center
 
 .shopitem-display
+    text-align: left
     display: flex
     align-items: center
-    border: 1px solid white
+    border: 1px solid $cardcolor
     border-radius: 10px
-    margin: 10px
+    background-color: $cardcolor
+    margin: 15px 10px
     padding: 10px
     
     &>*
