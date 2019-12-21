@@ -1,12 +1,11 @@
 import React from "react"
-import { render } from "react-dom"
-import './style.sass'
-import { Nav } from "./pages/Nav"
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { About } from "./pages/About"
+import { Nav } from "./pages/Nav"
 import { Shop } from "./pages/Shop"
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import './style.sass'
 
-function App() {
+export default function App() {
   return <>
     <BrowserRouter>
       <Nav />
@@ -24,5 +23,3 @@ const Home = () => (
     <h1>Home page</h1>
   </div>
 )
-
-render(<App />, document.getElementById("reactRoot"))

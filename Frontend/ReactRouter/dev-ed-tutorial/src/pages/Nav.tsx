@@ -5,8 +5,13 @@ import joy from '../images/joy.png'
 export function Nav() {
     return <nav>
         <Link to="/">
-            <img src={joy}></img>
-            <h3>Logo</h3>
+            <h3 style={{display: "flex", alignItems: "center"}}>
+                <img
+                    style={{marginRight: 10, width: 50}}
+                    src={joy}
+                ></img>
+                Kys xDDDD
+            </h3>
         </Link>
         <ul className="nav-links">
             <Link to="/pages/about">
