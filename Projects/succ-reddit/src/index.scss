@@ -9,6 +9,11 @@ $body-color: white;
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 
+// rip scroll refresh
+body {
+  overscroll-behavior-y: contain;
+}
+
 .meme-display {
   margin-bottom: 30px;
 }
