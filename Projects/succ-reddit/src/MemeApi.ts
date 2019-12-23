@@ -2,16 +2,51 @@
 export type Meme = {
   postLink: string,
   title: string,
-  url: string,
+  url: string
 }
 
-export type MemesResponse = {
-  count: number,
-  memes: Meme[],
-  subreddit: string
-}
+// tuple of [post, comments]
+export type RedditPostResponseJSON = [
 
-export async function fetchMemes(subreddit: string = "dankmemes", amount: number = 1) {
-  const resp = await fetch(`https://meme-api.herokuapp.com/gimme/${subreddit}/${amount}`)
-  return (await resp.json() as MemesResponse)
+  // posts
+  {
+    data: {
+      // its just 1-element tuple
+      children: [{
+
+        // THE ACTUAL POST DATA!
+        data: {
+          subreddit: string,
+          title: string,
+          url: string,
+          permalink: string // doesn't have https://reddit.com appended in front!!
+        }
+      }]
+    }
+  },
+  
+  // comments
+  {
+    data: {
+      children: {}[]
+    }
+  }[]
+]
+
+export async function fetchRandomMeme(targetSubreddit: string = "dankmemes") {
+  const resp = await (
+    await fetch(`https://www.reddit.com/r/${targetSubreddit}/random.json`)
+  ).json() as RedditPostResponseJSON // it response with posts array
+
+  const post = resp[0].data.children[0].data
+
+  const meme = {
+    postLink: "https://reddit.com" + post.permalink,
+    url: post.url,
+    title: post.title
+  } as Meme
+
+  console.log(meme)
+
+  return meme
 }
