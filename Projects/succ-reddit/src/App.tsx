@@ -10,8 +10,11 @@ export default function App() {
         <NavigationBar />
         <MemeDisplay />
         <p className="text-center">
-          Memes fetched from reddit using
-          https://www.reddit.com/r/dankmemes/random.json
+          Memes fetched from reddit using{" "}
+          <a target="_blank" rel="noopener noreferrer" href="https://www.reddit.com/r/dankmemes/random.json">Reddit random json API</a>
+        </p>
+        <p className="text-center">
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Plasmoxy/Webyard/tree/master/Projects/succ-reddit/src">Source code (GitHub)</a>
         </p>
       </Container>
     </>
