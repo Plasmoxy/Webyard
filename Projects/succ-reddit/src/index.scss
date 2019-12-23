@@ -1,0 +1,21 @@
+
+
+$theme-colors: (
+    dark: #1b1c1f
+);
+$body-bg: #0a0a0c;
+$body-color: white;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+.meme-display {
+  margin-bottom: 30px;
+}
+
+@include media-breakpoint-up(md) {
+  .meme-card {
+    max-width: 60vh;
+    margin: auto;
+  }
+}
