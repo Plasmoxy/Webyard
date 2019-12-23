@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { Button, Form, FormControl, Navbar, Row, Col, Nav } from "react-bootstrap"
+import { Button, Form, FormControl, Navbar } from "react-bootstrap"
 import ahyes from "./ahyes.png"
 
 export default function NavigationBar() {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [, setSearchQuery] = useState("")
 
   function handleSubmit() {}
 

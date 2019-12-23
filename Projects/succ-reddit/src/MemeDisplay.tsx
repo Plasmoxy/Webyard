@@ -7,16 +7,16 @@ import MemeCard from "./MemeCard"
 
 export default function MemeDisplay() {
   const [meme, setMeme] = useState<Meme | null>(null)
-  const [memeSubreddit, setMemeSubreddit] = useState("dankmemes")
-  let current = true
+  const [memeSubreddit] = useState("dankmemes")
+  
 
   async function nextMeme() {
-    if (current) setMeme(null)
+    setMeme(null)
     try {
       // get 1 meme
       const meme = await fetchRandomMeme(memeSubreddit)
       // apply it to UI state if current
-      if (current) setMeme(meme)
+      setMeme(meme)
     } catch (e) {
       console.log(e)
     }
@@ -24,9 +24,6 @@ export default function MemeDisplay() {
 
   useEffect(() => {
     nextMeme()
-    return () => {
-      current = false
-    }
   }, [memeSubreddit])
 
   return (
