@@ -11,7 +11,7 @@ export default function App() {
         <MemeDisplay />
         <p className="text-center">
           Memes fetched from reddit using{" "}
-          <a target="_blank" rel="noopener noreferrer" href="https://www.reddit.com/r/dankmemes/random.json">Reddit random json API</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.reddit.com/r/redditdev/comments/801h41/is_randomjson_biased_towards_newer_posts/">Reddit random json API magic</a>
         </p>
         <p className="text-center">
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/Plasmoxy/Webyard/tree/master/Projects/succ-reddit/src">Source code (GitHub)</a>

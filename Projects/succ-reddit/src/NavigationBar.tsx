@@ -17,7 +17,7 @@ export default function NavigationBar() {
     >
       <Navbar.Brand>
         <img alt="logo" className="rounded mr-4" width="40" src={ahyes}></img>
-        <b>Ah yes</b>
+        <b><i>Ah yes</i></b>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar-collapse-nav" />
       <Navbar.Collapse id="navbar-collapse-nav">
@@ -26,7 +26,7 @@ export default function NavigationBar() {
             onChange={(e: any) => setSearchQuery(e.target.value)}
             type="text"
             placeholder="Search bar is broken?"
-            className=""
+            className="mx-1"
           />
           <Button variant="dark" onClick={handleSubmit}>
             YES!

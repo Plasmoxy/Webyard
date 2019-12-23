@@ -12,7 +12,7 @@ export type Props = {
 export default function MemeCard({ meme, onClick }: Props) {
   return (
     <Card className="meme-card p-1 my-3" bg="dark" onClick={onClick}>
-      <Card.Header as="h3" className="d-flex justify-content-between">
+      <Card.Header as="h5" className="d-flex justify-content-between">
         {meme.title}
         <a target="_blank" rel="noopener noreferrer" href={meme.postLink}>
           <FontAwesomeIcon icon={faReddit}></FontAwesomeIcon>

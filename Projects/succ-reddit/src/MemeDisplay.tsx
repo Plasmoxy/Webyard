@@ -34,7 +34,9 @@ export default function MemeDisplay() {
           
           <div className="text-center">
             <ButtonGroup>
-              <Button variant="outline-danger"><FontAwesomeIcon icon={faArrowCircleDown} /> Download</Button>
+              
+              <Button href={meme.url} type="submit" variant="outline-danger"><FontAwesomeIcon icon={faArrowCircleDown} /> Open image</Button>
+
               <Button variant="outline-primary" onClick={nextMeme}>👏Next meme👏</Button>
             </ButtonGroup>
           </div>
