@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Button, Form, FormControl, Navbar } from "react-bootstrap"
-import ahyes from "./ahyes.png"
+import ahyes from "../images/ahyes.png"
 
 export default function NavigationBar() {
   const [, setSearchQuery] = useState("")

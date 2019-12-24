@@ -2,14 +2,13 @@ import { faHeart, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useEffect, useState } from "react"
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
-import { fetchRandomMeme, Meme } from "./MemeApi"
+import { fetchRandomMeme, Meme } from "../model/MemeApi"
 import MemeCard from "./MemeCard"
 
 export default function MemeDisplay() {
   const [meme, setMeme] = useState<Meme | null>(null)
   const [memeSubreddit] = useState("dankmemes")
   
-
   async function nextMeme() {
     setMeme(null)
     try {

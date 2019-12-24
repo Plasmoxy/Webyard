@@ -1,7 +1,7 @@
 import React from "react"
 import Container from "react-bootstrap/Container"
-import MemeDisplay from "./MemeDisplay"
-import NavigationBar from "./NavigationBar"
+import MemeDisplay from "./components/MemeDisplay"
+import NavigationBar from "./components/NavigationBar"
 
 export default function App() {
   return (
