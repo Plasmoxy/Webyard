@@ -1,9 +1,15 @@
 import React from "react"
 import Container from "react-bootstrap/Container"
-import MemeDisplay from "./components/MemeDisplay"
-import NavigationBar from "./components/NavigationBar"
+import MemeDisplay from "./MemeDisplay"
+import NavigationBar from "./NavigationBar"
+import { useSelector } from "react-redux"
+import { AppState } from "../model/AppReducer"
 
 export default function App() {
+
+  // select only one part of state tree
+  const count = useSelector<{app: AppState}, number>(s => s.app.count)
+
   return (
     <>
       <Container>
@@ -15,6 +21,10 @@ export default function App() {
         </p>
         <p className="text-center">
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/Plasmoxy/Webyard/tree/master/Projects/succ-reddit/src">Source code (GitHub)</a>
+        </p>
+
+        <p>
+          Count = {count}
         </p>
       </Container>
     </>
