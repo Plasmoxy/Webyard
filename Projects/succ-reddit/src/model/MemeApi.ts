@@ -40,11 +40,11 @@ export async function fetchRandomMeme(targetSubreddit: string = "dankmemes") {
 
   const post = resp[0].data.children[0].data
 
-  const meme = {
+  const meme: Meme = {
     postLink: "https://reddit.com" + post.permalink,
     url: post.url,
     title: post.title
-  } as Meme
+  }
 
   console.log(meme)
 
