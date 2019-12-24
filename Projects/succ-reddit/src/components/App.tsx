@@ -8,7 +8,7 @@ import { AppState } from "../model/AppReducer"
 export default function App() {
 
   // select only one part of state tree
-  const count = useSelector<{app: AppState}, number>(s => s.app.count)
+  const state = useSelector<{app: AppState}, AppState>(s => s.app)
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function App() {
         </p>
 
         <p>
-          Count = {count}
+          Count = {state.count}, Username: {state.name}, Password: {state.password}.
         </p>
       </Container>
     </>
