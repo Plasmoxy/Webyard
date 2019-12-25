@@ -1,4 +1,4 @@
-import { createSlice, CaseReducer } from "@reduxjs/toolkit"
+import { createSlice, CaseReducer, Action, PayloadAction, createAction } from "@reduxjs/toolkit"
 
 export type AppState = {
   count: number,
@@ -6,39 +6,38 @@ export type AppState = {
   password: string
 }
 
+const init: AppState = {
+  count: 0,
+  name: "",
+  password: ""
+}
+
 const appSlice = createSlice({
   name: "app",
-  initialState: {
-    count: 0,
-    name: "",
-    password: ""
-  },
+  initialState: init, //automatic type infer
+
   reducers: {
     // automaticky vytvorí reducery a akcie z funkcií, pričom knižnica Immer zkonvertuje mutabilné operácie so stavom (state) na imutabilné operácie (pre Redux)
-    increment(state: AppState, action: {payload: {
-      amount: number
-    }}) {
+    increment(state, action: PayloadAction<{amount: number}>) {
       const { amount } = action.payload
       state.count += amount ?? 1 // mutabilná operácia kópie stavu
       // ?? = elvis operator
     },
 
-    decrement(state: AppState, action: {payload: {
-      amount: number
-    }}) {
+    decrement(state, action: PayloadAction<{amount: number}>) {
       const { amount } = action.payload
       state.count -= amount ?? 1
     },
 
 
-    setCredentials(state: AppState, action: {payload: {
+    setCredentials(state, action: PayloadAction<{
       name: string,
       password: string
-    }}) {
+    }>) {
       const { name, password } = action.payload
       state.name = name
       state.password = password
-    }
+    },
 
   }
 })
