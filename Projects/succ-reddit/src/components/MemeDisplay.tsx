@@ -4,8 +4,11 @@ import React, { useEffect, useState } from "react"
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
 import { fetchRandomMeme, Meme } from "../model/MemeApi"
 import MemeCard from "./MemeCard"
+import { useDispatch } from "react-redux"
+import { increaseMemesRead } from "../model/AppReducer"
 
 export default function MemeDisplay() {
+  const dispatch = useDispatch()
   const [meme, setMeme] = useState<Meme | null>(null)
   const [memeSubreddit] = useState("dankmemes")
   
@@ -16,6 +19,9 @@ export default function MemeDisplay() {
       const meme = await fetchRandomMeme(memeSubreddit)
       // apply it to UI state if current
       setMeme(meme)
+
+      // dispatch meme read to redux
+      dispatch(increaseMemesRead())
     } catch (e) {
       console.log(e)
     }

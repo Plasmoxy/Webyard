@@ -24,7 +24,7 @@ export default function App() {
         </p>
 
         <p>
-          Count = {state.count}, Username: {state.name}, Password: {state.password}.
+          Count = {state.count}, Username: {state.name}, Password: {state.password}, memesread: {state.memesRead}
         </p>
       </Container>
     </>

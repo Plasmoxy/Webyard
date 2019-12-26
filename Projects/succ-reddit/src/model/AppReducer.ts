@@ -1,20 +1,22 @@
-import { createSlice, CaseReducer, Action, PayloadAction, createAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export type AppState = {
   count: number,
   name: string,
-  password: string
+  password: string,
+  memesRead: number
 }
 
 const init: AppState = {
   count: 0,
   name: "",
-  password: ""
+  password: "",
+  memesRead: 0
 }
 
 const appSlice = createSlice({
   name: "app",
-  initialState: init, //automatic type infer
+  initialState: init, //automatic type infer to rest of the slice
 
   reducers: {
     // automaticky vytvorí reducery a akcie z funkcií, pričom knižnica Immer zkonvertuje mutabilné operácie so stavom (state) na imutabilné operácie (pre Redux)
@@ -39,10 +41,16 @@ const appSlice = createSlice({
       state.password = password
     },
 
+    increaseMemesRead(s, a) {
+      s.memesRead++
+    }
+
   }
 })
 
-export const { increment, decrement, setCredentials } = appSlice.actions
+export const {
+  increment, decrement, setCredentials,increaseMemesRead
+} = appSlice.actions
 // hocikde v appke potom: dispatch(increment({amount: 30}))
 
 // reducer
