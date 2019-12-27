@@ -1,13 +1,14 @@
 import { faHeart, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, memo } from "react"
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
 import { fetchRandomMeme, Meme } from "../api/MemeApi"
 import MemeCard from "./MemeCard"
 import { useDispatch } from "react-redux"
 import { increaseMemesRead } from "../model/AppReducer"
 
-export default function MemeDisplay() {
+function MemeDisplay() {
+
   const dispatch = useDispatch()
   const [meme, setMeme] = useState<Meme | null>(null)
   const [memeSubreddit] = useState("dankmemes")
@@ -59,3 +60,5 @@ export default function MemeDisplay() {
     </div>
   )
 }
+
+export default memo(MemeDisplay)

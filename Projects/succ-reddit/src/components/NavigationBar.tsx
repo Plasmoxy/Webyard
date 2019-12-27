@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, memo } from "react"
 import { Button, Form, FormControl, Navbar } from "react-bootstrap"
 import ahyes from "../images/ahyes.png"
 import { useDispatch } from "react-redux"
 import { increment, decrement } from "../model/AppReducer"
 
-export default function NavigationBar() {
+function NavigationBar() {
+
+  console.log("BARR")
+
   const [, setSearchQuery] = useState("")
   const dispatch = useDispatch()
 
@@ -55,3 +58,5 @@ export default function NavigationBar() {
     </Navbar>
   )
 }
+
+export default memo(NavigationBar)

@@ -3,7 +3,7 @@ import AppReducer, { AppState } from './AppReducer'
 import MemesReducer, { MemesState } from './MemesReducer'
 import { useSelector, shallowEqual } from "react-redux"
 
-type RootState = {
+export type RootState = {
   app: AppState,
   memes: MemesState
 }
