@@ -1,13 +1,13 @@
+import whyDidYouRender from "@welldone-software/why-did-you-render"
 import React from "react"
 import ReactDOM from "react-dom"
+import { Provider } from "react-redux"
 import App from "./components/App"
-import * as serviceWorker from "./serviceWorker"
 import "./index.scss"
 import { Store } from "./model/Store"
-import { Provider } from "react-redux"
-import whyDidYouRender from "@welldone-software/why-did-you-render"
+import * as serviceWorker from "./serviceWorker"
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   whyDidYouRender(React)
 }
 

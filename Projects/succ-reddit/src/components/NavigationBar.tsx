@@ -1,11 +1,10 @@
-import React, { useState, memo } from "react"
+import React, { memo, useState } from "react"
 import { Button, Form, FormControl, Navbar } from "react-bootstrap"
-import ahyes from "../images/ahyes.png"
 import { useDispatch } from "react-redux"
-import { increment, decrement } from "../model/AppReducer"
+import ahyes from "../images/ahyes.png"
+import { decrement, increment } from "../model/AppReducer"
 
 function NavigationBar() {
-
   const [, setSearchQuery] = useState("")
   const dispatch = useDispatch()
 

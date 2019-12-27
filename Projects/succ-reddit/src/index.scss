@@ -1,13 +1,10 @@
-
-
 $theme-colors: (
-    dark: #1b1c1f
+  dark: #1b1c1f
 );
 $body-bg: #0a0a0c;
 $body-color: white;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
-
 
 // rip scroll refresh
 body {

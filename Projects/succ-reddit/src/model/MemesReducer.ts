@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, AnyAction } from "@reduxjs/toolkit"
+import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Meme } from "../api/MemeApi"
 
 export const MEME_HISTORY_SIZE = 10
@@ -8,7 +8,7 @@ export type MemesState = {
 }
 
 export const memesReducerInit: MemesState = {
-  currentMemes: [],
+  currentMemes: []
 }
 
 const memesSlice = createSlice({
@@ -16,16 +16,14 @@ const memesSlice = createSlice({
   initialState: memesReducerInit,
 
   reducers: {
-
     clearMemes(s, a: AnyAction) {
       s.currentMemes.length = 0
     },
-    
+
     addMeme(s, a: PayloadAction<Meme>) {
       s.currentMemes.unshift(a.payload)
       s.currentMemes.length = MEME_HISTORY_SIZE
     }
-
   }
 })
 

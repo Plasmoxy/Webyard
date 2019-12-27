@@ -1,18 +1,17 @@
-import { faHeart, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleDown, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useEffect, useState, memo } from "react"
+import React, { memo, useEffect, useState } from "react"
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
-import { fetchRandomMeme, Meme } from "../api/MemeApi"
-import MemeCard from "./MemeCard"
 import { useDispatch } from "react-redux"
+import { fetchRandomMeme, Meme } from "../api/MemeApi"
 import { increaseMemesRead } from "../model/AppReducer"
+import MemeCard from "./MemeCard"
 
 function MemeDisplay() {
-
   const dispatch = useDispatch()
   const [meme, setMeme] = useState<Meme | null>(null)
   const [memeSubreddit] = useState("dankmemes")
-  
+
   async function nextMeme() {
     setMeme(null)
     try {
@@ -37,13 +36,16 @@ function MemeDisplay() {
       {meme ? (
         <>
           <MemeCard key={meme.postLink} meme={meme} />
-          
+
           <div className="text-center">
             <ButtonGroup>
-              
-              <Button href={meme.url} type="submit" variant="outline-danger"><FontAwesomeIcon icon={faArrowCircleDown} /> Open image</Button>
+              <Button href={meme.url} type="submit" variant="outline-danger">
+                <FontAwesomeIcon icon={faArrowCircleDown} /> Open image
+              </Button>
 
-              <Button variant="outline-primary" onClick={nextMeme}>👏Next meme👏</Button>
+              <Button variant="outline-primary" onClick={nextMeme}>
+                👏Next meme👏
+              </Button>
             </ButtonGroup>
           </div>
         </>

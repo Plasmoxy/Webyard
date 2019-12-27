@@ -2,9 +2,9 @@ import { faReddit } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { memo } from "react"
 import { Card } from "react-bootstrap"
-import { Meme } from "../api/MemeApi"
-import { RootState } from '../model/Store'
 import { useSelector } from "react-redux"
+import { Meme } from "../api/MemeApi"
+import { RootState } from "../model/Store"
 
 export type Props = {
   onClick?: (a: any) => any
@@ -13,7 +13,7 @@ export type Props = {
 
 function MemeCard({ meme, onClick }: Props) {
   const count = useSelector<RootState, number>(s => s.app.count)
-  
+
   return (
     <Card className="meme-card p-1 my-3" bg="dark" onClick={onClick}>
       <Card.Header as="h5" className="d-flex justify-content-between">
