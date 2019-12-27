@@ -7,7 +7,7 @@ export type AppState = {
   memesRead: number
 }
 
-export const init: AppState = {
+export const appReducerInit: AppState = {
   count: 0,
   name: "",
   password: "",
@@ -16,7 +16,7 @@ export const init: AppState = {
 
 const appSlice = createSlice({
   name: "app",
-  initialState: init, //automatic type infer to rest of the slice
+  initialState: appReducerInit, //automatic type infer to rest of the slice
 
   reducers: {
     // automaticky vytvorí reducery a akcie z funkcií, pričom knižnica Immer zkonvertuje mutabilné operácie so stavom (state) na imutabilné operácie (pre Redux)

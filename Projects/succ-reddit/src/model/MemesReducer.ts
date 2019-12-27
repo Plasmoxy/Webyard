@@ -1,26 +1,33 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Meme } from "./MemeApi"
+import { createSlice, PayloadAction, AnyAction } from "@reduxjs/toolkit"
+import { Meme } from "../api/MemeApi"
+
+export const MEME_HISTORY_SIZE = 10
 
 export type MemesState = {
   currentMemes: Meme[]
-  targetUser: string
 }
 
-const init: MemesState = {
+export const memesReducerInit: MemesState = {
   currentMemes: [],
-  targetUser: ""
 }
 
 const memesSlice = createSlice({
   name: "memes",
-  initialState: init,
+  initialState: memesReducerInit,
 
   reducers: {
-    setMemes(s: MemesState, a: PayloadAction<Meme[]>) {
-      s.currentMemes = a.payload
+
+    clearMemes(s, a: AnyAction) {
+      s.currentMemes.length = 0
+    },
+    
+    addMeme(s, a: PayloadAction<Meme>) {
+      s.currentMemes.unshift(a.payload)
+      s.currentMemes.length = MEME_HISTORY_SIZE
     }
+
   }
 })
 
-export const {setMemes} = memesSlice.actions
+export const { addMeme, clearMemes } = memesSlice.actions
 export default memesSlice.reducer

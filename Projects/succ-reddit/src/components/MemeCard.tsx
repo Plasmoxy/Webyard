@@ -2,7 +2,7 @@ import { faReddit } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { Card } from "react-bootstrap"
-import { Meme } from "../model/MemeApi"
+import { Meme } from "../api/MemeApi"
 
 export type Props = {
   onClick?: (a: any) => any
