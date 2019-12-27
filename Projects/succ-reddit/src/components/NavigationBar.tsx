@@ -6,8 +6,6 @@ import { increment, decrement } from "../model/AppReducer"
 
 function NavigationBar() {
 
-  console.log("BARR")
-
   const [, setSearchQuery] = useState("")
   const dispatch = useDispatch()
 
