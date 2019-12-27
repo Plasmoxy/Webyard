@@ -2,23 +2,26 @@ import { faArrowCircleDown, faHeart } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { memo, useEffect, useState } from "react"
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { fetchRandomMeme, Meme } from "../api/MemeApi"
 import { increaseMemesRead } from "../model/AppReducer"
 import MemeCard from "./MemeCard"
+import { RootState } from "../model/Store"
+import { MemesState, addMeme } from "../model/MemesReducer"
 
 function MemeDisplay() {
+
   const dispatch = useDispatch()
-  const [meme, setMeme] = useState<Meme | null>(null)
-  const [memeSubreddit] = useState("dankmemes")
+  const {subreddit, currentMemes} = useSelector<RootState, MemesState>(s => s.memes)
+
+  const firstMeme: Meme|undefined = currentMemes[0]
 
   async function nextMeme() {
-    setMeme(null)
     try {
       // get 1 meme
-      const meme = await fetchRandomMeme(memeSubreddit)
+      const meme = await fetchRandomMeme(subreddit)
       // apply it to UI state if current
-      setMeme(meme)
+      dispatch(addMeme(meme))
 
       // dispatch meme read to redux
       dispatch(increaseMemesRead())
@@ -29,17 +32,17 @@ function MemeDisplay() {
 
   useEffect(() => {
     nextMeme()
-  }, [memeSubreddit])
+  }, [])
 
   return (
     <div className="meme-display">
-      {meme ? (
+      {firstMeme ? (
         <>
-          <MemeCard key={meme.postLink} meme={meme} />
+          <MemeCard key={firstMeme.postLink} meme={firstMeme} />
 
           <div className="text-center">
             <ButtonGroup>
-              <Button href={meme.url} type="submit" variant="outline-danger">
+              <Button href={firstMeme.url} type="submit" variant="outline-danger">
                 <FontAwesomeIcon icon={faArrowCircleDown} /> Open image
               </Button>
 
@@ -63,4 +66,4 @@ function MemeDisplay() {
   )
 }
 
-export default memo(MemeDisplay)
+export default MemeDisplay

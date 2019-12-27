@@ -1,14 +1,16 @@
 import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Meme } from "../api/MemeApi"
 
-export const MEME_HISTORY_SIZE = 10
+export const MEME_HISTORY_SIZE = 5
 
 export type MemesState = {
+  subreddit: string
   currentMemes: Meme[]
 }
 
 export const memesReducerInit: MemesState = {
-  currentMemes: []
+  currentMemes: [],
+  subreddit: "dankmemes"
 }
 
 const memesSlice = createSlice({
@@ -22,7 +24,9 @@ const memesSlice = createSlice({
 
     addMeme(s, a: PayloadAction<Meme>) {
       s.currentMemes.unshift(a.payload)
-      s.currentMemes.length = MEME_HISTORY_SIZE
+      if (s.currentMemes.length > MEME_HISTORY_SIZE) {
+        s.currentMemes.length = MEME_HISTORY_SIZE
+      }
     }
   }
 })
