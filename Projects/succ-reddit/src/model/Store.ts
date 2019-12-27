@@ -1,7 +1,6 @@
-import { combineReducers, configureStore, CombinedState, AnyAction, Reducer, CaseReducer, createAction, createReducer } from "@reduxjs/toolkit"
+import { AnyAction, combineReducers, configureStore, createAction, createReducer } from "@reduxjs/toolkit"
 import AppReducer, { AppState } from './AppReducer'
 import MemesReducer, { MemesState } from './MemesReducer'
-import reduceReducers from 'reduce-reducers'
 
 type RootState = {
   app: AppState,
@@ -25,7 +24,7 @@ const crossSlice = createReducer({} as RootState, {
 
 })
 
-const rootReducer = (state: RootState = {} as RootState, action: AnyAction) =>
+const rootReducer = (state = {} as RootState, action: AnyAction) =>
   crossSlice(combined(state, action), action)
 
 export const Store = configureStore({

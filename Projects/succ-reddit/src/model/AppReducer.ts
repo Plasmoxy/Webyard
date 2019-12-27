@@ -7,7 +7,7 @@ export type AppState = {
   memesRead: number
 }
 
-const init: AppState = {
+export const init: AppState = {
   count: 0,
   name: "",
   password: "",

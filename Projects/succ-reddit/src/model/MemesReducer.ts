@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, CaseReducer } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Meme } from "./MemeApi"
 
 export type MemesState = {
