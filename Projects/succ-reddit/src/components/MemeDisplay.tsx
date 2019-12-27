@@ -1,37 +1,56 @@
-import { faArrowCircleDown, faHeart } from "@fortawesome/free-solid-svg-icons"
+import { faCircle as farCircle } from "@fortawesome/free-regular-svg-icons"
+import {
+  faArrowCircleDown, faArrowCircleLeft, faArrowCircleRight,
+  faCircle as fasCircle,
+  faHeart
+} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { memo, useEffect, useState } from "react"
+import _ from "lodash"
+import React, { memo, useEffect } from "react"
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchRandomMeme, Meme } from "../api/MemeApi"
+import scss from "../index.scss"
 import { increaseMemesRead } from "../model/AppReducer"
-import MemeCard from "./MemeCard"
+import { addMeme, historyBack, historyForward, MemesState, MEME_HISTORY_SIZE } from "../model/MemesReducer"
 import { RootState } from "../model/Store"
-import { MemesState, addMeme } from "../model/MemesReducer"
+import MemeCard from "./MemeCard"
+
+export const CircleIcon = memo(({ solid }: { solid: boolean }) => (
+  <FontAwesomeIcon icon={solid ? fasCircle : farCircle} color={scss.warning} />
+))
+
+// display in reversed order
+export const MemeHistoryIndicator = memo((p: { i: number; length: number }) => (
+  <>
+    {_.times(p.length, idx => (
+      <CircleIcon key={idx} solid={p.i == idx} />
+    ))}
+  </>
+))
 
 function MemeDisplay() {
-
   const dispatch = useDispatch()
-  const {subreddit, currentMemes} = useSelector<RootState, MemesState>(s => s.memes)
+  const { subreddit, currentMemes, currentIndex } = useSelector<RootState, MemesState>(
+    s => s.memes
+  )
 
-  const firstMeme: Meme|undefined = currentMemes[0]
+  const firstMeme: Meme | undefined = currentMemes[currentIndex]
 
-  async function nextMeme() {
+  async function handleNextMeme() {
     try {
-      // get 1 meme
-      const meme = await fetchRandomMeme(subreddit)
-      // apply it to UI state if current
-      dispatch(addMeme(meme))
+      dispatch(historyForward())
+      
 
-      // dispatch meme read to redux
-      dispatch(increaseMemesRead())
     } catch (e) {
+      dispatch(historyBack())
       console.log(e)
     }
   }
 
+  // first render, add first meme
   useEffect(() => {
-    nextMeme()
+    handleNextMeme()
   }, [])
 
   return (
@@ -39,17 +58,22 @@ function MemeDisplay() {
       {firstMeme ? (
         <>
           <MemeCard key={firstMeme.postLink} meme={firstMeme} />
-
           <div className="text-center">
             <ButtonGroup>
-              <Button href={firstMeme.url} type="submit" variant="outline-danger">
-                <FontAwesomeIcon icon={faArrowCircleDown} /> Open image
+
+              <Button variant="outline-primary" onClick={() => dispatch(historyBack())}>
+                <FontAwesomeIcon icon={faArrowCircleLeft} color={scss.primary} />
               </Button>
 
-              <Button variant="outline-primary" onClick={nextMeme}>
-                👏Next meme👏
+              <Button variant="outline-primary" onClick={handleNextMeme}>
+                <FontAwesomeIcon icon={faArrowCircleRight} color={scss.primary} />
               </Button>
+
             </ButtonGroup>
+          </div>
+
+          <div className="text-center my-1">
+            <MemeHistoryIndicator length={currentMemes.length} i={currentIndex} />
           </div>
         </>
       ) : (
