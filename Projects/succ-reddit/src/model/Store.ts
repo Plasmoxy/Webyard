@@ -1,6 +1,7 @@
 import { AnyAction, combineReducers, configureStore, createAction, createReducer } from "@reduxjs/toolkit"
 import AppReducer, { AppState } from './AppReducer'
 import MemesReducer, { MemesState } from './MemesReducer'
+import { useSelector, shallowEqual } from "react-redux"
 
 type RootState = {
   app: AppState,
@@ -30,3 +31,7 @@ const rootReducer = (state = {} as RootState, action: AnyAction) =>
 export const Store = configureStore({
   reducer: rootReducer
 })
+
+export function useShallowSelector<T, Q>(f: (t: T) => Q) {
+  return useSelector<T, Q>(f, shallowEqual)
+}

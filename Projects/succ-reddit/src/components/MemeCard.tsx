@@ -22,3 +22,5 @@ export default function MemeCard({ meme, onClick }: Props) {
     </Card>
   )
 }
+
+MemeCard.whyDidYouRender = true
