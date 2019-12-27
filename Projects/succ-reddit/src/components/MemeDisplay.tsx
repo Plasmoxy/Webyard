@@ -66,4 +66,4 @@ function MemeDisplay() {
   )
 }
 
-export default MemeDisplay
+export default memo(MemeDisplay)
