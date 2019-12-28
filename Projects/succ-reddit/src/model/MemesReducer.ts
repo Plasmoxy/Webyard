@@ -23,6 +23,11 @@ const memesSlice = createSlice({
   initialState: memesReducerInit,
 
   reducers: {
+
+    setSubreddit(s, a: PayloadAction<string>) {
+      s.subreddit = a.payload
+    },
+
     clearMemes(s, a: AnyAction) {
       s.currentMemes.length = 0
     },
@@ -71,7 +76,8 @@ export function historyForward(): ThunkAction<void, RootState, null, Action> {
 export function fetchMeme(): ThunkAction<Promise<boolean>, RootState, null, Action> {
   return async (dispatch, getState) => {
     console.log("fetchMeme thunk")
-    dispatch(pushMeme(await fetchRandomMeme()))
+    const { subreddit } = getState().memes
+    dispatch(pushMeme(await fetchRandomMeme(subreddit)))
     dispatch(increaseMemesRead())
     return true
   }
@@ -81,7 +87,8 @@ export const {
   pushMeme,
   shiftMemes,
   historyBack,
-  clearMemes
+  clearMemes,
+  setSubreddit
 } = memesSlice.actions
 
 export default memesSlice.reducer

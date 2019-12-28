@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { memo } from "react"
 import { Card } from "react-bootstrap"
 import { Meme } from "../api/MemeApi"
+import { useDispatch } from "react-redux"
+import { historyForward } from "../model/MemesReducer"
 
 export type Props = {
   onClick?: (a: any) => any
@@ -10,6 +12,7 @@ export type Props = {
 }
 
 function MemeCard({ meme, onClick }: Props) {
+  const dispatch = useDispatch()
   return (
     <Card className="meme-card p-1 my-3" bg="dark" onClick={onClick}>
       <Card.Header as="h5" className="d-flex justify-content-between">
@@ -18,7 +21,7 @@ function MemeCard({ meme, onClick }: Props) {
           <FontAwesomeIcon icon={faReddit}></FontAwesomeIcon>
         </a>
       </Card.Header>
-      <Card.Img className="rounded" variant="top" src={meme.url} />
+      <Card.Img className="rounded" variant="top" src={meme.url} onClick={() => dispatch(historyForward())} />
     </Card>
   )
 }
