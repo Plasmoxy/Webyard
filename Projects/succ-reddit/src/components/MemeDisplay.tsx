@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Meme } from "../api/MemeApi"
 import scss from "../index.scss"
 import { fetchMeme, historyBack, historyForward } from "../model/MemesReducer"
-import { RootState } from "../model/Store"
+import { RootState, Store } from "../model/Store"
 import MemeCard from "./MemeCard"
 
 export const CircleIcon = memo(({ solid }: { solid: boolean }) => (
@@ -24,13 +24,13 @@ export const CircleIcon = memo(({ solid }: { solid: boolean }) => (
 export const MemeHistoryIndicator = memo((p: { i: number; length: number }) => (
   <>
     {_.times(p.length, idx => (
-      <CircleIcon key={idx} solid={p.i == idx} />
+      <CircleIcon key={idx} solid={p.i === idx} />
     ))}
   </>
 ))
 
 function MemeDisplay() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<typeof Store.dispatch>()
 
   // hook this component to be dependent on change of
   // 1. memes array
@@ -39,17 +39,17 @@ function MemeDisplay() {
   const currentMemes = useSelector<RootState, Meme[]>(s => s.memes.currentMemes)
   const currentIndex = useSelector<RootState, number>(s => s.memes.currentIndex)
 
-  const firstMeme: Meme | undefined = currentMemes[currentIndex]
+  const meme: Meme | undefined = currentMemes[currentIndex]
 
   useEffect(() => {
     dispatch(fetchMeme())
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="meme-display">
-      {firstMeme ? (
+      {meme ? (
         <>
-          <MemeCard key={firstMeme.postLink} meme={firstMeme} />
+          <MemeCard key={meme.postLink} meme={meme} />
           <div className="text-center">
             <ButtonGroup>
               <Button
