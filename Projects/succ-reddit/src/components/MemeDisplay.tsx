@@ -1,6 +1,7 @@
 import { faCircle as farCircle } from "@fortawesome/free-regular-svg-icons"
 import {
-  faArrowCircleDown, faArrowCircleLeft, faArrowCircleRight,
+  faArrowCircleLeft,
+  faArrowCircleRight,
   faCircle as fasCircle,
   faHeart
 } from "@fortawesome/free-solid-svg-icons"
@@ -9,10 +10,9 @@ import _ from "lodash"
 import React, { memo, useEffect } from "react"
 import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchRandomMeme, Meme } from "../api/MemeApi"
+import { Meme } from "../api/MemeApi"
 import scss from "../index.scss"
-import { increaseMemesRead } from "../model/AppReducer"
-import { addMeme, historyBack, historyForward, MemesState, MEME_HISTORY_SIZE } from "../model/MemesReducer"
+import { fetchMeme, historyBack, historyForward } from "../model/MemesReducer"
 import { RootState } from "../model/Store"
 import MemeCard from "./MemeCard"
 
@@ -31,26 +31,18 @@ export const MemeHistoryIndicator = memo((p: { i: number; length: number }) => (
 
 function MemeDisplay() {
   const dispatch = useDispatch()
-  const { subreddit, currentMemes, currentIndex } = useSelector<RootState, MemesState>(
-    s => s.memes
-  )
+
+  // hook this component to be dependent on change of
+  // 1. memes array
+  // 2. index ( for displaying the history )
+  // everything else will be handled by reducers and thunks
+  const currentMemes = useSelector<RootState, Meme[]>(s => s.memes.currentMemes)
+  const currentIndex = useSelector<RootState, number>(s => s.memes.currentIndex)
 
   const firstMeme: Meme | undefined = currentMemes[currentIndex]
 
-  async function handleNextMeme() {
-    try {
-      dispatch(historyForward())
-      
-
-    } catch (e) {
-      dispatch(historyBack())
-      console.log(e)
-    }
-  }
-
-  // first render, add first meme
   useEffect(() => {
-    handleNextMeme()
+    dispatch(fetchMeme())
   }, [])
 
   return (
@@ -60,20 +52,26 @@ function MemeDisplay() {
           <MemeCard key={firstMeme.postLink} meme={firstMeme} />
           <div className="text-center">
             <ButtonGroup>
-
-              <Button variant="outline-primary" onClick={() => dispatch(historyBack())}>
-                <FontAwesomeIcon icon={faArrowCircleLeft} color={scss.primary} />
+              <Button
+                variant="outline-primary"
+                onClick={() => dispatch(historyBack())}
+              >
+                <FontAwesomeIcon
+                  icon={faArrowCircleLeft}
+                  color={scss.primary}
+                />
               </Button>
 
-              <Button variant="outline-primary" onClick={handleNextMeme}>
-                <FontAwesomeIcon icon={faArrowCircleRight} color={scss.primary} />
+              <Button
+                variant="outline-primary"
+                onClick={() => dispatch(historyForward())}
+              >
+                <FontAwesomeIcon
+                  icon={faArrowCircleRight}
+                  color={scss.primary}
+                />
               </Button>
-
             </ButtonGroup>
-          </div>
-
-          <div className="text-center my-1">
-            <MemeHistoryIndicator length={currentMemes.length} i={currentIndex} />
           </div>
         </>
       ) : (
@@ -86,6 +84,10 @@ function MemeDisplay() {
           </h1>
         </div>
       )}
+      <div className="text-center my-1">
+        Ind [{currentIndex}]:{" "}
+        <MemeHistoryIndicator length={currentMemes.length} i={currentIndex} />
+      </div>
     </div>
   )
 }

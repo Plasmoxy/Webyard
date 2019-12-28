@@ -1,7 +1,9 @@
-import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Meme } from "../api/MemeApi"
+import { Action, AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { ThunkAction } from "redux-thunk"
+import { fetchRandomMeme, Meme } from "../api/MemeApi"
+import { RootState } from "./Store"
 
-export const MEME_HISTORY_SIZE = 5
+export const MEME_HISTORY_SIZE = 3
 
 export type MemesState = {
   subreddit: string
@@ -12,7 +14,7 @@ export type MemesState = {
 export const memesReducerInit: MemesState = {
   currentMemes: [],
   subreddit: "dankmemes",
-  currentIndex: -1
+  currentIndex: 0
 }
 
 const memesSlice = createSlice({
@@ -25,25 +27,40 @@ const memesSlice = createSlice({
     },
 
     addMeme(s, a: PayloadAction<Meme>) {
-      // add meme to memes array
-      s.currentMemes.push(a.payload)
       
-      // if exceeding the array length, shift it (remove first)
-      if (s.currentMemes.length > MEME_HISTORY_SIZE) {
-        s.currentMemes.shift()
-      }
     },
 
     historyBack(s, a: AnyAction) {
-      if (s.currentIndex > 0) s.currentIndex--
+      
     },
 
-    historyForward(s, a: AnyAction) {
-      s.currentIndex++ // can go out of bounds, then accesing the array will return undefined and show loading
+    increaseIndex(s, a: AnyAction) {
+      
     }
-
   }
 })
 
-export const { addMeme, historyBack, historyForward, clearMemes } = memesSlice.actions
+export function historyForward(): ThunkAction<void, RootState, null, Action> {
+  return async (dispatch, getState) => {
+    console.log("historyForward thunk")
+    const { currentIndex, currentMemes } = getState().memes
+
+    
+  }
+}
+
+export function fetchMeme(): ThunkAction<void, RootState, null, Action> {
+  return async (dispatch, getState) => {
+    console.log("fetchMeme thunk")
+    dispatch(addMeme(await fetchRandomMeme()))
+    return false
+  }
+}
+
+export const {
+  addMeme,
+  historyBack,
+  clearMemes
+} = memesSlice.actions
+
 export default memesSlice.reducer
