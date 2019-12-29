@@ -42,11 +42,7 @@ function MemeDisplay() {
   const meme: Meme | undefined = currentMemes[currentIndex]
 
   useEffect(() => {
-    dispatch(fetchMeme())
-    dispatch(fetchMeme())
-    dispatch(fetchMeme())
-    dispatch(fetchMeme())
-    dispatch(fetchMeme())
+    _.times(5, () => dispatch(fetchMeme()))
   }, [dispatch])
 
   return (
