@@ -1,17 +1,16 @@
 import React, { memo } from "react"
 import { useSelector } from "react-redux"
-import { AppState } from "../model/AppReducer"
 import { RootState } from "../model/Store"
 
 function DebugInfo() {
   console.log("DebugInfo()")
-  const app = useSelector<RootState, AppState>(s => s.app)
+  const { app, memes } = useSelector<RootState, RootState>(s => s)
 
   return (
     <div>
       count={app.count}
       <br />
-      memesRead={app.memesRead}
+      memesAvailable={memes.currentMemes.length}
       <br />
     </div>
   )

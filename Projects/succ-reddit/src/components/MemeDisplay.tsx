@@ -12,19 +12,19 @@ import { Button, ButtonGroup, ProgressBar } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Meme } from "../api/MemeApi"
 import scss from "../index.scss"
-import { fetchMeme, historyBack, historyForward } from "../model/MemesReducer"
+import { fetchMeme, historyBack, historyForward, PREFETCH_AMMOUNT } from "../model/MemesReducer"
 import { RootState, Store } from "../model/Store"
 import MemeCard from "./MemeCard"
 
-export const CircleIcon = memo(({ solid }: { solid: boolean }) => (
-  <FontAwesomeIcon icon={solid ? fasCircle : farCircle} color={scss.warning} />
+export const CircleIcon = memo(({ solid, danger }: { solid: boolean, danger: boolean }) => (
+  <FontAwesomeIcon icon={solid ? fasCircle : farCircle} color={solid ? scss.primary : danger ? scss.danger : scss.warning} />
 ))
 
 // display in reversed order
 export const MemeHistoryIndicator = memo((p: { i: number; length: number }) => (
   <>
     {_.times(p.length, idx => (
-      <CircleIcon key={idx} solid={p.i === idx} />
+      <CircleIcon key={idx} solid={p.i === idx} danger={idx >= p.length - PREFETCH_AMMOUNT} />
     ))}
   </>
 ))
@@ -42,6 +42,10 @@ function MemeDisplay() {
   const meme: Meme | undefined = currentMemes[currentIndex]
 
   useEffect(() => {
+    dispatch(fetchMeme())
+    dispatch(fetchMeme())
+    dispatch(fetchMeme())
+    dispatch(fetchMeme())
     dispatch(fetchMeme())
   }, [dispatch])
 
@@ -85,7 +89,6 @@ function MemeDisplay() {
         </div>
       )}
       <div className="text-center my-1">
-        Ind [{currentIndex}]:{" "}
         <MemeHistoryIndicator length={currentMemes.length} i={currentIndex} />
       </div>
     </div>

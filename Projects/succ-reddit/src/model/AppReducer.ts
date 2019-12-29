@@ -4,14 +4,12 @@ export type AppState = {
   count: number
   name: string
   password: string
-  memesRead: number
 }
 
 export const appReducerInit: AppState = {
   count: 0,
   name: "",
-  password: "",
-  memesRead: 0
+  password: ""
 }
 
 const appSlice = createSlice({
@@ -41,20 +39,11 @@ const appSlice = createSlice({
       const { name, password } = action.payload
       state.name = name
       state.password = password
-    },
-
-    increaseMemesRead(s, a) {
-      s.memesRead++
     }
   }
 })
 
-export const {
-  increment,
-  decrement,
-  setCredentials,
-  increaseMemesRead
-} = appSlice.actions
+export const { increment, decrement, setCredentials } = appSlice.actions
 // hocikde v appke potom: dispatch(increment({amount: 30}))
 
 // reducer

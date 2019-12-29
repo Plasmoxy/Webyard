@@ -2,9 +2,8 @@ import React, { memo, useState } from "react"
 import { Button, Form, FormControl, Navbar } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import ahyes from "../images/ahyes.png"
-import { decrement, increment } from "../model/AppReducer"
+import { historyForward, setSubreddit } from "../model/MemesReducer"
 import { RootState } from "../model/Store"
-import { setSubreddit, fetchMeme, historyForward } from "../model/MemesReducer"
 
 function NavigationBar() {
   const subreddit = useSelector<RootState, string>(s => s.memes.subreddit)
@@ -33,20 +32,7 @@ function NavigationBar() {
       <Navbar.Toggle aria-controls="navbar-collapse-nav" />
       <Navbar.Collapse id="navbar-collapse-nav">
         <Form inline className="ml-auto" onSubmit={handleSubmit}>
-          <Button
-            onClick={() => dispatch(increment({ amount: 1 }))}
-            variant="danger"
-          >
-            +
-          </Button>
-
-          <Button
-            onClick={() => dispatch(decrement({ amount: 1 }))}
-            variant="danger"
-          >
-            -
-          </Button>
-          /r/
+          Subreddit: /r/
           <FormControl
             onChange={(e: any) => setSearchQuery(e.target.value)}
             value={searchQuery}
