@@ -88,6 +88,8 @@ let speed = false
 let song
 let hraAktivna = false
 let bgimg
+let bgimgUp = false
+let bgimganim
 
 // =============== funkcie =========================
 
@@ -110,7 +112,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 800)
+  createCanvas(800, 700)
   textAlign(CENTER)
 
   setInterval(() => {
@@ -166,6 +168,7 @@ function hernyCyklus() {
     // ak by bola kolizia v spawnovej casti (y=3), UKONCI HRU
     if (kocka.y <= 3) {
       console.log("ENDGAME xd")
+      clearInterval(bgimganim)
       hraAktivna = false
     }
 
@@ -196,7 +199,7 @@ function draw() {
 
   // pudzian background :)))))))))))))
   tint(255, 70)
-  image(bgimg, velkostBunky, velkostBunky, (sirkaDosky-1)*velkostBunky, (vyskaDosky-1)*velkostBunky)
+  image(bgimg, velkostBunky, velkostBunky - 10 - (bgimgUp ? 10 : 0), (sirkaDosky-1)*velkostBunky, (vyskaDosky-1)*velkostBunky + 10 - (bgimgUp ? 10 : 0))
 
   // vykresli bunky dosky
   stroke(0)
@@ -317,6 +320,11 @@ function mousePressed() {
     song.stop()
     song.loop()
     novaHra()
+    
+    // anim
+    bgimganim = setInterval(() => {
+      bgimgUp = !bgimgUp
+    }, 375)
   }
 }
 

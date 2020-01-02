@@ -2,4 +2,10 @@ body {
   background: #222;
   overflow-y: hidden;
   overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  margin-top: 10px;
 }
