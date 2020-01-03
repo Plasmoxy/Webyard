@@ -1,5 +1,5 @@
 body {
-  background: #222;
+  background: black;
   overflow-y: hidden;
   overflow-y: hidden;
   display: flex;
@@ -8,4 +8,5 @@ body {
 
 canvas {
   margin-top: 10px;
+  background: black;
 }

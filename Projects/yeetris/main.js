@@ -108,6 +108,8 @@ function novaHra() {
 
 function preload() {
   song = loadSound("davaj.mp3")
+  song.setVolume(0.05)
+
   bgimg = loadImage("pudzian.png")
 }
 
