@@ -45,6 +45,19 @@ function MemeDisplay() {
     _.times(5, () => dispatch(fetchMeme()))
   }, [dispatch])
 
+
+  // event listener useEffect
+  useEffect(() => {
+    document.body.onkeyup = (e: any) => {
+      if (e.keyCode === 32 || e.keyCode === 39) {
+        dispatch(historyForward())
+      }
+      if (e.keyCode === 37) {
+        dispatch(historyBack())
+      }
+    }
+  }, [dispatch])
+
   return (
     <div className="meme-display">
       {meme ? (
