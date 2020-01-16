@@ -1,0 +1,9 @@
+{
+  "name": "again_wbt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^2.0.0"
+  }
+}
