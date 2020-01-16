@@ -1,0 +1,1 @@
+module.exports = require("./build/Release/again_wbt_module.node");

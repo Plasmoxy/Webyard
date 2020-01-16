@@ -1,17 +1,17 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "greet", "greet.vcxproj", "{831D0193-F1A1-B63C-FDA4-0F106F9BBFD6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "again_wbt_module", "again_wbt_module.vcxproj", "{BD1B8788-AF76-22A9-2B04-2E183C7A63A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Release|x64 = Release|x64
+		Debug|x64 = Debug|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{831D0193-F1A1-B63C-FDA4-0F106F9BBFD6}.Debug|x64.ActiveCfg = Debug|x64
-		{831D0193-F1A1-B63C-FDA4-0F106F9BBFD6}.Debug|x64.Build.0 = Debug|x64
-		{831D0193-F1A1-B63C-FDA4-0F106F9BBFD6}.Release|x64.ActiveCfg = Release|x64
-		{831D0193-F1A1-B63C-FDA4-0F106F9BBFD6}.Release|x64.Build.0 = Release|x64
+		{BD1B8788-AF76-22A9-2B04-2E183C7A63A1}.Release|x64.ActiveCfg = Release|x64
+		{BD1B8788-AF76-22A9-2B04-2E183C7A63A1}.Release|x64.Build.0 = Release|x64
+		{BD1B8788-AF76-22A9-2B04-2E183C7A63A1}.Debug|x64.ActiveCfg = Debug|x64
+		{BD1B8788-AF76-22A9-2B04-2E183C7A63A1}.Debug|x64.Build.0 = Debug|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

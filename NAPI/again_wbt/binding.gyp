@@ -1,9 +1,9 @@
 {
   "targets": [
     {
-      "target_name": "greet",
+      "target_name": "again_wbt_module",
       "cflags!": [ "-fno-exceptions" ],
-      "cflags_cc!": [ "-fno-exceptions" ],
+      "cflags_cc!": [ "-fno-exceptions", "-std=c++11" ],
       "sources": [
         "./src/greeting.cpp",
         "./src/index.cpp"
