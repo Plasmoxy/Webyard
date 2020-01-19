@@ -1,0 +1,19 @@
+{
+  "name": "threejs-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --out-dir build"
+  },
+  "dependencies": {
+    "@tweenjs/tween.js": "^18.5.0",
+    "@types/tween.js": "^17.2.0",
+    "three": "^0.112.1"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "typescript": "^3.7.5"
+  }
+}
