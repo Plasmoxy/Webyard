@@ -4,14 +4,14 @@ import { appRenderer } from "."
 
 let scene = new Scene()
 let cam = new PerspectiveCamera(
-  100,
+  90,
   window.innerWidth / window.innerHeight,
   0.05,
-  10000
+  1000
 )
 
 export function setup() {
-
+  cam.position.z = 2
 }
 
 export function draw(dt: number) {
