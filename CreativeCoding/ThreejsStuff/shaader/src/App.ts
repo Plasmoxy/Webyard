@@ -57,16 +57,13 @@ export function draw(dt: number) {
   // update uSeconds uniform
   for (let row of meshes) {
     for (let m of row) {
+      m.rotation.x += Math.PI/4 * dt
+      m.rotation.y += Math.PI/4 * dt
       m.material.uniforms.uSeconds.value = appClock.getElapsedTime();
     }
   }
 
   controls.update()
-
-  for (let m of meshes) {
-    m.rotation.x += Math.PI/4 * dt
-    m.rotation.y += Math.PI/4 * dt
-  }
 
   appRenderer.render(scene, cam)
 }
