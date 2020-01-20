@@ -1,5 +1,6 @@
-import { AmbientLight, BoxGeometry, Color, DoubleSide, Mesh, MeshLambertMaterial, PerspectiveCamera, PlaneGeometry, PointLight, Scene, ShaderMaterial } from "three"
+import { AmbientLight, BoxGeometry, Color, DoubleSide, Mesh, MeshLambertMaterial, PerspectiveCamera, PlaneGeometry, PointLight, Scene, ShaderMaterial, ShaderMaterialParameters, Geometry } from "three"
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import * as three from 'three'
 import { appClock, appRenderer } from "."
 import gradientFrag from "./gradient.frag"
 import gradientVert from './gradient.vert'
@@ -30,6 +31,7 @@ export function setup() {
   let planeMesh = new Mesh(planeGeo,
     new MeshLambertMaterial({side: DoubleSide, color: 0x222223})
   )
+
   //planeMesh.position.y = -1
   planeMesh.rotation.x = -Math.PI/2
   scene.add(planeMesh)
@@ -45,14 +47,25 @@ export function setup() {
   )
   
   console.log(meshes)
+
+  window.D.meshes = meshes
+  window.D.three = three
 }
 
 export function draw(dt: number) {
+
+  // update uSeconds uniform
+  for (let row of meshes) {
+    for (let m of row) {
+      m.material.uniforms.uSeconds.value = appClock.getElapsedTime();
+    }
+  }
+
   controls.update()
 
   for (let m of meshes) {
-    //m.rotation.x += Math.PI/4 * dt
-    //m.rotation.y += Math.PI/4 * dt
+    m.rotation.x += Math.PI/4 * dt
+    m.rotation.y += Math.PI/4 * dt
   }
 
   appRenderer.render(scene, cam)

@@ -5,5 +5,5 @@ varying vec3 vPos;
 varying float vSecDiff;
 
 void main() {
-  gl_FragColor = vec4(color, vPos.y + 0.5);
+  gl_FragColor = vec4(color, vSecDiff);
 }
