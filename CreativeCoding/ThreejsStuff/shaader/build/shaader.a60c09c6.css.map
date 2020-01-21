@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACE,QAAS,CACT,eAAgB,CAChB,YACF,CACA,OACE,UAAW,CACX,WACF","file":"shaader.a60c09c6.css","sourceRoot":"..","sourcesContent":["body {\r\n  margin: 0;\r\n  overflow: hidden;\r\n  background: 0;\r\n}\r\ncanvas {\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n"]}
