@@ -40,6 +40,5 @@ export async function scrapJedalnicek() {
     jedalnicek.push({ den, datum, jedla })
   })
 
-
   return jedalnicek
 }
