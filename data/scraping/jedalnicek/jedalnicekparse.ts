@@ -1,11 +1,17 @@
 import axios from "axios"
 import cheerio from "cheerio"
 
-const host = "https://www.eskoly.sk/komenskeho13li"
+export const host = "https://www.eskoly.sk/komenskeho13li"
 
-;(async () => {
-  console.log("load page " + host)
-  const html = await axios.get<string>("https://www.eskoly.sk/komenskeho13li")
+export type JedalnyDen = {
+  den: string,
+  datum: string,
+  jedla: string[]
+}
+
+export async function scrapJedalnicek() {
+
+  const html = await axios.get<string>(host)
   const $ = cheerio.load(html.data)
 
   const title = $("#ctl00_mainContent_Label2").text()
@@ -13,7 +19,7 @@ const host = "https://www.eskoly.sk/komenskeho13li"
     "td[class=dayColumn]"
   )
 
-  let jedalnicek: any[] = []
+  let jedalnicek: JedalnyDen[] = []
 
   $trows.each((i, rowElem) => {
     const dayColumn = rowElem.children.find(
@@ -21,15 +27,16 @@ const host = "https://www.eskoly.sk/komenskeho13li"
     )
     const foodCell = rowElem.children.find(c => c.attribs?.class === "foodCell")
 
-    const den = dayColumn?.children?.find(c => c.type === "text")?.data
+    const den = dayColumn?.children?.find(c => c.type === "text")?.data ?? "chyba"
+
     const datum = $(dayColumn)
       .find("span")
       .text()
+
     const jedla = foodCell?.children
       .filter(c => c.type === "text")
-      .map(c => c.data)
+      .map(c => c.data ?? "chyba") ?? []
+
     jedalnicek.push({ den, datum, jedla })
   })
-
-  console.log(jedalnicek)
-})()
+}

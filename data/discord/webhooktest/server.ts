@@ -6,6 +6,9 @@ dotenv.config()
 const app = express()
 const devHook = process.env.devHook!!
 const sudnyHook = process.env.sudnyHook!!
+const jedloHook = process.env.jedloHook!!
+
+let jedloInterval: NodeJS.Timeout
 
 app.get("/", async (req, res) => {
   res.send("Hooker root yes?")
@@ -26,4 +29,10 @@ app.get("/relay/:msg", async (req, res) => {
   res.send("Ok poslal som diky.")
 })
 
-app.listen(80, () => console.log("Listening on 80"))
+app.listen(80, async () => {
+  console.log("listening on 80")
+
+  jedloInterval = setInterval(async () => {
+    
+  }, 1000)
+})
