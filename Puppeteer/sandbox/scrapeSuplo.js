@@ -5,7 +5,7 @@ async function getPic() {
   const browser = await puppeteer.launch({
     headless: true,
     defaultViewport: null,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
   })
   const page = await browser.newPage()
 
@@ -30,8 +30,8 @@ async function getPic() {
   await page.click('#kids_header > div.l-page-width.clearfix > ul > li.login > a')
   await page.waitFor(3000)
   
-  await page.type('#usernameTxt', process.env.gname, {delay: 10})
-  await page.type('#kids_middle_container > div > div > div.skinTemplateMainDiv > div > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > input', process.env.gpass, {delay: 10})
+  await page.type('#usernameTxt', process.env.gname.toString(), {delay: 10})
+  await page.type('#kids_middle_container > div > div > div.skinTemplateMainDiv > div > form > table > tbody > tr:nth-child(2) > td:nth-child(2) > input', process.env.gpass.toString(), {delay: 10})
 
   await page.click("#kids_middle_container > div > div > div.skinTemplateMainDiv > div > form > table > tbody > tr:nth-child(3) > td > input")
   await page.waitFor(2000)
@@ -43,6 +43,7 @@ async function getPic() {
 
   const suplo$ = await page.$(".edubarMainNoSkin > div:nth-child(4) > div > div:nth-child(6) > div > div:nth-child(2) > div:nth-child(1) > span")
   const text = await page.evaluate(e => e.textContent, suplo$)
+  console.log(text)
   const suplovania = text.split(", ")
 
   for (let sp of suplovania) {
