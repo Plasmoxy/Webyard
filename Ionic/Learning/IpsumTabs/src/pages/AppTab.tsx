@@ -21,10 +21,10 @@ const AppTab: React.FC<RouteComponentProps> = (props) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-              <IonButton>
-                <IonIcon slot="icon-only" icon={cubeOutline} />
-              </IonButton>
-            </IonButtons>
+            <IonButton>
+              <IonIcon slot="icon-only" icon={cubeOutline} />
+            </IonButton>
+          </IonButtons>
           <IonTitle>IpsumTabs</IonTitle>
         </IonToolbar>
       </IonHeader>
