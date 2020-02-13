@@ -1,15 +1,15 @@
 import "@ionic/core/css/padding.css"
 import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonPage, IonText, IonTitle, IonToolbar } from "@ionic/react"
 import { cubeOutline } from "ionicons/icons"
-import React, { useMemo, ReactPropTypes } from "react"
+import React, { useMemo } from "react"
+import { RouteComponentProps } from "react-router"
 import { useAppState } from "../App"
 import { LIPSUM } from "../stuff"
 import "./AppTab.css"
-import { RouteComponentProps } from "react-router"
 
 const AppTab: React.FC<RouteComponentProps> = (props) => {
 
-  const [appState, updateAppState] = useAppState()
+  const [appState,] = useAppState()
 
   function btnYeetClicked() {
     console.log("Yeet")
@@ -40,7 +40,7 @@ const AppTab: React.FC<RouteComponentProps> = (props) => {
         </IonCard>
         <IonButton onClick={() => btnYeetClicked()}>yeet</IonButton>
       </IonContent>
-  </IonPage>, [])
+  </IonPage>, [appState])
 }
 
 export default AppTab

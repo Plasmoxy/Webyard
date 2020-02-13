@@ -1,28 +1,8 @@
-import {
-  IonButton,
-  IonButtons,
-  IonCheckbox,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonItemDivider,
-  IonItemOption,
-  IonItemOptions,
-  IonItemSliding,
-  IonLabel,
-  IonList,
-  IonPage,
-  IonRadio,
-  IonTitle,
-  IonToggle,
-  IonToolbar
-} from "@ionic/react"
-import { hammerOutline, cubeOutline, moon, moonOutline } from "ionicons/icons"
+import { IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRadio, IonTitle, IonToggle, IonToolbar } from "@ionic/react"
+import { hammerOutline, moon, moonOutline } from "ionicons/icons"
 import React, { useMemo, useState } from "react"
+import { cssIsDarkThemeEnabled, cssSetDarkTheme } from "../DarkTheme"
 import "./SettingsTab.css"
-import { cssIsDarkThemeEnabled, cssToggleDarkTheme, cssSetDarkTheme } from "../DarkTheme"
 
 const SettingsTab: React.FC = () => {
 
@@ -36,7 +16,7 @@ const SettingsTab: React.FC = () => {
 
   return useMemo(() => <IonPage>
       {console.log("render Settings")}
-      
+
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
