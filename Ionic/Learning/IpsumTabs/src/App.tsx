@@ -14,7 +14,7 @@ import "@ionic/react/css/text-alignment.css"
 import "@ionic/react/css/text-transformation.css"
 import "@ionic/react/css/typography.css"
 import { cubeOutline, hammerOutline } from "ionicons/icons"
-import React from "react"
+import React, { createContext, useState, Dispatch } from "react"
 import { Redirect, Route } from "react-router-dom"
 /* Global CSS */
 import "./global.css"
@@ -23,28 +23,39 @@ import SettingsTab from "./pages/SettingsTab"
 /* Theme variables */
 import "./theme/variables.css"
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/app" component={AppTab} exact={true} />
-          <Route path="/settings" component={SettingsTab} exact={true} />
-          <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="app" href="/app">
-            <IonIcon icon={cubeOutline} />
-            <IonLabel>App</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="settings" href="/settings">
-            <IonIcon icon={hammerOutline} />
-            <IonLabel>Settings</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+export type AppState = {
+  darkMode: boolean
+}
 
-export default App;
+export const AppContext = createContext<Partial<[AppState, Dispatch<AppState>]>>([])
+
+const App = (p: {initState: AppState}) => {
+
+  const appStateHook = useState(p.initState)
+
+  return <AppContext.Provider value={appStateHook}>
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route path="/app" component={AppTab} exact={true} />
+            <Route path="/settings" component={SettingsTab} exact={true} />
+            <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="app" href="/app">
+              <IonIcon icon={cubeOutline} />
+              <IonLabel>App</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="settings" href="/settings">
+              <IonIcon icon={hammerOutline} />
+              <IonLabel>Settings</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  </AppContext.Provider>
+}
+
+export default App

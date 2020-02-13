@@ -1,31 +1,53 @@
 import {
+  IonButton,
+  IonButtons,
+  IonCheckbox,
   IonContent,
   IonHeader,
-  IonPage,
-  IonList,
-  IonItem,
-  IonLabel,
+  IonIcon,
   IonInput,
-  IonRadio,
-  IonToggle,
-  IonCheckbox,
-  IonItemSliding,
+  IonItem,
+  IonItemDivider,
+  IonItemOption,
   IonItemOptions,
-  IonItemOption
+  IonItemSliding,
+  IonLabel,
+  IonList,
+  IonPage,
+  IonRadio,
+  IonTitle,
+  IonToggle,
+  IonToolbar
 } from "@ionic/react"
+import { hammerOutline } from "ionicons/icons"
 import React from "react"
-import AppToolbar from "../components/AppToolbar"
 import "./SettingsTab.css"
 
 const SettingsTab: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <AppToolbar />
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonButton>
+              <IonIcon slot="icon-only" icon={hammerOutline} />
+            </IonButton>
+          </IonButtons>
+          <IonTitle>Settings</IonTitle>
+        </IonToolbar>
       </IonHeader>
       <IonContent>
+        <IonList lines="none">
+          <IonItem>
+            <IonLabel>Dark theme</IonLabel>
+            <IonCheckbox slot="end" />
+          </IonItem>
+        </IonList>
+
+        <IonItemDivider />
+
         {/*-- List of Text Items --*/}
-        <IonList>
+        <IonList lines="none">
           <IonItem>
             <IonLabel>Pokémon Yellow</IonLabel>
           </IonItem>
@@ -43,10 +65,12 @@ const SettingsTab: React.FC = () => {
           </IonItem>
         </IonList>
 
+        <IonItemDivider />
+
         {/*-- List of Input Items --*/}
-        <IonList>
+        <IonList lines="none">
           <IonItem>
-            <IonLabel>Input</IonLabel>
+            <IonLabel>Input: </IonLabel>
             <IonInput></IonInput>
           </IonItem>
           <IonItem>
@@ -64,19 +88,10 @@ const SettingsTab: React.FC = () => {
         </IonList>
 
         {/*-- List of Sliding Items --*/}
-        <IonList>
+        <IonList lines="none">
           <IonItemSliding>
             <IonItem>
-              <IonLabel>Item</IonLabel>
-            </IonItem>
-            <IonItemOptions side="end">
-              <IonItemOption onClick={() => {}}>Unread</IonItemOption>
-            </IonItemOptions>
-          </IonItemSliding>
-
-          <IonItemSliding>
-            <IonItem>
-              <IonLabel>Item</IonLabel>
+              <IonLabel>Item slide</IonLabel>
             </IonItem>
             <IonItemOptions side="end">
               <IonItemOption onClick={() => {}}>Unread</IonItemOption>

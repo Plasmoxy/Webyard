@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App, { AppState } from './App';
 import * as serviceWorker from './serviceWorker';
-import { cssEnableDarkThemeByMedia } from './DarkTheme'
+import { cssMediaPrefersDark, cssSetDarkTheme } from './DarkTheme'
 
-cssEnableDarkThemeByMedia()
+const initState: AppState = {
+  darkMode: cssMediaPrefersDark()
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
+cssSetDarkTheme(initState.darkMode)
+
+ReactDOM.render(<App initState={initState} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

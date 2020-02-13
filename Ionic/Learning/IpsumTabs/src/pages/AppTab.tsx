@@ -5,18 +5,30 @@ import {
   IonContent,
   IonHeader,
   IonPage,
-  IonText
+  IonText,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonButton,
+  IonIcon
 } from "@ionic/react"
 import React from "react"
-import AppToolbar from "../components/AppToolbar"
 import { LIPSUM } from "../stuff"
 import "./AppTab.css"
+import { cubeOutline } from "ionicons/icons"
 
 const AppTab: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <AppToolbar />
+        <IonToolbar>
+          <IonButtons slot="start">
+              <IonButton>
+                <IonIcon slot="icon-only" icon={cubeOutline} />
+              </IonButton>
+            </IonButtons>
+          <IonTitle>IpsumTabs</IonTitle>
+        </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonCard>
