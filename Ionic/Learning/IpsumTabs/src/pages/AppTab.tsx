@@ -5,8 +5,9 @@ import React, { useMemo, ReactPropTypes } from "react"
 import { useAppState } from "../App"
 import { LIPSUM } from "../stuff"
 import "./AppTab.css"
+import { RouteComponentProps } from "react-router"
 
-const AppTab: React.FC = (props) => {
+const AppTab: React.FC<RouteComponentProps> = (props) => {
 
   const [appState, updateAppState] = useAppState()
 
@@ -29,12 +30,13 @@ const AppTab: React.FC = (props) => {
       </IonHeader>
       <IonContent>
         darkMode: {}<br />
-        <IonButton onClick={() => btnYeetClicked()}>yeet</IonButton>
+        
         <IonCard>
           <IonCardContent>
             <IonText color="dark">{LIPSUM}</IonText>
           </IonCardContent>
         </IonCard>
+        <IonButton onClick={() => btnYeetClicked()}>yeet</IonButton>
       </IonContent>
   </IonPage>, [])
 }

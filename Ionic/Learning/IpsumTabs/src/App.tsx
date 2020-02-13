@@ -41,7 +41,7 @@ const App = (p: {initState: AppState}) => {
     <IonApp>
       <IonReactRouter>
         <IonTabs>
-          <IonRouterOutlet>
+          <IonRouterOutlet >
             <Route path="/app" component={AppTab} exact={true} />
             <Route path="/settings" component={SettingsTab} exact={true} />
             <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
