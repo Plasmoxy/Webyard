@@ -23,14 +23,13 @@ import AppTab from "./pages/AppTab"
 import SettingsTab from "./pages/SettingsTab"
 /* Theme variables */
 import "./theme/variables.css"
+import { Plugins } from '@capacitor/core'
 
 export class AppState {
   userName = "Sebu"
   userAge = 18
 }
-
 export type AppContextHook = [AppState, (f: (draft: AppState) => void | AppState) => void]
-
 const AppContext = createContext<Partial<AppContextHook>>([])
 export const useAppState = () => useContext(AppContext) as AppContextHook
 
@@ -39,17 +38,12 @@ const App = (p: {initState: AppState}) => {
   const appStateHook = useImmer<AppState>(p.initState)
 
   useEffect(() => {
-    console.log("EFFECT")
-
-
-    return () => {
-
-    }
+    console.log("Register app backButton listener")
+    Plugins.App.addListener("backButton", () => {
+      console.log("Backbutton first register")
+      console.log(appStateHook[0].userName)
+    })
   }, [])
-
-  function tabChange(t: string) {
-    
-  }
 
   return <AppContext.Provider value={appStateHook}>
     <IonReactRouter>

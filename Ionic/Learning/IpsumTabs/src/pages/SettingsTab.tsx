@@ -20,11 +20,9 @@ const SettingsTab: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/app" />
             <IonButton>
               <IonIcon slot="icon-only" icon={hammerOutline} />
             </IonButton>
-            
           </IonButtons>
           <IonTitle>Settings</IonTitle>
         </IonToolbar>
