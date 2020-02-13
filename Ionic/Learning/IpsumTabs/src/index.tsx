@@ -4,11 +4,10 @@ import App, { AppState } from './App';
 import * as serviceWorker from './serviceWorker';
 import { cssMediaPrefersDark, cssSetDarkTheme } from './DarkTheme'
 
-const initState: AppState = {
-  darkMode: cssMediaPrefersDark()
-}
 
-cssSetDarkTheme(initState.darkMode)
+cssSetDarkTheme(cssMediaPrefersDark())
+
+const initState = new AppState()
 
 ReactDOM.render(<App initState={initState} />, document.getElementById('root'));
 

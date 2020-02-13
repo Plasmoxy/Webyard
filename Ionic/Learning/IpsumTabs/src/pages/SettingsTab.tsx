@@ -26,6 +26,7 @@ import "./SettingsTab.css"
 const SettingsTab: React.FC = () => {
   return (
     <IonPage>
+      {console.log("Render Settings")}
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">

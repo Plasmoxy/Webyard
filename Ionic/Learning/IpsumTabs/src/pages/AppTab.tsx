@@ -1,25 +1,22 @@
 import "@ionic/core/css/padding.css"
-import {
-  IonCard,
-  IonCardContent,
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonText,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonButton,
-  IonIcon
-} from "@ionic/react"
-import React from "react"
+import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonPage, IonText, IonTitle, IonToolbar } from "@ionic/react"
+import { cubeOutline } from "ionicons/icons"
+import React, { useMemo, ReactPropTypes } from "react"
+import { useAppState } from "../App"
 import { LIPSUM } from "../stuff"
 import "./AppTab.css"
-import { cubeOutline } from "ionicons/icons"
 
-const AppTab: React.FC = () => {
-  return (
-    <IonPage>
+const AppTab: React.FC = (props) => {
+
+  const [appState, updateAppState] = useAppState()
+
+  function btnYeetClicked() {
+    console.log("Yeet")
+    
+  }
+
+  return useMemo(() => <IonPage>
+      {console.log("render AppTab")}
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -31,14 +28,15 @@ const AppTab: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        darkMode: {}<br />
+        <IonButton onClick={() => btnYeetClicked()}>yeet</IonButton>
         <IonCard>
           <IonCardContent>
             <IonText color="dark">{LIPSUM}</IonText>
           </IonCardContent>
         </IonCard>
       </IonContent>
-    </IonPage>
-  )
+  </IonPage>, [])
 }
 
 export default AppTab
