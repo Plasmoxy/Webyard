@@ -1,12 +1,24 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, FlatList, StatusBar } from 'react-native';
+
+type Person = {
+  name: string
+  age: number
+}
+
+const PersonRenderItem = ({item}: {item: Person}) => <View>
+  <Text>Person({item.name}, {item.age})</Text>
+</View>
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+
+  const [list, setList] = useState<Person[]>([])
+
+  return <View>
+    <StatusBar backgroundColor="blue" barStyle="dark-content" />
+    <Text>Open up App.asdt working sdasddd yoursd app!</Text>
+    <FlatList data={list} renderItem={PersonRenderItem} />
+  </View>
 }
 
 const styles = StyleSheet.create({
