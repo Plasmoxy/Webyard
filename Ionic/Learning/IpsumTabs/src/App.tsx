@@ -1,4 +1,4 @@
-import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react"
+import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react"
 import { IonReactRouter } from "@ionic/react-router"
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css"
@@ -14,7 +14,7 @@ import "@ionic/react/css/text-alignment.css"
 import "@ionic/react/css/text-transformation.css"
 import "@ionic/react/css/typography.css"
 import { cubeOutline, hammerOutline } from "ionicons/icons"
-import React, { createContext, useContext } from "react"
+import React, { createContext, useContext, useEffect } from "react"
 import { Redirect, Route } from "react-router-dom"
 import { useImmer } from 'use-immer'
 /* Global CSS */
@@ -38,30 +38,41 @@ const App = (p: {initState: AppState}) => {
 
   const appStateHook = useImmer<AppState>(p.initState)
 
+  useEffect(() => {
+    console.log("EFFECT")
+
+
+    return () => {
+
+    }
+  }, [])
+
+  function tabChange(t: string) {
+    
+  }
+
   return <AppContext.Provider value={appStateHook}>
-    <IonApp>
-      {console.log("render App root")}
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet >
-            <Route path="/app" component={AppTab} exact={true} />
-            <Route path="/settings" component={SettingsTab} exact={true} />
-            <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="app" href="/app">
-              <IonIcon icon={cubeOutline} />
-              <IonLabel>App</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="settings" href="/settings">
-              <IonIcon icon={hammerOutline} />
-              <IonLabel>Settings</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </IonApp>
+    <IonReactRouter>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route path="/app" component={AppTab} exact={true} />
+          <Route path="/settings" component={SettingsTab} exact={true} />
+          <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
+        </IonRouterOutlet>
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="app" href="/app">
+            <IonIcon icon={cubeOutline} />
+            <IonLabel>App</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="settings" href="/settings">
+            <IonIcon icon={hammerOutline} />
+            <IonLabel>Settings</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
+    </IonReactRouter>
   </AppContext.Provider>
 }
+
 
 export default App

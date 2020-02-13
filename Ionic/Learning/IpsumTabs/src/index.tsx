@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App, { AppState } from './App';
 import * as serviceWorker from './serviceWorker';
 import { cssMediaPrefersDark, cssSetDarkTheme } from './DarkTheme'
-
+import { Plugins } from '@capacitor/core'
 
 cssSetDarkTheme(cssMediaPrefersDark())
 
