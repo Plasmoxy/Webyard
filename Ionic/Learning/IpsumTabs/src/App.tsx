@@ -74,15 +74,4 @@ const App = (p: {initState: AppState}) => {
   </AppContext.Provider>
 }
 
-/*
-
-
-
-<AppContext.Provider value={appStateHook}>
-    
-  </AppContext.Provider>
-
-  */
-
-
 export default App
