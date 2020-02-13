@@ -13,6 +13,9 @@ export function cssSetDarkTheme(dark: boolean) {
   document.body.classList.toggle('dark', dark);
 }
 
+export function cssIsDarkThemeEnabled() {
+  return document.body.classList.contains('dark')
+}
 
 export function cssToggleDarkTheme() {
   document.body.classList.toggle('dark');

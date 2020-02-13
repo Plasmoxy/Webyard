@@ -25,13 +25,14 @@ import SettingsTab from "./pages/SettingsTab"
 import "./theme/variables.css"
 
 export class AppState {
-  username = ""
-  
+  userName = "Sebu"
+  userAge = 18
 }
 
-const AppContext = createContext<Partial<[AppState, (f: (draft: AppState) => void | AppState) => void]>>([])
+export type AppContextHook = [AppState, (f: (draft: AppState) => void | AppState) => void]
 
-export const useAppState = () => useContext(AppContext) as [AppState, (f: (draft: AppState) => void | AppState) => void]
+const AppContext = createContext<Partial<AppContextHook>>([])
+export const useAppState = () => useContext(AppContext) as AppContextHook
 
 const App = (p: {initState: AppState}) => {
 
@@ -39,6 +40,7 @@ const App = (p: {initState: AppState}) => {
 
   return <AppContext.Provider value={appStateHook}>
     <IonApp>
+      {console.log("render App root")}
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet >

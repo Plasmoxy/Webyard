@@ -19,14 +19,24 @@ import {
   IonToggle,
   IonToolbar
 } from "@ionic/react"
-import { hammerOutline } from "ionicons/icons"
-import React from "react"
+import { hammerOutline, cubeOutline, moon, moonOutline } from "ionicons/icons"
+import React, { useMemo, useState } from "react"
 import "./SettingsTab.css"
+import { cssIsDarkThemeEnabled, cssToggleDarkTheme, cssSetDarkTheme } from "../DarkTheme"
 
 const SettingsTab: React.FC = () => {
-  return (
-    <IonPage>
-      {console.log("Render Settings")}
+
+  const [isDark, setDark] = useState(cssIsDarkThemeEnabled())
+
+  function darkModeCheckbox(checc: boolean) {
+    console.log("darkmode -> " + checc)
+    cssSetDarkTheme(checc)
+    setDark(checc)
+  }
+
+  return useMemo(() => <IonPage>
+      {console.log("render Settings")}
+      
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -38,10 +48,12 @@ const SettingsTab: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+
         <IonList lines="none">
           <IonItem>
-            <IonLabel>Dark theme</IonLabel>
-            <IonCheckbox slot="end" />
+            <IonIcon icon={isDark ? moon : moonOutline} slot="start" color={isDark ? "warning" : ""}></IonIcon>
+            <IonLabel>Dark mode</IonLabel>
+            <IonCheckbox slot="end" checked={isDark} onIonChange={(e: any) => darkModeCheckbox(e.target.checked)}/>
           </IonItem>
         </IonList>
 
@@ -100,8 +112,7 @@ const SettingsTab: React.FC = () => {
           </IonItemSliding>
         </IonList>
       </IonContent>
-    </IonPage>
-  )
+  </IonPage>, [isDark])
 }
 
 export default SettingsTab

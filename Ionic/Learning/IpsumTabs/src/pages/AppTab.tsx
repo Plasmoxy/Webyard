@@ -29,10 +29,12 @@ const AppTab: React.FC<RouteComponentProps> = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        darkMode: {}<br />
-        
         <IonCard>
           <IonCardContent>
+            <IonText color="primary">
+              username: {appState.userName}<br />
+              user age: {appState.userAge} <br />
+            </IonText>
             <IonText color="dark">{LIPSUM}</IonText>
           </IonCardContent>
         </IonCard>
