@@ -1,15 +1,9 @@
 import "@ionic/core/css/padding.css"
-import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonPage, IonText, IonTitle, IonToolbar, IonTabs, IonTabBar, IonTabButton, IonLabel, IonRouterOutlet, IonBackButton } from "@ionic/react"
-import { cubeOutline, hammerOutline } from "ionicons/icons"
-import React, { useMemo } from "react"
-import { RouteComponentProps, Route, Redirect } from "react-router"
-import { useAppState } from "../App"
-import { LIPSUM } from "../stuff"
-import AppTab from "./AppTab"
-import { IonReactRouter } from "@ionic/react-router"
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/react"
+import React from "react"
+import { RouteComponentProps } from "react-router"
 
 const OtherPage: React.FC<RouteComponentProps> = (props) => {
-  console.log("Otherpage -> " + props.match.url)
   return <>
     <IonHeader>
       <IonToolbar>
@@ -19,6 +13,9 @@ const OtherPage: React.FC<RouteComponentProps> = (props) => {
         <IonTitle>Other</IonTitle>
       </IonToolbar>
     </IonHeader>
+    <IonContent>
+      yis welcom to other !!!
+    </IonContent>
   </>
 }
 

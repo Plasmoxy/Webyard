@@ -27,6 +27,7 @@ const SettingsTab: React.FC = () => {
           <IonTitle>Settings</IonTitle>
         </IonToolbar>
       </IonHeader>
+      
       <IonContent>
 
         <IonList lines="none">

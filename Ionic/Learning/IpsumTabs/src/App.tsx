@@ -37,11 +37,10 @@ const App = (p: {initState: AppState}) => {
 
   return <AppContext.Provider value={appStateHook}>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/app" component={AppPage} />
-        <Route path="/other" component={OtherPage} exact />
-        <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
-      </IonRouterOutlet>
+      <Route path="/" render={() => <Redirect to="/app" />} exact />
+      
+      <Route path="/other" component={OtherPage} exact />
+      <Route path="/app" component={AppPage} />
     </IonReactRouter>
   </AppContext.Provider>
 }

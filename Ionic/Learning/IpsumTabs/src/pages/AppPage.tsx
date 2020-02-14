@@ -5,7 +5,7 @@ import React, { useMemo } from "react"
 import { RouteComponentProps, Route, Redirect } from "react-router"
 import { useAppState } from "../App"
 import { LIPSUM } from "../stuff"
-import AppTab from "./AppTab"
+import AppRootTab from "./AppRootTab"
 import { IonReactRouter } from "@ionic/react-router"
 import SettingsTab from "./SettingsTab"
 
@@ -13,17 +13,18 @@ const AppPage: React.FC<RouteComponentProps> = (props) => {
 
   return <IonTabs>
     <IonRouterOutlet>
-      <Route path="/app" exact render={() => <Redirect to="/app/appTab" />} />
-      <Route path="/app/:tab(appTab)" component={AppTab}  />
-      <Route path="/app/:tab(settingsTab)" component={SettingsTab}  />
+      <Route path="/app" render={() => <Redirect to="/app/root" />} exact />
+
+      <Route path="/app/root" component={AppRootTab} exact />
+      <Route path="/app/settings" component={SettingsTab} exact />
     </IonRouterOutlet>
 
     <IonTabBar slot="bottom">
-      <IonTabButton tab="appTab" href="/app/appTab">
+      <IonTabButton tab="root" href="/app/root">
         <IonIcon icon={cubeOutline} />
         <IonLabel>App</IonLabel>
       </IonTabButton>
-      <IonTabButton tab="settingsTab" href="/app/settingsTab">
+      <IonTabButton tab="settings" href="/app/settings">
         <IonIcon icon={hammerOutline} />
         <IonLabel>Settings</IonLabel>
       </IonTabButton>
