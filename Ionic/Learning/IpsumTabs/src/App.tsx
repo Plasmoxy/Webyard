@@ -24,6 +24,8 @@ import SettingsTab from "./pages/SettingsTab"
 /* Theme variables */
 import "./theme/variables.css"
 import { Plugins } from '@capacitor/core'
+import AppPage from "./pages/AppPage"
+import OtherPage from "./pages/OtherPage"
 
 export class AppState {
   userName = "Sebu"
@@ -47,23 +49,11 @@ const App = (p: {initState: AppState}) => {
 
   return <AppContext.Provider value={appStateHook}>
     <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/app" component={AppTab} exact={true} />
-          <Route path="/settings" component={SettingsTab} exact={true} />
-          <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="app" href="/app">
-            <IonIcon icon={cubeOutline} />
-            <IonLabel>App</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="settings" href="/settings">
-            <IonIcon icon={hammerOutline} />
-            <IonLabel>Settings</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
+      <IonRouterOutlet>
+        <Route path="/app" component={AppPage} exact={true} />
+        <Route path="/other" component={OtherPage} exact={true} />
+        <Route path="/" render={() => <Redirect to="/app" />} exact={true} />
+      </IonRouterOutlet>
     </IonReactRouter>
   </AppContext.Provider>
 }
