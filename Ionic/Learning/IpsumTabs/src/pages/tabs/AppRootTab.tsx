@@ -2,8 +2,7 @@ import "@ionic/core/css/padding.css"
 import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonPage, IonText, IonTitle, IonToolbar } from "@ionic/react"
 import { cubeOutline } from "ionicons/icons"
 import React, { useMemo } from "react"
-import { RouteComponentProps, useHistory } from "react-router"
-import { Link } from "react-router-dom"
+import { RouteComponentProps } from "react-router"
 import { useAppState } from "../../App"
 import { LIPSUM } from "../../stuff"
 import "./AppRootTab.css"
@@ -11,7 +10,6 @@ import "./AppRootTab.css"
 const AppRootTab: React.FC<RouteComponentProps> = (props) => {
 
   const [appState,] = useAppState()
-  const history = useHistory()
 
   function btnYeetClicked() {
     console.log("Yeet")

@@ -91,6 +91,60 @@ const SettingsTab: React.FC = () => {
               <IonItemOption onClick={() => setShowToastSlide(true)}>Show</IonItemOption>
             </IonItemOptions>
           </IonItemSliding>
+
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Checkbox</IonLabel>
+            <IonCheckbox slot="start" />
+          </IonItem>
+          
         </IonList>
 
         <IonToast

@@ -1,5 +1,5 @@
 import "@ionic/core/css/padding.css"
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar, IonPage } from "@ionic/react"
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/react"
 import React from "react"
 import { RouteComponentProps } from "react-router"
 

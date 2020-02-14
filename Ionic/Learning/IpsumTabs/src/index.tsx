@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom'
 import App, { AppState } from './App'
 import { cssMediaPrefersDark, cssSetDarkTheme } from './DarkTheme'
 import * as serviceWorker from './serviceWorker'
+import { setupConfig } from '@ionic/react'
 
 cssSetDarkTheme(cssMediaPrefersDark())
 
 const initState = new AppState()
 
+setupConfig({mode: "ios"})
 
 ReactDOM.render(<App initState={initState} />, document.getElementById('root'));
 
