@@ -5,9 +5,9 @@ import React, { useMemo } from "react"
 import { RouteComponentProps, Route, Redirect } from "react-router"
 import { useAppState } from "../App"
 import { LIPSUM } from "../stuff"
-import AppRootTab from "./AppRootTab"
+import AppRootTab from "./tabs/AppRootTab"
 import { IonReactRouter } from "@ionic/react-router"
-import SettingsTab from "./SettingsTab"
+import SettingsTab from "./tabs/SettingsTab"
 
 const AppPage: React.FC<RouteComponentProps> = (props) => {
 

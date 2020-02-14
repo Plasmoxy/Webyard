@@ -4,8 +4,8 @@ import { cubeOutline } from "ionicons/icons"
 import React, { useMemo } from "react"
 import { RouteComponentProps } from "react-router"
 import { Link } from "react-router-dom"
-import { useAppState } from "../App"
-import { LIPSUM } from "../stuff"
+import { useAppState } from "../../App"
+import { LIPSUM } from "../../stuff"
 import "./AppRootTab.css"
 
 const AppRootTab: React.FC<RouteComponentProps> = (props) => {

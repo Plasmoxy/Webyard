@@ -1,7 +1,7 @@
 import { IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRadio, IonTitle, IonToggle, IonToolbar, IonBackButton } from "@ionic/react"
 import { hammerOutline, moon, moonOutline } from "ionicons/icons"
 import React, { useMemo, useState } from "react"
-import { cssIsDarkThemeEnabled, cssSetDarkTheme } from "../DarkTheme"
+import { cssIsDarkThemeEnabled, cssSetDarkTheme } from "../../DarkTheme"
 import "./SettingsTab.css"
 
 const SettingsTab: React.FC = () => {

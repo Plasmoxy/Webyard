@@ -1,4 +1,3 @@
-import { IonRouterOutlet } from "@ionic/react"
 import { IonReactRouter } from "@ionic/react-router"
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css"
@@ -27,9 +26,10 @@ export class AppState {
   userName = "Sebu"
   userAge = 18
 }
+
 export type AppContextHook = [AppState, (f: (draft: AppState) => void | AppState) => void]
-const AppContext = createContext<Partial<AppContextHook>>([])
-export const useAppState = () => useContext(AppContext) as AppContextHook
+const AppContext = createContext<AppContextHook|null>(null)
+export const useAppState = () => useContext(AppContext)!!
 
 const App = (p: {initState: AppState}) => {
 
