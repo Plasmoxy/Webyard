@@ -10,16 +10,16 @@ import { IonReactRouter } from "@ionic/react-router"
 
 const OtherPage: React.FC<RouteComponentProps> = (props) => {
   console.log("Otherpage -> " + props.match.url)
-  return <IonPage>
+  return <>
     <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton />
-          </IonButtons>
-          <IonTitle>Other</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-  </IonPage>
+      <IonToolbar>
+        <IonButtons slot="start">
+          <IonBackButton />
+        </IonButtons>
+        <IonTitle>Other</IonTitle>
+      </IonToolbar>
+    </IonHeader>
+  </>
 }
 
 export default OtherPage

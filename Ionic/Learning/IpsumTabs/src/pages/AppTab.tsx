@@ -31,7 +31,7 @@ const AppTab: React.FC<RouteComponentProps> = (props) => {
       <IonContent>
         <IonCard>
           <IonCardContent>
-            <IonRouterLink href="/other">yes</IonRouterLink>
+            <Link to="/other">yes</Link>
             <IonText color="primary">
               username: {appState.userName}<br />
               user age: {appState.userAge} <br />
