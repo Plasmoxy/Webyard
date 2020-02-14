@@ -21,6 +21,7 @@ import AppPage from "./pages/AppPage"
 import OtherPage from "./pages/OtherPage"
 /* Theme variables */
 import "./theme/variables.css"
+import { IonApp } from "@ionic/react"
 
 export class AppState {
   userName = "Sebu"
@@ -39,12 +40,14 @@ const App = (p: { initState: AppState }) => {
 
   return (
     <AppContext.Provider value={appStateHook}>
-      <IonReactRouter>
-        <Route path="/" render={() => <Redirect to="/app" />} exact />
+      <IonApp>
+        <IonReactRouter>
+          <Route path="/" render={() => <Redirect to="/app" />} exact />
 
-        <Route path="/other" component={OtherPage} exact />
-        <Route path="/app" component={AppPage} />
-      </IonReactRouter>
+          <Route path="/other" component={OtherPage} exact />
+          <Route path="/app" component={AppPage} />
+        </IonReactRouter>
+      </IonApp>
     </AppContext.Provider>
   )
 }

@@ -17,7 +17,6 @@ const AppRootTab: React.FC<RouteComponentProps> = (props) => {
   }
 
   return useMemo(() => <IonPage>
-      {console.log("render AppTab")}
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">

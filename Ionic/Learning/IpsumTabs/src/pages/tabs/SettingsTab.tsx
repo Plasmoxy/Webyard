@@ -14,13 +14,11 @@ const SettingsTab: React.FC = () => {
   const [showToastSlide, setShowToastSlide] = useState(false)
 
   function darkModeCheckbox(checc: boolean) {
-    console.log("darkmode -> " + checc)
     cssSetDarkTheme(checc)
     setDark(checc)
   }
 
   return useMemo(() => <IonPage>
-      {console.log("render Settings")}
 
       <IonHeader>
         <IonToolbar>
