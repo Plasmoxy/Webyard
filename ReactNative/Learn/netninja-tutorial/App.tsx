@@ -1,10 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
+
+  const [name, setName] = useState('Seb')
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>Enter name: </Text>
+      <TextInput style={styles.input} onChangeText={t => setName(t)} />
+      <Text>name: {name}</Text>
     </View>
   );
 }
@@ -15,5 +20,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  input: {
+    borderWidth: 1,
+    borderColor: '#777',
+    borderRadius: 10,
+    padding: 8,
+    margin: 10,
+    width: 200,
   },
 });
