@@ -28,7 +28,7 @@ const AppRootTab: React.FC<RouteComponentProps> = (props) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCard>
+        <IonCard mode="ios">
           <IonCardContent>
             <Link to="/other">yes</Link>
             <IonText color="primary">
