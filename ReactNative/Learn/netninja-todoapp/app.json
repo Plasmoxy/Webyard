@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blank Template (TypeScript)",
+    "name": "netninja-todoapp",
     "slug": "netninja-todoapp",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -29,6 +29,11 @@
 
     "androidStatusBar": {
       "barStyle": "light-content"
+    },
+
+    "android": {
+      "package": "com.shardbytes.dev.netninjatodoapp",
+      "versionCode": 1
     }
   }
 }
