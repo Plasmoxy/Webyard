@@ -18,7 +18,7 @@ const SettingsTab: React.FC = () => {
     setDark(checc)
   }
 
-  return useMemo(() => <IonPage>
+  return <IonPage>
 
       <IonHeader>
         <IonToolbar>
@@ -144,7 +144,7 @@ const SettingsTab: React.FC = () => {
             <IonLabel>Checkbox</IonLabel>
             <IonCheckbox slot="start" />
           </IonItem>
-          
+
         </IonList>
 
         <IonToast
@@ -155,7 +155,7 @@ const SettingsTab: React.FC = () => {
           duration={1000} />
 
       </IonContent>
-  </IonPage>, [isDark, showToastSlide])
+  </IonPage>
 }
 
 export default SettingsTab

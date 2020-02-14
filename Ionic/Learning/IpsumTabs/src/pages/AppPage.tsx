@@ -1,13 +1,16 @@
 import "@ionic/core/css/padding.css"
 import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react"
 import { cubeOutline, hammerOutline } from "ionicons/icons"
-import React from "react"
-import { Redirect, Route, RouteComponentProps } from "react-router"
+import React, { useEffect } from "react"
+import { Redirect, Route, RouteComponentProps, useHistory } from "react-router"
 import AppRootTab from "./tabs/AppRootTab"
 import ItemDetailTab from "./tabs/ItemDetailTab"
 import SettingsTab from "./tabs/SettingsTab"
+import { Plugins } from '@capacitor/core'
 
 const AppPage: React.FC<RouteComponentProps> = (props) => {
+
+  const history = useHistory()
 
   return <IonTabs>
     <IonRouterOutlet>

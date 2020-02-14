@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">IpsumTabs</string>
+    <string name="title_activity_main">IpsumTabs</string>
+    <string name="package_name">com.shardbytes.dev.ipsumtabs</string>
+    <string name="custom_url_scheme">com.shardbytes.dev.ipsumtabs</string>
+</resources>

@@ -9,8 +9,6 @@ cssSetDarkTheme(cssMediaPrefersDark())
 
 const initState = new AppState()
 
-setupConfig({mode: "ios"})
-
 ReactDOM.render(<App initState={initState} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
