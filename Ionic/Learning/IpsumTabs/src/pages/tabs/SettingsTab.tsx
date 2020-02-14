@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRadio, IonTitle, IonToggle, IonToolbar } from "@ionic/react"
+import { IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRadio, IonTitle, IonToast, IonToggle, IonToolbar } from "@ionic/react"
 import { hammerOutline, moon, moonOutline } from "ionicons/icons"
 import React, { PropsWithChildren, useMemo, useState } from "react"
 import { cssIsDarkThemeEnabled, cssSetDarkTheme } from "../../DarkTheme"
@@ -11,6 +11,7 @@ const SettingsRoutedTextItem = (p: PropsWithChildren<{id: string}>) => <IonItem 
 const SettingsTab: React.FC = () => {
 
   const [isDark, setDark] = useState(cssIsDarkThemeEnabled())
+  const [showToastSlide, setShowToastSlide] = useState(false)
 
   function darkModeCheckbox(checc: boolean) {
     console.log("darkmode -> " + checc)
@@ -49,6 +50,15 @@ const SettingsTab: React.FC = () => {
           <SettingsRoutedTextItem id="napoje">
             <IonLabel>Napoje</IonLabel>
           </SettingsRoutedTextItem>
+          <SettingsRoutedTextItem id="koberce">
+            <IonLabel>Koberce</IonLabel>
+          </SettingsRoutedTextItem>
+          <SettingsRoutedTextItem id="vydavky">
+            <IonLabel>Vydavky</IonLabel>
+          </SettingsRoutedTextItem>
+          <SettingsRoutedTextItem id="vyskumy">
+            <IonLabel>Vyskumy</IonLabel>
+          </SettingsRoutedTextItem>
         </IonList>
 
         <IonItemDivider />
@@ -80,12 +90,20 @@ const SettingsTab: React.FC = () => {
               <IonLabel>Item slide</IonLabel>
             </IonItem>
             <IonItemOptions side="end">
-              <IonItemOption onClick={() => {}}>Unread</IonItemOption>
+              <IonItemOption onClick={() => setShowToastSlide(true)}>Show</IonItemOption>
             </IonItemOptions>
           </IonItemSliding>
         </IonList>
+
+        <IonToast
+          color="primary"
+          isOpen={showToastSlide}
+          onDidDismiss={() => setShowToastSlide(false)}
+          message="Opened item by slide"
+          duration={1000} />
+
       </IonContent>
-  </IonPage>, [isDark])
+  </IonPage>, [isDark, showToastSlide])
 }
 
 export default SettingsTab
