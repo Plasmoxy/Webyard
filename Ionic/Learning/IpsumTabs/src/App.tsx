@@ -44,7 +44,7 @@ const App = (p: { initState: AppState }) => {
         <IonReactRouter>
           <Route path="/" render={() => <Redirect to="/app" />} exact />
 
-          <Route path="/other" component={OtherPage} exact />
+          <Route path="/other" component={OtherPage} />
           <Route path="/app" component={AppPage} />
         </IonReactRouter>
       </IonApp>

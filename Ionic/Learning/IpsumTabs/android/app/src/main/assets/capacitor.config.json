@@ -1,8 +1,0 @@
-{
-  "appId": "com.shardbytes.dev.ipsumtabs",
-  "appName": "IpsumTabs",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "build",
-  "cordova": {}
-}

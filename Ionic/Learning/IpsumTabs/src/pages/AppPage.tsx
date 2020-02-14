@@ -16,7 +16,7 @@ const AppPage: React.FC<RouteComponentProps> = (props) => {
       <Route path="/app/root" component={AppRootTab} exact />
       <Route path="/app/settings" component={SettingsTab} exact />
 
-      <Route path="/app/settings/itemDetail/:name" component={ItemDetailTab} exact />
+      <Route path="/app/settings/itemDetail/:id" component={ItemDetailTab} exact />
     </IonRouterOutlet>
 
     <IonTabBar slot="bottom">
