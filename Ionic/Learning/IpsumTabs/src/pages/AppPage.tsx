@@ -1,12 +1,10 @@
 import "@ionic/core/css/padding.css"
-import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonPage, IonText, IonTitle, IonToolbar, IonTabs, IonTabBar, IonTabButton, IonLabel, IonRouterOutlet } from "@ionic/react"
+import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react"
 import { cubeOutline, hammerOutline } from "ionicons/icons"
-import React, { useMemo } from "react"
-import { RouteComponentProps, Route, Redirect } from "react-router"
-import { useAppState } from "../App"
-import { LIPSUM } from "../stuff"
+import React from "react"
+import { Redirect, Route, RouteComponentProps } from "react-router"
 import AppRootTab from "./tabs/AppRootTab"
-import { IonReactRouter } from "@ionic/react-router"
+import ItemDetailTab from "./tabs/ItemDetailTab"
 import SettingsTab from "./tabs/SettingsTab"
 
 const AppPage: React.FC<RouteComponentProps> = (props) => {
@@ -17,6 +15,8 @@ const AppPage: React.FC<RouteComponentProps> = (props) => {
 
       <Route path="/app/root" component={AppRootTab} exact />
       <Route path="/app/settings" component={SettingsTab} exact />
+
+      <Route path="/app/settings/itemDetail/:name" component={ItemDetailTab} exact />
     </IonRouterOutlet>
 
     <IonTabBar slot="bottom">
@@ -28,6 +28,7 @@ const AppPage: React.FC<RouteComponentProps> = (props) => {
         <IonIcon icon={hammerOutline} />
         <IonLabel>Settings</IonLabel>
       </IonTabButton>
+      
     </IonTabBar>
     
   </IonTabs>

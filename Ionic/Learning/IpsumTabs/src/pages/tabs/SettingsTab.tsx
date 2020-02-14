@@ -1,8 +1,12 @@
-import { IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRadio, IonTitle, IonToggle, IonToolbar, IonBackButton } from "@ionic/react"
+import { IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonItemDivider, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonPage, IonRadio, IonTitle, IonToggle, IonToolbar } from "@ionic/react"
 import { hammerOutline, moon, moonOutline } from "ionicons/icons"
-import React, { useMemo, useState } from "react"
+import React, { PropsWithChildren, useMemo, useState } from "react"
 import { cssIsDarkThemeEnabled, cssSetDarkTheme } from "../../DarkTheme"
 import "./SettingsTab.css"
+
+const SettingsRoutedTextItem = (p: PropsWithChildren<{id: string}>) => <IonItem routerLink={`/app/settings/itemDetail/${p.id}`}>
+{p.children}
+</IonItem>
 
 const SettingsTab: React.FC = () => {
 
@@ -42,21 +46,9 @@ const SettingsTab: React.FC = () => {
 
         {/*-- List of Text Items --*/}
         <IonList lines="none">
-          <IonItem>
-            <IonLabel>Pokémon Yellow</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Mega Man X</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>The Legend of Zelda</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Pac-Man</IonLabel>
-          </IonItem>
-          <IonItem>
-            <IonLabel>Super Mario World</IonLabel>
-          </IonItem>
+          <SettingsRoutedTextItem id="napoje">
+            <IonLabel>Napoje</IonLabel>
+          </SettingsRoutedTextItem>
         </IonList>
 
         <IonItemDivider />

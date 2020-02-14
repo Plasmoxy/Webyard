@@ -14,7 +14,7 @@ import "@ionic/react/css/text-transformation.css"
 import "@ionic/react/css/typography.css"
 import React, { createContext, useContext } from "react"
 import { Redirect, Route } from "react-router-dom"
-import { useImmer } from 'use-immer'
+import { useImmer } from "use-immer"
 /* Global CSS */
 import "./global.css"
 import AppPage from "./pages/AppPage"
@@ -27,22 +27,26 @@ export class AppState {
   userAge = 18
 }
 
-export type AppContextHook = [AppState, (f: (draft: AppState) => void | AppState) => void]
-const AppContext = createContext<AppContextHook|null>(null)
+export type AppContextHook = [
+  AppState,
+  (f: (draft: AppState) => void | AppState) => void
+]
+const AppContext = createContext<AppContextHook | null>(null)
 export const useAppState = () => useContext(AppContext)!!
 
-const App = (p: {initState: AppState}) => {
-
+const App = (p: { initState: AppState }) => {
   const appStateHook = useImmer<AppState>(p.initState)
 
-  return <AppContext.Provider value={appStateHook}>
-    <IonReactRouter>
-      <Route path="/" render={() => <Redirect to="/app" />} exact />
-      
-      <Route path="/other" component={OtherPage} exact />
-      <Route path="/app" component={AppPage} />
-    </IonReactRouter>
-  </AppContext.Provider>
+  return (
+    <AppContext.Provider value={appStateHook}>
+      <IonReactRouter>
+        <Route path="/" render={() => <Redirect to="/app" />} exact />
+
+        <Route path="/other" component={OtherPage} exact />
+        <Route path="/app" component={AppPage} />
+      </IonReactRouter>
+    </AppContext.Provider>
+  )
 }
 
 export default App
