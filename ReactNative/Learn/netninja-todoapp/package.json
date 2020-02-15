@@ -5,15 +5,21 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "buildWeb": "",
+    "copySurge200Win": "",
+    "integrateSurgeWin": "expo build:web &&powershell cp web-build/index.html web-build/200.html &&surge web-build netninja-todoapp.surge.sh"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
+    "@types/lodash": "^4.14.149",
     "expo": "~36.0.0",
     "immer": "^5.3.6",
+    "lodash": "^4.17.15",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-easy-toast": "^1.2.0",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-web": "~0.11.7",
     "use-immer": "^0.3.5"

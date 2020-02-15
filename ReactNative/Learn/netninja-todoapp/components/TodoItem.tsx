@@ -13,7 +13,7 @@ export default function TodoItem(p: {item: Todo}) {
   }
 
   return <TouchableOpacity onPress={removeItem}>
-    <Text style={ss.item}>{p.item.text} (id={p.item.id}, key={p.item.key}})</Text>
+    <Text style={ss.item}>{p.item.text}</Text>
   </TouchableOpacity>
 }
 
@@ -24,6 +24,7 @@ const ss = StyleSheet.create({
     marginTop: 16,
     borderColor: '#bbb',
     borderWidth: 1,
-    borderRadius: 10
+    borderRadius: 10,
+    fontSize: 18
   }
 })

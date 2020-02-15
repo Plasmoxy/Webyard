@@ -1,39 +1,52 @@
-import React, { useEffect } from "react"
-import { FlatList, StatusBar, StyleSheet, View, AppState, AppStateStatus, Button } from "react-native"
+import React, { useEffect, useState, useRef, Ref, MutableRefObject } from "react"
+import { FlatList, StatusBar, StyleSheet, View, AppState, AppStateStatus, Button, Platform } from "react-native"
 import { useImmer } from "use-immer"
 import { Todo, RootState, RootContext } from "./RootState"
 import Header from "./components/Header"
 import TodoItem from "./components/TodoItem"
 import AddTodo from "./components/AddTodo"
 import { AsyncStorage } from 'react-native'
+import _ from 'lodash'
+import Toast from 'react-native-easy-toast'
+
+export async function saveRootState(state: RootState) {
+  try {
+    await AsyncStorage.setItem("state", JSON.stringify(state))
+    console.log("Continous save: " + JSON.stringify(state))
+  } catch(e) {
+    console.log("Error during saving state.")
+  }
+}
+
+// if there is a single second of state not being updated, save it to storage
+const debouncedStateSave = _.debounce(async (state: RootState, tsr: MutableRefObject<Toast>) => {
+  await saveRootState(state)
+  console.log("Saved continous state.")
+  tsr.current.show("Saved")
+}, 1000)
 
 export default function App() {
 
+  const toastRef = useRef<Toast>()
   const [state, updateState] = useImmer(new RootState())
 
-  const clearState = async () => {
-    await AsyncStorage.removeItem("state")
+  const clearStateHandle = async () => {
     updateState(s => new RootState())
   }
 
   // app state change bind, generates new function on each render
   // captures new state
-  const appStateChange = async (astate: AppStateStatus) => {
+  const appStateChangeHandle = async (astate: AppStateStatus) => {
     console.log("app state -> " + astate)
     if (astate == "background" || astate == "inactive") {
-      try {
-        await AsyncStorage.setItem("state", JSON.stringify(state))
-        console.log("Saved state to AsyncStorage")
-      } catch(e) {
-        console.log("ERROR saving state to AsyncStorage: " + e)
-      }
+      debouncedStateSave(state, toastRef)
     }
   }
 
   // startup effect
   useEffect(() => {
-    console.log(">> Startup effect, recovering state")
     async function startup() {
+      console.log(">> Startup effect, recovering state")
       try {
         const rootStateJson = await AsyncStorage.getItem("state")
         if (rootStateJson) {
@@ -44,23 +57,34 @@ export default function App() {
           console.log("No saved state in AsyncStorage")
         }
       } catch(e) {
-        console.log("ERROR when recovering root state: " + e)
+        console.log("ERROR when recovering saved state: " + e)
       }
     }
     startup()
   }, [])
-  
-  // bind state change effect
+
+  // continous saving effect, goes async
   useEffect(() => {
-    AppState.addEventListener("change", appStateChange)
-    return () => AppState.removeEventListener("change", appStateChange)
+    debouncedStateSave(state, toastRef)
+  }, [state])
+  
+  // app state change binding effect
+  useEffect(() => {
+    AppState.addEventListener("change", appStateChangeHandle)
+    return () => AppState.removeEventListener("change", appStateChangeHandle)
   })
 
   // render
   return (
     <RootContext.Provider value={[state, updateState]}>
       <View style={ss.container}>
+
         <StatusBar backgroundColor="coral" barStyle="dark-content" />
+
+        {/*
+        // @ts-ignore*/}
+        <Toast ref={toastRef} style={{backgroundColor: 'red'}} />
+
         <Header />
         <View style={ss.content}>
           <AddTodo />
@@ -68,7 +92,7 @@ export default function App() {
             data={state.todos}
             renderItem={({ item }) => <TodoItem item={item} />}
           />
-          <Button onPress={clearState} title="Clear State" />
+          <Button onPress={clearStateHandle} title="Clear State" />
         </View>
       </View>
     </RootContext.Provider>
