@@ -10,23 +10,7 @@ export default function App() {
   const [appS, updateAppS] = useImmer(new AppState())
   
   useEffect(() => {
-    console.log("up")
-    updateAppS(s => {
-      s.todos = [
-        new Todo("yes fasds dtt"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes"),
-        new Todo("yes last")
-      ]
-    })
+    console.log("startup effect")
   }, [])
 
   return (

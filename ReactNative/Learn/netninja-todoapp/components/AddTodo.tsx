@@ -1,20 +1,27 @@
 import React, { useContext, useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, TextInput, View, Button } from 'react-native'
 import { AppContext, Todo } from '../AppState'
 
 export default function AddTodo() {
 
+  const [appS, updateAppS] = useContext(AppContext)!!
   const [text, setText] = useState("")
 
-  const changeHandler = (t: string) => {
-    setText(t)
+  const addHandler = () => {
+    updateAppS(s => {
+      s.todos.push(new Todo(text))
+    })
+    setText("")
   }
 
   return <View>
     <TextInput style={ss.input}
       placeholder="new todo"
-      onChangeText={changeHandler}
+      onChangeText={s => setText(s)}
+      value={text}
+      onSubmitEditing={addHandler}
     />
+    <Button onPress={addHandler} title="Add todo" color="coral" />
   </View>
 }
 
