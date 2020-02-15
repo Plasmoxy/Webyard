@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useRef, Ref, MutableRefObject } from "react"
-import { FlatList, StatusBar, StyleSheet, View, AppState, AppStateStatus, Button, Platform } from "react-native"
+import _ from 'lodash'
+import React, { useEffect } from "react"
+import { AppState, AppStateStatus, AsyncStorage, Button, FlatList, StatusBar, StyleSheet, View } from "react-native"
 import { useImmer } from "use-immer"
-import { Todo, RootState, RootContext } from "./RootState"
+import AddTodo from "./components/AddTodo"
 import Header from "./components/Header"
 import TodoItem from "./components/TodoItem"
-import AddTodo from "./components/AddTodo"
-import { AsyncStorage } from 'react-native'
-import _ from 'lodash'
-import Toast from 'react-native-root-toast'
+import { RootContext, RootState } from "./RootState"
+
+const toast = (tx: string) => {}
 
 export async function saveRootState(state: RootState) {
   try {
@@ -21,6 +21,7 @@ export async function saveRootState(state: RootState) {
 // if there is a single second of state not being updated, save it to storage
 const debouncedStateSave = _.debounce(async (state: RootState) => {
   await saveRootState(state)
+  toast("Saved.")
 }, 1000)
 
 export default function App() {
@@ -57,7 +58,6 @@ export default function App() {
       } catch(e) {
         console.log("ERROR when recovering saved state: " + e)
       }
-      Toast.show("Yes")
     }
     startup()
   }, [])
@@ -87,7 +87,7 @@ export default function App() {
             data={state.todos}
             renderItem={({ item }) => <TodoItem item={item} />}
           />
-          <Button onPress={clearStateHandle} title="Clear State" />
+          <Button onPress={clearStateHandle} title="Clear State" color="#1f1f23" />
         </View>
       </View>
     </RootContext.Provider>

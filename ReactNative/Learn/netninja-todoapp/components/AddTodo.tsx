@@ -9,7 +9,6 @@ export default function AddTodo() {
 
   const addHandler = () => {
     if (text == "") return
-    console.log(state)
     updateState(s => {
       s.todos.push(new Todo(text, state.countId))
       s.countId++

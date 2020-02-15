@@ -39,7 +39,7 @@
     "web": {
       "build": {
         "babel": {
-          "include": ["react-native-root-toast", "static-container"]
+          "include": ["static-container"]
         }
       }
     }
