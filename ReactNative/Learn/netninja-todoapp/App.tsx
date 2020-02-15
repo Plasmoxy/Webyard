@@ -7,6 +7,7 @@ import TodoItem from "./components/TodoItem"
 import AddTodo from "./components/AddTodo"
 import { AsyncStorage } from 'react-native'
 import _ from 'lodash'
+import Toast from 'react-native-root-toast'
 
 export async function saveRootState(state: RootState) {
   try {
@@ -56,6 +57,7 @@ export default function App() {
       } catch(e) {
         console.log("ERROR when recovering saved state: " + e)
       }
+      Toast.show("Yes")
     }
     startup()
   }, [])
@@ -77,7 +79,7 @@ export default function App() {
       <View style={ss.container}>
 
         <StatusBar backgroundColor="coral" barStyle="dark-content" />
-        
+
         <Header />
         <View style={ss.content}>
           <AddTodo />

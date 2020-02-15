@@ -34,6 +34,15 @@
     "android": {
       "package": "com.shardbytes.dev.netninjatodoapp",
       "versionCode": 1
+    },
+
+    "web": {
+      "build": {
+        "babel": {
+          "include": ["react-native-root-toast", "static-container"]
+        }
+      }
     }
+
   }
 }
