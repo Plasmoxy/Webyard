@@ -1,16 +1,18 @@
 import React, { useContext, useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, TextInput, View, Button } from 'react-native'
-import { AppContext, Todo } from '../AppState'
+import { Button, StyleSheet, TextInput, View } from 'react-native'
+import { RootContext, Todo } from '../RootState'
 
 export default function AddTodo() {
 
-  const [appS, updateAppS] = useContext(AppContext)!!
+  const [state, updateState] = useContext(RootContext)!!
   const [text, setText] = useState("")
 
   const addHandler = () => {
     if (text == "") return
-    updateAppS(s => {
-      s.todos.push(new Todo(text))
+    console.log(state)
+    updateState(s => {
+      s.todos.push(new Todo(text, state.countId))
+      s.countId++
     })
     setText("")
   }

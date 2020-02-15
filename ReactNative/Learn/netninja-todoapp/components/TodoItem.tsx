@@ -1,19 +1,19 @@
 import React, { useContext } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { AppContext, Todo } from '../AppState'
+import { RootContext, Todo } from '../RootState'
 
 export default function TodoItem(p: {item: Todo}) {
 
-  const [appS, updateAppS] = useContext(AppContext)!!
+  const [state, updateState] = useContext(RootContext)!!
 
   const removeItem = () => {
-    updateAppS(s => {
+    updateState(s => {
       s.todos.splice(s.todos.indexOf(p.item), 1)
     })
   }
 
   return <TouchableOpacity onPress={removeItem}>
-    <Text style={ss.item}>{p.item.text}</Text>
+    <Text style={ss.item}>{p.item.text} (id={p.item.id}, key={p.item.key}})</Text>
   </TouchableOpacity>
 }
 
