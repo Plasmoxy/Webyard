@@ -8,6 +8,7 @@ export default function AddTodo() {
   const [text, setText] = useState("")
 
   const addHandler = () => {
+    if (text == "") return
     updateAppS(s => {
       s.todos.push(new Todo(text))
     })
@@ -21,7 +22,7 @@ export default function AddTodo() {
       value={text}
       onSubmitEditing={addHandler}
     />
-    <Button onPress={addHandler} title="Add todo" color="coral" />
+    <Button onPress={addHandler} title="Add todo" color="#4643df" />
   </View>
 }
 

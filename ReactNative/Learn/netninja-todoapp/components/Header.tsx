@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 export default function Header() {
   
-  return <View style={ss.header}>
+  return useMemo(() => <View style={ss.header}>
+    {console.log("header rend")}
     <Text style={ss.title}>Todos</Text>
-  </View>
+  </View>, [])
 }
 
 const ss = StyleSheet.create({
