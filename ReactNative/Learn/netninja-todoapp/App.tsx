@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { useEffect } from "react"
-import { AppState, AppStateStatus, AsyncStorage, Button, FlatList, StatusBar, StyleSheet, View } from "react-native"
+import { AppState, AppStateStatus, AsyncStorage, Button, FlatList, StatusBar, StyleSheet, View, Text } from "react-native"
 import { useImmer } from "use-immer"
 import AddTodo from "./components/AddTodo"
 import Header from "./components/Header"
@@ -60,6 +60,7 @@ export default function App() {
       }
     }
     startup()
+    
   }, [])
 
   // continous saving effect, goes async
@@ -76,10 +77,8 @@ export default function App() {
   // render
   return (
     <RootContext.Provider value={[state, updateState]}>
+      <StatusBar backgroundColor="coral" barStyle="dark-content" />
       <View style={ss.container}>
-
-        <StatusBar backgroundColor="coral" barStyle="dark-content" />
-
         <Header />
         <View style={ss.content}>
           <AddTodo />
@@ -88,6 +87,7 @@ export default function App() {
             renderItem={({ item }) => <TodoItem item={item} />}
           />
           <Button onPress={clearStateHandle} title="Clear State" color="#1f1f23" />
+          
         </View>
       </View>
     </RootContext.Provider>
@@ -97,7 +97,7 @@ export default function App() {
 const ss = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000000"
+    backgroundColor: 'black'
   },
 
   content: {
