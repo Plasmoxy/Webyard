@@ -12,8 +12,8 @@ export default function App() {
   useEffect(() => {
     console.log("up")
     updateAppS(s => {
-      s.todos.push(
-        new Todo("yes frist"),
+      s.todos = [
+        new Todo("yes fasds dtt"),
         new Todo("yes"),
         new Todo("yes"),
         new Todo("yes"),
@@ -25,7 +25,7 @@ export default function App() {
         new Todo("yes"),
         new Todo("yes"),
         new Todo("yes last"),
-      )
+      ]
     })
   }, [])
 

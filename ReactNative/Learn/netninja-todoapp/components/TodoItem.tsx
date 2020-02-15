@@ -4,10 +4,10 @@ import { AppContext, Todo } from '../AppState'
 
 export default function TodoItem(p: {item: Todo}) {
 
-  const [appS, setAppS] = useContext(AppContext)!!
+  const [appS, updateAppS] = useContext(AppContext)!!
 
   const removeItem = () => {
-    setAppS(s => {
+    updateAppS(s => {
       s.todos.splice(s.todos.indexOf(p.item), 1)
     })
   }
