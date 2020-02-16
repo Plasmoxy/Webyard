@@ -102,7 +102,6 @@ const ss = StyleSheet.create({
   content: {
     flex: 1,
     margin: 16,
-    backgroundColor: '#171717',
   },
 
   tx: { color: "white", fontWeight: "bold" }
