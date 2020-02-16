@@ -29,12 +29,11 @@ export default function AddTodo() {
 
 const ss = StyleSheet.create({
   input: {
-    color: 'white',
     marginBottom: 10,
     paddingHorizontal: 8,
     paddingVertical: 6,
-    borderColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd'
+    borderColor: "#2effd5",
+    borderWidth: 1,
+    color: "white",
   }
 })

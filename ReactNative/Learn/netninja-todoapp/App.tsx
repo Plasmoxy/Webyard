@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { useEffect } from "react"
-import { AppState, AppStateStatus, AsyncStorage, Button, FlatList, StatusBar, StyleSheet, View, Text } from "react-native"
+import { AppState, AppStateStatus, AsyncStorage, FlatList, StatusBar, StyleSheet, View, Button } from "react-native"
 import { useImmer } from "use-immer"
 import AddTodo from "./components/AddTodo"
 import Header from "./components/Header"
@@ -77,7 +77,7 @@ export default function App() {
   // render
   return (
     <RootContext.Provider value={[state, updateState]}>
-      <StatusBar backgroundColor="coral" barStyle="dark-content" />
+      <StatusBar backgroundColor="#0068d6" barStyle="dark-content" />
       <View style={ss.container}>
         <Header />
         <View style={ss.content}>
@@ -86,8 +86,7 @@ export default function App() {
             data={state.todos}
             renderItem={({ item }) => <TodoItem item={item} />}
           />
-          <Button onPress={clearStateHandle} title="Clear State" color="#1f1f23" />
-          
+          <Button onPress={clearStateHandle} title="Clear" />
         </View>
       </View>
     </RootContext.Provider>
@@ -102,7 +101,8 @@ const ss = StyleSheet.create({
 
   content: {
     flex: 1,
-    margin: 16
+    margin: 16,
+    backgroundColor: '#171717',
   },
 
   tx: { color: "white", fontWeight: "bold" }
