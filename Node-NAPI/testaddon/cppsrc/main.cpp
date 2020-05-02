@@ -1,7 +1,6 @@
-#include <napi.h>
+#include "napi.h"
 #include "samples/functionexample.hpp"
 using namespace Napi;
-
 
 double add(double a, double b) {
   return a + b;
