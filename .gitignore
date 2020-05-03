@@ -1,5 +1,14 @@
+# Git ignor xdxd
+# -> C/C++
+# -> Node
+# -> Visual Studio
+
+
+### Custom ###
 dist
 .openode
+
+
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
 
