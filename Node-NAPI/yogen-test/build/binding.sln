@@ -1,0 +1,51 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(GIT)", "..\GIT", "{E76BE3B2-1B51-4490-28E6-278B929E403A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Node-NAPI)", "..\GIT\Webyard\Node-NAPI", "{FA77962F-7D09-03FC-1B2F-78334396E93F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Webyard)", "..\GIT\Webyard", "{C355BC13-6015-4B3C-CD7F-1635C5868211}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node-addon-api)", "..\GIT\Webyard\Node-NAPI\yogen-test\node_modules\node-addon-api", "{536C99ED-363D-A54C-1A0E-059FDBA07973}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(node_modules)", "..\GIT\Webyard\Node-NAPI\yogen-test\node_modules", "{0275A173-2870-B237-A8CA-C934E0623DDB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(src)", "..\GIT\Webyard\Node-NAPI\yogen-test\node_modules\node-addon-api\src", "{5A52C8E8-87DC-C1E3-2FFC-ADC098558991}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(yogen-test)", "..\GIT\Webyard\Node-NAPI\yogen-test", "{604711E8-9F64-AB8B-61CD-511331FA0390}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nothing", "..\node_modules\node-addon-api\src\nothing.vcxproj", "{7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "yogen-test-native", "yogen-test-native.vcxproj", "{46D01F8B-B943-7F50-9F74-8223B792D20D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC} = {7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x64 = Release|x64
+		Debug|x64 = Debug|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46D01F8B-B943-7F50-9F74-8223B792D20D}.Release|x64.ActiveCfg = Release|x64
+		{46D01F8B-B943-7F50-9F74-8223B792D20D}.Release|x64.Build.0 = Release|x64
+		{46D01F8B-B943-7F50-9F74-8223B792D20D}.Debug|x64.ActiveCfg = Debug|x64
+		{46D01F8B-B943-7F50-9F74-8223B792D20D}.Debug|x64.Build.0 = Debug|x64
+		{7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC}.Release|x64.ActiveCfg = Release|x64
+		{7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC}.Release|x64.Build.0 = Release|x64
+		{7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC}.Debug|x64.ActiveCfg = Debug|x64
+		{7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC}.Debug|x64.Build.0 = Debug|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C355BC13-6015-4B3C-CD7F-1635C5868211} = {E76BE3B2-1B51-4490-28E6-278B929E403A}
+		{604711E8-9F64-AB8B-61CD-511331FA0390} = {FA77962F-7D09-03FC-1B2F-78334396E93F}
+		{FA77962F-7D09-03FC-1B2F-78334396E93F} = {C355BC13-6015-4B3C-CD7F-1635C5868211}
+		{5A52C8E8-87DC-C1E3-2FFC-ADC098558991} = {536C99ED-363D-A54C-1A0E-059FDBA07973}
+		{536C99ED-363D-A54C-1A0E-059FDBA07973} = {0275A173-2870-B237-A8CA-C934E0623DDB}
+		{7CEFAB79-CB8C-4FF6-0043-BFA1FD05FFEC} = {5A52C8E8-87DC-C1E3-2FFC-ADC098558991}
+		{0275A173-2870-B237-A8CA-C934E0623DDB} = {604711E8-9F64-AB8B-61CD-511331FA0390}
+	EndGlobalSection
+EndGlobal
