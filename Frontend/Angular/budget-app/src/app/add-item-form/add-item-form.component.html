@@ -4,13 +4,13 @@
       
       <div class="field is-narrow">
         <p class="control">
-          <input type="number" class="input" placeholder="Množstvo (€)" style="width: 150px;">
+          <input required name="amount" type="number" class="input" placeholder="Množstvo (€)" style="width: 150px;" [ngModel]="item.amount">
         </p>
       </div>
       
       <div class="field">
         <p class="control">
-          <input type="text" class="input" placeholder="Popis">
+          <input required name="description" type="text" class="input" placeholder="Popis" [ngModel]="item.description">
         </p>
       </div>
       
