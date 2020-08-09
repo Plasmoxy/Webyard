@@ -3,6 +3,17 @@
 .root {
   display: flex;
   width: 100%;
+  position: relative; // so that p:abs doesnt override default
+  
+  .x-icon-button {
+    position: absolute;
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    background: $dark;
+    right: -17px;
+    top: -17px;
+  }
 }
 
 .budget-item {
