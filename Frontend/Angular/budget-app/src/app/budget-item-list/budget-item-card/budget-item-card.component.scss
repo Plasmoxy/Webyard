@@ -5,6 +5,13 @@
   width: 100%;
   position: relative; // so that p:abs doesnt override default
   
+  &:hover {
+    .x-icon-button {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
   .x-icon-button {
     position: absolute;
     height: 34px;
@@ -22,14 +29,15 @@
     opacity: 0;
     
     transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-  }
-  
-  &:hover {
-    .x-icon-button {
-      opacity: 1;
-      transform: scale(1);
+    
+    // this has to be after the root hover,
+    // because otherwise the root hover would override this one
+    // because we are hovering on 2 elements at the same time
+    &:hover {
+      transform: scale(1.2);
     }
   }
+  
 }
 
 .budget-item {
