@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { BudgetItem } from 'src/models/budget-item.model'
 
 @Component({
   selector: 'app-budget-item-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BudgetItemListComponent implements OnInit {
 
+  @Input() budgetItems: BudgetItem[]
+  
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
