@@ -3,16 +3,22 @@
     
     <div class="income-column">
       <h1>Príjmy</h1>
-      <app-budget-item-card [isIncome]="true"></app-budget-item-card>
-      <app-budget-item-card [isIncome]="true"></app-budget-item-card>
-      <app-budget-item-card [isIncome]="true"></app-budget-item-card>
+      
+      <div class="budget-items">
+        <app-budget-item-card [isIncome]="true" style="margin-bottom: 20px;"></app-budget-item-card>
+        <app-budget-item-card [isIncome]="true" style="margin-bottom: 20px;"></app-budget-item-card>
+        <app-budget-item-card [isIncome]="true" style="margin-bottom: 20px;"></app-budget-item-card>
+      </div>
     </div>
     
     <div class="expenses-column">
       <h1>Výdavky</h1>
-      <app-budget-item-card [isIncome]="false"></app-budget-item-card>
-      <app-budget-item-card [isIncome]="false"></app-budget-item-card>
-      <app-budget-item-card [isIncome]="false"></app-budget-item-card>
+      
+      <div class="budget-items">
+        <app-budget-item-card [isIncome]="false" style="margin-bottom: 20px;"></app-budget-item-card>
+        <app-budget-item-card [isIncome]="false" style="margin-bottom: 20px;"></app-budget-item-card>
+        <app-budget-item-card [isIncome]="false" style="margin-bottom: 20px;"></app-budget-item-card>
+      </div>
     </div>
     
   </div>
