@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BudgetItem } from 'src/models/budget-item.model'
 
 @Component({
@@ -8,11 +8,17 @@ import { BudgetItem } from 'src/models/budget-item.model'
 })
 export class BudgetItemCardComponent implements OnInit {
   
+  @Output() xButtonClick = new EventEmitter<void>();
   @Input() item: BudgetItem;
   
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+  
+  onXClick() {
+    this.xButtonClick.emit()
   }
 
 }
