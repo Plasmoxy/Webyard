@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms'
 import { BudgetItem } from 'src/models/budget-item.model';
  
@@ -9,7 +9,8 @@ import { BudgetItem } from 'src/models/budget-item.model';
 })
 export class AddItemFormComponent implements OnInit {
 
-  @Input() item: BudgetItem = new BudgetItem('', null);
+  @Input() item: BudgetItem = new BudgetItem('', null)
+  @Output() formSubmit = new EventEmitter<BudgetItem>()
   
   constructor() { }
 
@@ -18,7 +19,8 @@ export class AddItemFormComponent implements OnInit {
   }
   
   onSubmit(form: NgForm) {
-    console.log(form)
+    // emit the event of form being submitted
+    this.formSubmit.emit(form.value)
   }
 
 }
