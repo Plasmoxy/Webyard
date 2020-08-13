@@ -1,4 +1,4 @@
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 * { box-sizing: border-box;}
 
@@ -41,8 +41,9 @@ body, html {
     width: 150%;
     height: 150%;
     margin: -60px;
-    filter: blur(30px);
+    filter: blur(5px);
     object-fit: cover;
+    object-position: 50% 70%;
   }
 }
 
@@ -50,11 +51,25 @@ body, html {
   margin-top: 50px;
 }
 
-.gallery-card {
-  max-width: 260px;
+.gallery-tiles {
+  .gallery-row {
+    @extend .row;
+    display: flex;
+    justify-content: center;
+  }
   
+  .gallery-column {
+    @extend .col-md-3;
+    max-width: 300px;
+  }
+}
+
+.gallery-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+  
   box-shadow: 0 4px 8px 0 rgba(black, 0.2);
   transition: all 0.3s;
   border-radius: 5px;
@@ -62,9 +77,9 @@ body, html {
   font-weight: 500;
   
   img {
-    height: 150px;
-    object-fit: cover;
+    max-height: 150px;
     border-radius: 5px 5px 0 0;
+    object-fit: cover;
   }
   
   &:hover {
