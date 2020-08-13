@@ -1,4 +1,5 @@
 import 'regenerator-runtime/runtime'
+import 'bootstrap'
 
 async function main() {
   

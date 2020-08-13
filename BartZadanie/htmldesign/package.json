@@ -16,6 +16,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "bootstrap": "^4.5.2",
     "regenerator-runtime": "^0.13.7"
   }
 }
