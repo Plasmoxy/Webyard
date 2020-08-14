@@ -1,5 +1,6 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+import 'bootstrap/dist/js/bootstrap.bundle.min'
 import React from "react"
 import { render } from "react-dom"
 import './App.scss'
@@ -7,7 +8,7 @@ import galleryThumb from './images/gallery-thumb.jpg'
 import townJpg from './images/town.jpg'
 import walkercityJpg from './images/walkercity.jpg'
 import nightcityJpg from './images/nightcity.jpg'
-import { Container, Card } from 'react-bootstrap'
+import { Container, Card, Button } from 'react-bootstrap'
 import { Switch } from 'react-router-dom'
 
 
@@ -29,7 +30,7 @@ function App() {
             const items = [];
             for (let i = 0; i<= 10; i++) {
               items.push(
-                <div className="col-sm-6 col-lg-3">
+                <div key={i} className="col-sm-6 col-lg-3">
                   <div className="gallery-card" >
                     <img src={townJpg} />
                     <div className="p-1 pt-2 text-center text-uppercase">
@@ -43,6 +44,9 @@ function App() {
           })()}
         </div>
       </div>
+      
+      
+    
     </div>
   </>
 }
