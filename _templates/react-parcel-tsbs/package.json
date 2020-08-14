@@ -7,8 +7,10 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
+    "core-js": "^3.6.5",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",
