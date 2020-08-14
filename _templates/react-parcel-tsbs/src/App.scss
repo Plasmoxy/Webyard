@@ -18,6 +18,12 @@ body, html {
   box-shadow: none;
 }
 
+.card {
+  border: none;
+  border-radius: 0.5  0rem;
+  box-shadow: 0 4px 8px 0 rgba(black, 0.2);
+}
+
 .app-content {
   @extend .mt-5;
 }
