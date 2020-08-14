@@ -8,8 +8,7 @@
       "lib": [
           "dom",
           "dom.iterable",
-          "es5",
-          "es6"
+          "es6",
       ],
       "allowJs": true,
       "experimentalDecorators": true,
@@ -17,6 +16,7 @@
       "strict": true,
       "sourceMap": true,
       "resolveJsonModule": true,
-      "noEmit": true
+      "noEmit": true,
+      "rootDir": "./src",
   }
 }

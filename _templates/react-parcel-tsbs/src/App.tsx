@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "react-dom"
-import './style.sass'
+import './index.scss'
 
 function App() {
   return <>
