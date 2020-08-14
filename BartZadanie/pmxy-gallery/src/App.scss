@@ -27,7 +27,10 @@ body, html {
   box-shadow: 0 4px 8px 0 rgba(black, 0.2);
 }
 
-h1 { font-size: 1.4em; font-weight: 400; font-family: 'Roboto'; }
+h1 {
+  font-size: 1.4em; font-weight: 400;
+  font-family: 'Roboto'; letter-spacing: 1px;
+}
 h2 { font-size: 1.2em; font-weight: 400; font-family: 'Roboto'; }
 hr {
   border: none;
@@ -58,20 +61,11 @@ hr {
   margin-top: 50px;
 }
 
-.gallery-tiles {
-  background-color: red;
-  
-  .gallery-row {
-    @extend .row;
-    
-    .gallery-column {
-      @extend .col-md-3;
-      max-width: 300px;
-    }
-  }
-}
-
 .gallery-card {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+  
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
