@@ -61,16 +61,13 @@ hr {
 .gallery-tiles {
   background-color: red;
   
-  display: flex;
-  justify-content: center;
-  
   .gallery-row {
     @extend .row;
-  }
-  
-  .gallery-column {
-    @extend .col-md-3;
-    max-width: 300px;
+    
+    .gallery-column {
+      @extend .col-md-3;
+      max-width: 300px;
+    }
   }
 }
 
