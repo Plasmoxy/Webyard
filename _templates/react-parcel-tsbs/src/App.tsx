@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime'
 import React from "react"
 import { render } from "react-dom"
 import './App.scss'
-import { Container, Button, Card } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 function App() {
   return <>
