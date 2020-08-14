@@ -3,12 +3,12 @@ import 'regenerator-runtime/runtime'
 import React from "react"
 import { render } from "react-dom"
 import './App.scss'
-import { Container } from 'react-bootstrap'
+import { Container, Button } from 'react-bootstrap'
 
 function App() {
   return <>
-    <Container>
-      yes
+    <Container className="app-content">
+      <Button variant="primary">Nice</Button>
     </Container>
   </>
 }
