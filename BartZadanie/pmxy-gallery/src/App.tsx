@@ -10,7 +10,7 @@ import walkercityJpg from './images/walkercity.jpg'
 import nightcityJpg from './images/nightcity.jpg'
 import { Container, Card, Button, Row, Col } from 'react-bootstrap'
 import { Switch } from 'react-router-dom'
-
+import { AppModal } from './components/Appmodal'
 
 function App() {
   return <>
@@ -19,6 +19,12 @@ function App() {
     </div>
 
     <div className="container content">
+      
+      <AppModal>
+        <Card className="p-3">
+          iiyooo
+        </Card>
+      </AppModal>
       
       <h1 className="text-light">FOTOGALÉRIA</h1>
       <h2 className="text-light mt-5">KATEGÓRIE</h2>

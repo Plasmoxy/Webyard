@@ -1,0 +1,27 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+.app-modal {
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  
+  .app-modal-content {    
+    width: 500px;
+    @include media-breakpoint-down(sm) {
+      width: 80%;
+    }
+  }
+  
+  .app-modal-close-btn {
+    
+  }
+}
