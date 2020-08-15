@@ -25,7 +25,7 @@ function App() {
       <hr />
       <div className="mt-4"></div>
       
-      <Button onClick={() => setYoModalOpen(true)}>Open modal</Button>
+      <Button>Open modal</Button>
       
       <div className="gallery">
         <Row>
