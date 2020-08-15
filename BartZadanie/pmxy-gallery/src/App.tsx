@@ -10,9 +10,12 @@ import walkercityJpg from './images/walkercity.jpg'
 import nightcityJpg from './images/nightcity.jpg'
 import { Container, Card, Button, Row, Col } from 'react-bootstrap'
 import { Switch } from 'react-router-dom'
+import { TransitionGroup } from 'react-transition-group'
+import { ModalProvider } from 'react-modal-hook'
+import { AppModal } from './components/AppModal'
 
 function App() {
-  
+
   return <>
     <div className="background-container">
       <img src={nightcityJpg} />
@@ -20,18 +23,24 @@ function App() {
 
     <div className="container content">
       
+      <AppModal visible={true} onClosed={() => console.log("klos")}>
+        <Card>
+          Kys
+        </Card>
+      </AppModal>
+
       <h1 className="text-light">FOTOGALÉRIA</h1>
       <h2 className="text-light mt-5">KATEGÓRIE</h2>
       <hr />
       <div className="mt-4"></div>
-      
+
       <Button>Open modal</Button>
-      
+
       <div className="gallery">
         <Row>
           {...(() => {
-            const items = [];
-            for (let i = 0; i<= 10; i++) {
+            const items = []
+            for (let i = 0; i <= 10; i++) {
               items.push(
                 <Col key={i} sm={6} lg={3}>
                   <div className="gallery-card" >
@@ -39,11 +48,11 @@ function App() {
                     <div className="p-1 pt-2 text-center text-uppercase">
                       <span>Hory</span>
                     </div>
-                  </div> 
+                  </div>
                 </Col>
               )
             }
-            return items;
+            return items
           })()}
         </Row>
       </div>
@@ -51,4 +60,9 @@ function App() {
   </>
 }
 
-render(<App />, document.getElementById("reactRoot"))
+render(
+  <ModalProvider rootComponent={TransitionGroup}>
+    <App />
+  </ModalProvider>,
+  document.getElementById("reactRoot")
+)

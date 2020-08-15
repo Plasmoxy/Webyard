@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { animated, useSpring } from 'react-spring'
-import './AppModal.scss'
+import './AppModalAnimated.scss'
 
 interface Props {
   visible?: boolean,
   onClosed?: () => any,
 }
 
-export const AppModal: React.FC<Props> = ({
+export const AppModalAnimated: React.FC<Props> = ({
   visible = false, children, onClosed
 }) => {
   
@@ -20,7 +20,7 @@ export const AppModal: React.FC<Props> = ({
   }))
   const [displayed, setDisplayed] = useState(false)
   const root = useRef<any>()
-  const cls = `app-modal ${displayed ? 'd-flex' : ""}`
+  const cls = `app-modal-animated ${displayed ? 'd-flex' : ""}`
   
   useEffect(() => {
     console.log("triggered")
