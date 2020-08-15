@@ -13,8 +13,17 @@ import { Switch } from 'react-router-dom'
 import { TransitionGroup } from 'react-transition-group'
 import { ModalProvider } from 'react-modal-hook'
 import { AppModal } from './components/AppModal'
+import { useModal } from 'react-modal-hook'
 
 function App() {
+  
+  const [showModal, hideModal] = useModal(({in: open, onExited}) => (
+    <AppModal visible={true} onClosed={() => console.log("klos")}>
+      <Card>
+        Kys
+      </Card>
+    </AppModal>
+  ))
 
   return <>
     <div className="background-container">
@@ -22,12 +31,6 @@ function App() {
     </div>
 
     <div className="container content">
-      
-      <AppModal visible={true} onClosed={() => console.log("klos")}>
-        <Card>
-          Kys
-        </Card>
-      </AppModal>
 
       <h1 className="text-light">FOTOGALÉRIA</h1>
       <h2 className="text-light mt-5">KATEGÓRIE</h2>
