@@ -17,8 +17,9 @@ import { useModal } from 'react-modal-hook'
 
 function App() {
   
+  
   const [showModal, hideModal] = useModal(({in: open, onExited}) => (
-    <AppModal visible={true} onClosed={() => console.log("klos")}>
+    <AppModal visible={open} onClosed={hideModal}>
       <Card>
         Kys
       </Card>
@@ -37,7 +38,7 @@ function App() {
       <hr />
       <div className="mt-4"></div>
 
-      <Button>Open modal</Button>
+      <Button onClick={showModal}>Open modal</Button>
 
       <div className="gallery">
         <Row>
