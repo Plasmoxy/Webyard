@@ -20,5 +20,6 @@
       "resolveJsonModule": true,
       "noEmit": true,
       "rootDir": "./src",
+      "outDir": "./dist"
   }
 }

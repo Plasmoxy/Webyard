@@ -1,17 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import './AppModal.scss'
 
 interface Props {
-  visible?: boolean,
-  onClosed?: () => any,
+  open: boolean
+  onClosed: () => any
+  onExited?: () => any
 }
 
+// Modal component with support for TransitionGroup
 export const AppModal: React.FC<Props> = ({
-  visible = false, children, onClosed
+  open, children, onExited, onClosed
 }) => {
 
   const root = useRef<any>()
-  const cls = `app-modal ${visible ? 'd-flex' : ""}`
+  const cls = `app-modal d-flex`
 
   const close = () => {
     if (onClosed) onClosed()
@@ -22,12 +25,20 @@ export const AppModal: React.FC<Props> = ({
     if (e.target == root.current) close()
   }
 
-  return <div ref={root} className={cls} onClick={click}>
-    <div className="app-modal-content">
-      <div className="d-flex justify-content-end">
-        <span className="app-modal-close-btn" onClick={close}>&times;</span>
+  return <CSSTransition
+    in={open}
+    timeout={2000}
+    classNames="app-modal-transition"
+    unmountOnExit
+    onExited={onExited}
+  >
+    <div ref={root} className={cls} onClick={click}>
+      <div className="app-modal-content">
+        <div className="d-flex justify-content-end">
+          <span className="app-modal-close-btn" onClick={close}>&times;</span>
+        </div>
+        {children}
       </div>
-      {children}
     </div>
-  </div>
+  </CSSTransition>
 }

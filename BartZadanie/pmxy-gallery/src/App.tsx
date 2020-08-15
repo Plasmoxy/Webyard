@@ -18,13 +18,14 @@ import { useModal } from 'react-modal-hook'
 function App() {
   
   
-  const [showModal, hideModal] = useModal(({in: open, onExited}) => (
-    <AppModal visible={open} onClosed={hideModal}>
+  const [showModal, hideModal] = useModal(({in: open, onExited}) => {
+    
+    return <AppModal open={open} onExited={onExited} onClosed={hideModal}>
       <Card>
         Kys
       </Card>
     </AppModal>
-  ))
+  })
 
   return <>
     <div className="background-container">
