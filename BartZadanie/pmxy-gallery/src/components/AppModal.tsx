@@ -11,12 +11,26 @@ export const AppModal: React.FC<Props> = ({
   visible = false, children, onClose
 }) => {
   
+  const ANIM_DURATION = 200
+  const [rootSpring, setRootSpring ] = useSpring(() => ({
+    config: {
+      duration: ANIM_DURATION,
+    },
+    opacity: 0,
+  }))
+  const [displayed, setDisplayed] = useState(false)
   const root = useRef<any>()
-  const cls = `app-modal d-flex`
-  const [rootSpring, setRootSpring ] = useSpring(() => ({opacity: 0}))
+  const cls = `app-modal ${displayed ? 'd-flex' : ""}`
   
   useEffect(() => {
+    console.log("triggered")
+    setRootSpring({opacity: visible ? 1 : 0})
     
+    if (visible) {
+      setDisplayed(visible)
+    } else {
+      setTimeout(() => setDisplayed(false), ANIM_DURATION)
+    }
   }, [visible])
   
   const close = () => {
