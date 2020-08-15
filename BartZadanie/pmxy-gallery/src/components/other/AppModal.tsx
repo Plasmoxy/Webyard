@@ -4,11 +4,11 @@ import './AppModal.scss'
 
 interface Props {
   visible?: boolean,
-  onClose?: () => any,
+  onClosed?: () => any,
 }
 
 export const AppModal: React.FC<Props> = ({
-  visible = false, children, onClose
+  visible = false, children, onClosed
 }) => {
   
   const ANIM_DURATION = 200
@@ -34,7 +34,7 @@ export const AppModal: React.FC<Props> = ({
   }, [visible])
   
   const close = () => {
-    if (onClose) onClose()
+    if (onClosed) onClosed()
   }
   
   const click = (e: any) => {
