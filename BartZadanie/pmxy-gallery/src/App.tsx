@@ -1,7 +1,7 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
-import React from "react"
+import React, { useState } from "react"
 import { render } from "react-dom"
 import './App.scss'
 import galleryThumb from './images/gallery-thumb.jpg'
@@ -13,6 +13,9 @@ import { Switch } from 'react-router-dom'
 import { AppModal } from './components/Appmodal'
 
 function App() {
+  
+  const [yoModalOpen, setYoModalOpen] = useState(false)
+  
   return <>
     <div className="background-container">
       <img src={nightcityJpg} />
@@ -20,7 +23,7 @@ function App() {
 
     <div className="container content">
       
-      <AppModal>
+      <AppModal visible={yoModalOpen} onClose={() => setYoModalOpen(false)}>
         <Card className="p-3">
           iiyooo
         </Card>
@@ -30,6 +33,8 @@ function App() {
       <h2 className="text-light mt-5">KATEGÓRIE</h2>
       <hr />
       <div className="mt-4"></div>
+      
+      <Button onClick={() => setYoModalOpen(true)}>Open modal</Button>
       
       <div className="gallery">
         <Row>
