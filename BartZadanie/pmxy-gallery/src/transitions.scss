@@ -1,0 +1,18 @@
+
+.transition-modal-enter {
+  opacity: 0;
+}
+
+.transition-modal-enter-active {
+  opacity: 1;
+  transition: 250ms;
+}
+
+.transition-modal-exit {
+  opacity: 1;
+}
+
+.transition-modal-exit-active {
+  opacity: 0;
+  transition: 250ms;
+}

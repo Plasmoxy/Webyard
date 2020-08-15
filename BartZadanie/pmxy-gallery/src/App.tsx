@@ -21,8 +21,12 @@ function App() {
   const [showModal, hideModal] = useModal(({in: open, onExited}) => {
     
     return <AppModal open={open} onExited={onExited} onClosed={hideModal}>
-      <Card>
-        Kys
+      <Card className="p-4">
+        <h1>Flip ty bryndzovy kokot</h1>
+        <p>Prepac</p>
+        <div className="d-flex justify-content-end">
+          <Button onClick={hideModal}>OK</Button>
+        </div>
       </Card>
     </AppModal>
   })

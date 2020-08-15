@@ -21,18 +21,18 @@ export const AppModal: React.FC<Props> = ({
     // if outside the content
     if (e.target == root.current) close()
   }
-
   
   return <CSSTransition
     in={open}
-    timeout={2000}
+    timeout={250}
     unmountOnExit
+    classNames="transition-modal"
     onExited={onExited}
   >
     <div className="app-modal" ref={root} onClick={click}>
       <div className="app-modal-content">
-        <div className="d-flex justify-content-end">
-          <span className="app-modal-close-btn" onClick={close}>&times;</span>
+        <div onClick={close} className="d-flex justify-content-end">
+          <span className="app-modal-close-btn">&times;</span>
         </div>
         {children}
       </div>
