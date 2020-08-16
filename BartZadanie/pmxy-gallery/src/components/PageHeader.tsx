@@ -1,12 +1,18 @@
 import React from 'react'
+import './PageHeader.scss'
 import backSvg from '../icons/back.svg'
+import { useHistory } from 'react-router-dom'
 
 export function PageHeader(props: {title: string, backButton: boolean}) {
+  const history = useHistory()
   return <>
     <div className="mt-5 d-flex justify-content-start">
-      <span className="d-flex align-items-center">
-        <img src={backSvg} style={{marginBottom: "2px"}}/>
-        <h2 className="my-0 mx-3 text-light">{props.title}</h2>
+      <span
+      className={`page-header d-flex align-items-center ${props.backButton ? "pointer" : ""}`}
+      onClick={props.backButton ? history.goBack : undefined}
+      >
+        {props.backButton && <img className="back-button" src={backSvg} />}
+        <h2 className={`text-light ${props.backButton ? "back-title" : ""}`}>{props.title}</h2>
       </span>
     </div>
     <hr />
