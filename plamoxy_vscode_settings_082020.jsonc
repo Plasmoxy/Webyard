@@ -1,0 +1,90 @@
+{
+  "editor.fontFamily": "Consolas",
+  "editor.fontLigatures": true,
+  "git.ignoreMissingGitWarning": true,
+  "javascript.format.semicolons": "remove",
+  "typescript.format.semicolons": "remove",
+  "prettier.semi": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "prettier.packageManager": "yarn",
+  "vsicons.presets.hideFolders": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "off",
+  "debug.console.fontFamily": "Consolas",
+  "editor.wordWrap": "on",
+  "sass.lint.enable": true,
+  "editor.tabSize": 2,
+  "explorer.compactFolders": false,
+  "code-runner.runInTerminal": true,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "window.zoomLevel": 0,
+
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.renderLineHighlight": "gutter",
+  "editor.renderIndentGuides": false,
+  // "emmet.showExpandedAbbreviation": "never",
+  "color-manager.languages": [
+      "css",
+      "html",
+      "javascript",
+      "typescript"
+  ],
+
+  // DARTU!
+  "[dart]": {
+      "editor.defaultFormatter": "Dart-Code.dart-code",
+      "editor.formatOnSave": true,
+  },
+  "dart.closingLabels": true,
+  "dart.lineLength": 1000,
+
+  // BRAKETS
+  "editor.matchBrackets": "never",
+  "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
+  "bracket-pair-colorizer-2.colorMode": "Consecutive",
+  "bracket-pair-colorizer-2.colors": [
+      "#9cadc4",
+  ],
+
+
+  // SOME KOLORS!!!
+  "workbench.colorCustomizations": {
+      "editorWarning.foreground": "#5e5e5e",
+      "[City Lights]": {
+          // "editor.background": "#1c1d21"
+          "dart.closingLabels": "#526068",
+      }
+  },
+  "editor.tokenColorCustomizations": {
+      "[City Lights]": {
+          "types": "#f1c753",
+          "comments": "#757d9b",
+      }
+  },
+  "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "City Lights",
+  "editor.minimap.enabled": false,
+  "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "code-runner.executorMap": {
+      // find first src in path, cd into it, run cargo
+      "rust": "cd ($fullFileName -split \"\\\\src\")[0] && cargo run;",
+  },
+  "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe", // PS 7
+  "powershell.integratedConsole.showOnStartup": false,
+  "editor.trimAutoWhitespace": false,
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontFamily": "Fira Code",
+  "cargo.automaticCheck": false,
+  "editor.fontSize": 15,
+  "dart.warnWhenEditingFilesOutsideWorkspace": false,
+  "extensions.ignoreRecommendations": true,
+  "[xml]": {
+      "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+}
