@@ -28,6 +28,13 @@ body, html {
   box-shadow: 0 4px 8px 0 rgba(black, 0.2);
 }
 
+// some margin on small devices
+@include media-breakpoint-down(sm) {
+  .container {
+    max-width: 90%;
+  }
+}
+
 h1 {
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
