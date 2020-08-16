@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { useModal } from 'react-modal-hook'
 import './AppModal.scss'
+import closeSvg from '../icons/close.svg'
 
 interface Props {
   open: boolean
@@ -33,7 +34,10 @@ export const AppModal: React.FC<Props> = ({
     <div className="app-modal" ref={root} onClick={click}>
       <div className="app-modal-content">
         <div onClick={close} className="d-flex justify-content-end">
-          <span className="app-modal-close-btn">&times;</span>
+          <span className="app-modal-close-btn ">
+            <img className="mx-2" src={closeSvg} width="22" height="22" />
+            ZAVRIEŤ
+          </span>
         </div>
         {children}
       </div>
