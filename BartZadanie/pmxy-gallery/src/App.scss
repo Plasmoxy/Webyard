@@ -43,6 +43,10 @@ hr {
   border-top: 0.13rem solid rgba(white, 0.4);
 }
 
+.text-grey {
+  color: #555555;
+}
+
 .background-container {
   position: absolute;
   top: 0px;
@@ -78,9 +82,9 @@ hr {
   display: flex;
   flex-direction: column;
   
-  box-shadow: 0 4px 8px 0 rgba(black, 0.2);
+  box-shadow: 0 3px 6px 0 rgba(black, 0.2);
   transition: box-shadow 0.3s, transform 0.3s;
-  border-radius: 5px;
+  border-radius: 3px;
   
   background-color: white;
   
@@ -91,7 +95,7 @@ hr {
   }
   
   &:hover {
-    transform: scale(1.05);
+    transform: translate(0, -10px) scale(1.05);
     box-shadow: 0 8px 20px 0 rgba(black, 0.2);
     cursor: pointer;
   }

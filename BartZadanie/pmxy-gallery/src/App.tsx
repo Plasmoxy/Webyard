@@ -39,8 +39,6 @@ function App() {
       <hr />
       <div className="mt-4"></div>
 
-      <Button onClick={showModal}>Open modal</Button>
-
       <div className="gallery">
         <Row>
           {...(() => {
@@ -50,7 +48,7 @@ function App() {
                 <Col key={i} sm={6} lg={3}>
                   <div className="gallery-card" >
                     <img src={townJpg} />
-                    <div className="p-1 pt-2 text-center">
+                    <div className="p-1 pt-2 text-center text-grey">
                       <h2>Hory</h2>
                     </div>
                   </div>
