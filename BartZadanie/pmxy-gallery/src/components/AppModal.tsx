@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import { useModal } from 'react-modal-hook'
 import './AppModal.scss'
 
 interface Props {
@@ -38,4 +39,14 @@ export const AppModal: React.FC<Props> = ({
       </div>
     </div>
   </CSSTransition>
+}
+
+export const useAppModal = (contentFn: () => JSX.Element) => {
+  const [show, hide] = useModal(({in: open, onExited}) => {
+    return <AppModal open={open} onExited={onExited} onClosed={hide}>
+      {contentFn()}
+    </AppModal>
+  })
+  
+  return [show, hide]
 }

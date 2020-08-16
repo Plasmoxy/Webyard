@@ -12,24 +12,20 @@ import { Container, Card, Button, Row, Col } from 'react-bootstrap'
 import { Switch } from 'react-router-dom'
 import { TransitionGroup } from 'react-transition-group'
 import { ModalProvider } from 'react-modal-hook'
-import { AppModal } from './components/AppModal'
+import { AppModal, useAppModal } from './components/AppModal'
 import { useModal } from 'react-modal-hook'
 
 function App() {
   
-  
-  const [showModal, hideModal] = useModal(({in: open, onExited}) => {
-    
-    return <AppModal open={open} onExited={onExited} onClosed={hideModal}>
-      <Card className="p-4">
-        <h1>Flip ty bryndzovy kokot</h1>
-        <p>Prepac</p>
-        <div className="d-flex justify-content-end">
-          <Button onClick={hideModal}>OK</Button>
-        </div>
-      </Card>
-    </AppModal>
-  })
+  const [showModal, hideModal] = useAppModal(() =>
+    <Card className="p-4">
+      <h1>Flip ty bryndzovy kokot</h1>
+      <p>Prepac</p>
+      <div className="d-flex justify-content-end">
+        <Button onClick={hideModal}>OK</Button>
+      </div>
+    </Card>
+  )
 
   return <>
     <div className="background-container">
