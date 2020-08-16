@@ -1,3 +1,7 @@
+// react-transition-group transitions
+
+$page-duration: 300ms;
+$modal-duration: 250ms;
 
 .transition-modal-enter {
   opacity: 0;
@@ -5,7 +9,7 @@
 
 .transition-modal-enter-active {
   opacity: 1;
-  transition: opacity 250ms;
+  transition: opacity $modal-duration;
 }
 
 .transition-modal-exit {
@@ -14,7 +18,7 @@
 
 .transition-modal-exit-active {
   opacity: 0;
-  transition: opacity 250ms;
+  transition: opacity $modal-duration;
 }
 
 .transition-page-enter {
@@ -26,7 +30,7 @@
 .transition-page-enter-active {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 3000ms, transform 3000ms;
+  transition: opacity $page-duration, transform $page-duration;
 }
 
 .transition-page-exit {
@@ -38,5 +42,5 @@
 .transition-page-exit-active {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 3000ms, transform 3000ms;
+  transition: opacity $page-duration, transform $page-duration;
 }

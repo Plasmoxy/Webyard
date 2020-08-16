@@ -19,6 +19,11 @@ function App() {
     </div>
     
     <div className="container content-container">
+      <h1 className="text-light">Fotogaléria</h1>
+      <h2 className="text-light mt-5">Kater</h2>
+      <hr />
+      <div className="mt-4"></div>
+      
       <Route key="/" exact path="/">{({match}) => (
         <CSSTransition
           in={match != null}
@@ -27,7 +32,7 @@ function App() {
           unmountOnExit
           >
             <div className="content-page">
-              <AppHeader title="Fotogaléria" subtitle="Kategórie" />
+              <AppHeader title="Kategórie" />
               <GalleryPage />
             </div>
           </CSSTransition>
@@ -41,7 +46,7 @@ function App() {
           unmountOnExit
           >
             <div className="content-page">
-              <AppHeader title="TEst" subtitle="yeet" />
+              <AppHeader title="Testovacia stránka" />
               <div className="text-light">YEET ROOUTE TEST</div>
             </div>
           </CSSTransition>
