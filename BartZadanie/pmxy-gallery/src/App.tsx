@@ -19,18 +19,18 @@ function App() {
     </div>
     
     <Route key="/" exact path="/">{({match}) => (
-        <CSSTransition
-          in={match != null}
-          timeout={10000}
-          classNames="transition-page"
-          unmountOnExit
-          >
-            <div className="container content transition-page">
-              <AppHeader title="Fotogaléria" subtitle="Kategórie" />
-              <GalleryPage />
-            </div>
-          </CSSTransition>
-      )}</Route>
+      <CSSTransition
+        in={match != null}
+        timeout={10000}
+        classNames="transition-page"
+        unmountOnExit
+        >
+          <div className="container content transition-page">
+            <AppHeader title="Fotogaléria" subtitle="Kategórie" />
+            <GalleryPage />
+          </div>
+        </CSSTransition>
+    )}</Route>
       
     <Route key="/test" exact path="/test">{({match}) => (
       <CSSTransition
