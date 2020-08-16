@@ -74,7 +74,7 @@ hr {
   flex-direction: column;
   
   box-shadow: 0 4px 8px 0 rgba(black, 0.2);
-  transition: all 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s;
   border-radius: 5px;
 
   font-weight: 500;
