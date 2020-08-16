@@ -18,11 +18,8 @@ function App() {
       <img src={nightcityJpg} />
     </div>
     
-    <div className="container content-container">
+    <div className="container content-container px-0">
       <h1 className="text-light">Fotogaléria</h1>
-      <h2 className="text-light mt-5">Kater</h2>
-      <hr />
-      <div className="mt-4"></div>
       
       <Route key="/" exact path="/">{({match}) => (
         <CSSTransition
