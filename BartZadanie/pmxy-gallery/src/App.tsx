@@ -18,25 +18,25 @@ function App() {
       <img src={nightcityJpg} />
     </div>
 
-    <Route exact path="/">{({match}) => (
+    <Route key="/" exact path="/">{({match}) => (
       <CSSTransition
         in={match != null}
-        timeout={300}
-        classNames="page-transition"
+        timeout={200}
+        classNames="transition-page"
         unmountOnExit
         >
           <div className="container content">
-            <AppHeader title="Galéria" subtitle="Kategórie" />
+            <AppHeader title="Fotogaléria" subtitle="Kategórie" />
             <GalleryPage />
           </div>
         </CSSTransition>
     )}</Route>
     
-    <Route exact path="/test">{({match}) => (
+    <Route key="/test" exact path="/test">{({match}) => (
       <CSSTransition
         in={match != null}
-        timeout={300}
-        classNames="page-transition"
+        timeout={200}
+        classNames="transition-page"
         unmountOnExit
         >
           <div className="container content">
