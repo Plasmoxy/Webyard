@@ -19,7 +19,7 @@ function App() {
   
   const [showModal, hideModal] = useAppModal(() =>
     <Card className="p-4">
-      <h1>Flip ty bryndzovy kokot</h1>
+      <h4>Flip ty bryndzovy kokot</h4>
       <p>Prepac</p>
       <div className="d-flex justify-content-end">
         <Button onClick={hideModal}>OK</Button>
@@ -50,8 +50,8 @@ function App() {
                 <Col key={i} sm={6} lg={3}>
                   <div className="gallery-card" >
                     <img src={townJpg} />
-                    <div className="p-1 pt-2 text-center text-uppercase">
-                      <span>Hory</span>
+                    <div className="p-1 pt-2 text-center">
+                      <h2>Hory</h2>
                     </div>
                   </div>
                 </Col>
