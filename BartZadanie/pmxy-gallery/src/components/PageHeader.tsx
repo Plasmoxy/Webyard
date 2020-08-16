@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 export function PageHeader(props: {title: string, backButton: boolean}) {
   const history = useHistory()
   return <>
-    <div className="mt-5 d-flex justify-content-start">
+    <div className="d-flex justify-content-start">
       <span
       className={`page-header d-flex align-items-center ${props.backButton ? "pointer" : ""}`}
       onClick={props.backButton ? history.goBack : undefined}

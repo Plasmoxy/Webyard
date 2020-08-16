@@ -20,7 +20,6 @@ function App() {
     
     <div className="container content-container px-0">
       <h1 className="text-light">Fotogaléria</h1>
-      <div className="mt-4"></div>
       
       <Route key="/" exact path="/">{({match}) => (
         <CSSTransition
