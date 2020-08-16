@@ -18,6 +18,10 @@ function App() {
       <img src={nightcityJpg} />
     </div>
     
+    <div className="container bg-warning">
+      yes
+    </div>
+    
     <div className="container content-container px-0">
       <h1 className="text-light">Fotogaléria</h1>
       <div className="mt-4"></div>
@@ -30,7 +34,7 @@ function App() {
           unmountOnExit
           >
             <div className="content-page">
-              <PageHeader title="Kategórie" />
+              <PageHeader title="Kategórie" backButton={false} />
               <GalleryPage />
             </div>
           </CSSTransition>
@@ -44,7 +48,7 @@ function App() {
           unmountOnExit
           >
             <div className="content-page">
-              <PageHeader title="Testovacia stránka" />
+              <PageHeader title="Testovacia stránka" backButton={true}/>
               <div className="text-light">YEET ROOUTE TEST</div>
             </div>
           </CSSTransition>
