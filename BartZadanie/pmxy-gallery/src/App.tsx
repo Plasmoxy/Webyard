@@ -9,7 +9,7 @@ import 'regenerator-runtime/runtime'
 import './App.scss'
 import nightcityJpg from './images/nightcity.jpg'
 import { BrowserRouter, Route } from 'react-router-dom'
-import { AppHeader } from './components/AppHeader'
+import { PageHeader } from './components/PageHeader'
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
     
     <div className="container content-container px-0">
       <h1 className="text-light">Fotogaléria</h1>
+      <div className="mt-4"></div>
       
       <Route key="/" exact path="/">{({match}) => (
         <CSSTransition
@@ -29,7 +30,7 @@ function App() {
           unmountOnExit
           >
             <div className="content-page">
-              <AppHeader title="Kategórie" />
+              <PageHeader title="Kategórie" />
               <GalleryPage />
             </div>
           </CSSTransition>
@@ -43,7 +44,7 @@ function App() {
           unmountOnExit
           >
             <div className="content-page">
-              <AppHeader title="Testovacia stránka" />
+              <PageHeader title="Testovacia stránka" />
               <div className="text-light">YEET ROOUTE TEST</div>
             </div>
           </CSSTransition>
