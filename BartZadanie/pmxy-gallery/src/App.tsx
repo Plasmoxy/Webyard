@@ -14,6 +14,7 @@ import { TransitionGroup } from 'react-transition-group'
 import { ModalProvider } from 'react-modal-hook'
 import { AppModal, useAppModal } from './components/AppModal'
 import { useModal } from 'react-modal-hook'
+import addBigSvg from './icons/add_big.svg'
 
 function App() {
   
@@ -43,7 +44,7 @@ function App() {
         <Row>
           {...(() => {
             const items = []
-            for (let i = 0; i <= 10; i++) {
+            for (let i = 0; i <= 5; i++) {
               items.push(
                 <Col key={i} sm={6} lg={3}>
                   <div className="gallery-card" >
@@ -55,6 +56,14 @@ function App() {
                 </Col>
               )
             }
+            items.push(
+              <Col key={items.length} sm={6} lg={3} className="d-flex">
+                <div className="gallery-add-category-card">
+                  <img src={addBigSvg} className="my-3"/>
+                  <h2>Pridať kategóriu</h2>
+                </div>
+              </Col>
+            )
             return items
           })()}
         </Row>

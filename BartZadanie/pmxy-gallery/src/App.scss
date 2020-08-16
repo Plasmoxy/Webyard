@@ -100,3 +100,22 @@ hr {
     cursor: pointer;
   }
 }
+
+.gallery-add-category-card {
+  background-color: #eee;
+  max-width: 300px;
+  width: 100%;
+  
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  border: 0.20rem solid rgba(black, 0.2);
+  border-radius: 0.25rem;
+  
+  color: rgba(black, 0.5);
+  cursor: pointer;
+}
