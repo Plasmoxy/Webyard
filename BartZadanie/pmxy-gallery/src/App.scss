@@ -67,9 +67,17 @@ hr {
   }
 }
 
-.content {
+.content-container {
+  position: relative;
   margin-top: 50px;
   margin-bottom: 100px;
+}
+
+.content-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .gallery-card {
