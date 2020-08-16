@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import townJpg from '../images/town.jpg'
 import addBigSvg from '../icons/add_big.svg'
+import { Link } from 'react-router-dom'
 
 export function GalleryPage() {
   
@@ -12,12 +13,14 @@ export function GalleryPage() {
         for (let i = 0; i <= 5; i++) {
           items.push(
             <Col key={i} sm={6} lg={3}>
-              <div className="gallery-card" >
-                <img src={townJpg} />
-                <div className="p-1 pt-2 text-center text-grey">
-                  <h2>Hory</h2>
+              <Link to="/test" style={{textDecoration: "none"}}>
+                <div className="gallery-card" >
+                  <img src={townJpg} />
+                  <div className="p-1 pt-2 text-center text-grey">
+                    <h2>Hory</h2>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </Col>
           )
         }
