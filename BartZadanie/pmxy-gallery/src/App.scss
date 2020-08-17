@@ -16,6 +16,14 @@ body, html {
   padding: 0;
   font-family: 'Roboto Medium', Helvetica, sans-serif;
   scroll-behavior: smooth;
+  
+  // user select disable
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .btn:focus {
@@ -36,7 +44,7 @@ body, html {
   }
 }
 
-a {
+a:hover {
   text-decoration: none;
 }
 
