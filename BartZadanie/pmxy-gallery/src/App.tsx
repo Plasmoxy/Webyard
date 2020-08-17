@@ -15,9 +15,10 @@ function App() {
   
   const history = useHistory()
   
-  // scroll to top on history push
   useEffect(() => {
     return history.listen((loc, action) => {
+      console.log(`-> ${action} ${loc.pathname}`)
+      // scroll to top on history push
       if (action === "PUSH") {
         window.scrollTo(0, 0)
       }
