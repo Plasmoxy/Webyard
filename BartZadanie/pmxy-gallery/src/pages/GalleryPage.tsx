@@ -1,8 +1,10 @@
 import React from 'react'
+import "./GalleryPage.scss"
 import { Row, Col } from 'react-bootstrap'
 import galleryThumbJpg from '../images/gallery-thumb.jpg'
 import addBigSvg from '../icons/add_big.svg'
 import { Link } from 'react-router-dom'
+import { CategoryCard } from '../components/CategoryCard'
 
 export function GalleryPage() {
   
@@ -14,26 +16,23 @@ export function GalleryPage() {
           items.push(
             <Col key={i} sm={6} lg={3}>
               <Link to="/test" style={{textDecoration: "none"}}>
-                <div className="gallery-card" >
-                  <img src={galleryThumbJpg} />
-                  <div className="p-1 pt-2 text-center text-grey">
-                    <h2>Hory</h2>
-                  </div>
-                </div>
+                <CategoryCard title="Nichts" image={galleryThumbJpg} />
               </Link>
             </Col>
           )
         }
         items.push(
-          <Col key={items.length} sm={6} lg={3} className="d-flex">
-            <div className="gallery-add-category-card">
-              <img src={addBigSvg} className="my-3"/>
-              <h2>Pridať kategóriu</h2>
-            </div>
-          </Col>
+          
         )
         return items
       })()}
+      
+      <Col sm={6} lg={3} className="d-flex">
+          <div className="gallery-add-category-card">
+            <img src={addBigSvg} className="my-3"/>
+            <h2>Pridať kategóriu</h2>
+          </div>
+      </Col>
     </Row>
   </div>
 }
