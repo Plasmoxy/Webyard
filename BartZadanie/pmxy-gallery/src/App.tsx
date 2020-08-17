@@ -1,6 +1,6 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import 'core-js/stable'
-import React from "react"
+import React, { useEffect } from "react"
 import { render } from "react-dom"
 import { ModalProvider } from 'react-modal-hook'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
@@ -8,10 +8,21 @@ import { GalleryPage } from './pages/GalleryPage'
 import 'regenerator-runtime/runtime'
 import './App.scss'
 import nightcityJpg from './images/nightcity.jpg'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { PageHeader } from './components/PageHeader'
 
 function App() {
+  
+  const history = useHistory()
+  
+  // scroll to top on history push
+  useEffect(() => {
+    return history.listen((loc, action) => {
+      if (action === "PUSH") {
+        window.scrollTo(0, 0)
+      }
+    })
+  }, [history])
 
   return <>
     <div className="background-container">
