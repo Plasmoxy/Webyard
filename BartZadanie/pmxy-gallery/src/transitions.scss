@@ -5,6 +5,7 @@ $modal-duration: 250ms;
 
 .transition-modal-enter {
   opacity: 0;
+  will-change: opacity;
 }
 
 .transition-modal-enter-active {
@@ -22,6 +23,7 @@ $modal-duration: 250ms;
 }
 
 .transition-page-enter {
+  will-change: transform, opacity;
   z-index: 1;
   opacity: 0;
   transform: scale(1.1);
