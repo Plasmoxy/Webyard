@@ -10,9 +10,11 @@ import './App.scss'
 import nightcityJpg from './images/nightcity.jpg'
 import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { PageHeader } from './components/PageHeader'
+import { TestPage } from './pages/TestPage'
 
 const routes = [
-  { path: "/", component: GalleryPage }
+  { path: "/", component: GalleryPage },
+  { path: "/test", component: TestPage },
 ]
 
 function App() {

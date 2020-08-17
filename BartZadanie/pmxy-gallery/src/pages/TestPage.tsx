@@ -5,7 +5,7 @@ export function TestPage() {
 
   return <>
     <PageHeader title="Test" backButton={true} />
-    <div>
+    <div className="text-light">
       TOTO JEST TEST PAGE XDXDXDXD
     </div>
   </>
