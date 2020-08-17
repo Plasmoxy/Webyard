@@ -39,7 +39,7 @@ function App() {
     <div className="container content-container px-0">
       <h1 className="text-light">Fotogaléria</h1>
       
-      {routes.map(r => <Route exact path={r.path}>{({ match }) => (
+      {routes.map(r => <Route key={r.path} exact path={r.path}>{({ match }) => (
         <CSSTransition
           in={match != null}
           timeout={3000}
