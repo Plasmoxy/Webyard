@@ -11,10 +11,14 @@ import nightcityJpg from './images/nightcity.jpg'
 import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { PageHeader } from './components/PageHeader'
 
+const routes = [
+  { path: "/", component: GalleryPage }
+]
+
 function App() {
-  
+
   const history = useHistory()
-  
+
   useEffect(() => {
     return history.listen((loc, action) => {
       console.log(`-> ${action} ${loc.pathname}`)
@@ -29,37 +33,21 @@ function App() {
     <div className="background-container">
       <img src={nightcityJpg} />
     </div>
-    
+
     <div className="container content-container px-0">
       <h1 className="text-light">Fotogaléria</h1>
-      
-      <Route key="/" exact path="/">{({match}) => (
+      {routes.map(r => <Route exact path={r.path}>{({ match }) => (
         <CSSTransition
           in={match != null}
           timeout={3000}
           classNames="transition-page"
           unmountOnExit
-          >
-            <div className="content-page">
-              <PageHeader title="Kategórie" backButton={false} />
-              <GalleryPage />
-            </div>
-          </CSSTransition>
-      )}</Route>
-        
-      <Route key="/test" exact path="/test">{({match}) => (
-        <CSSTransition
-          in={match != null}
-          timeout={3000}
-          classNames="transition-page"
-          unmountOnExit
-          >
-            <div className="content-page">
-              <PageHeader title="Testovacia stránka" backButton={true}/>
-              <div className="text-light">YEET ROOUTE TEST</div>
-            </div>
-          </CSSTransition>
-      )}</Route>
+        >
+          <div className="content-page">
+            <r.component />
+          </div>
+        </CSSTransition>
+      )}</Route>)}
     </div>
   </>
 }
