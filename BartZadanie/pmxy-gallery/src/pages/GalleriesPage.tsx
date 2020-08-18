@@ -32,10 +32,7 @@ export function GalleriesPage() {
       <Row>
         {qGalleries.data.galleries.map((gallery: any) =>
           <Col key={gallery.path} sm={6} lg={3}>
-            <Link to={{
-              pathname: "/test",
-              state: { mesage: "kys" }
-            }}>
+            <Link to={`/test/${gallery.path}`}>
               <CategoryCard title={gallery.name} image={getApiImageUrl(gallery.image.fullpath)} />
             </Link>
           </Col>

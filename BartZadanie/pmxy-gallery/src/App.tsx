@@ -15,7 +15,7 @@ import { TestPage } from './pages/TestPage'
 
 const routes = [
   { path: "/", component: GalleriesPage },
-  { path: "/test", component: TestPage },
+  { path: "/test/:path", component: TestPage },
 ]
 
 function App() {
