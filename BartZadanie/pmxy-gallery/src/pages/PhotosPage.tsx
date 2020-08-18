@@ -10,17 +10,14 @@ export function PhotosPage() {
   
   const { path } = useParams()
   
-  console.log(path)
-  
-  const qGallery = useQuery(
-    ["fetchGallery", path],
-    () => fetchApiData(`gallery/${path}`)
-  )
+  const qGallery = useQuery(["fetchGallery", path], () => {
+    if (path) return fetchApiData(`gallery/${path}`)
+  })
   
   return <>
     <PageHeader title={qGallery.data?.gallery.name ?? ""} backButton={true} />
     
-    {qGallery.isSuccess && 
+    {path && qGallery.isSuccess && 
       <Row>
         {qGallery.data.images.map((image: any) =>
           <Col key={image.fullpath} sm={6} lg={3}>
