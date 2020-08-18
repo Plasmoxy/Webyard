@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import { CategoryCard } from '../components/CategoryCard'
 import { PageHeader } from '../components/PageHeader'
 import { useAppModal } from '../components/AppModal'
+import axios from 'axios'
+import { useQuery } from 'react-query'
 
 export function GalleryPage() {
   
@@ -16,6 +18,12 @@ export function GalleryPage() {
       <Button onClick={hide}>Súhlasím</Button>
     </div>
   </Card>)
+  
+  const qCategories = useQuery('fetchCategories', async () => {
+    return (await axios.get('http://api.programator.sk/gallery'))?.data
+  })
+  
+  console.log(qCategories.data)
 
   return <>
     <PageHeader title="Kategórie" backButton={false} />

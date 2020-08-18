@@ -5,6 +5,7 @@ import { render } from "react-dom"
 import { ModalProvider } from 'react-modal-hook'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import { GalleryPage } from './pages/GalleryPage'
+import { ReactQueryDevtools} from 'react-query-devtools'
 import 'regenerator-runtime/runtime'
 import './App.scss'
 import nightcityJpg from './images/nightcity.jpg'
@@ -32,6 +33,8 @@ function App() {
   }, [history])
 
   return <>
+    <ReactQueryDevtools />
+  
     <div className="background-container">
       <img src={nightcityJpg} />
     </div>
