@@ -4,7 +4,7 @@ import React, { useEffect } from "react"
 import { render } from "react-dom"
 import { ModalProvider } from 'react-modal-hook'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import { GalleryPage } from './pages/GalleryPage'
+import { GalleriesPage } from './pages/GalleriesPage'
 import { ReactQueryDevtools} from 'react-query-devtools'
 import 'regenerator-runtime/runtime'
 import './App.scss'
@@ -14,7 +14,7 @@ import { PageHeader } from './components/PageHeader'
 import { TestPage } from './pages/TestPage'
 
 const routes = [
-  { path: "/", component: GalleryPage },
+  { path: "/", component: GalleriesPage },
   { path: "/test", component: TestPage },
 ]
 

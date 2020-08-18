@@ -1,5 +1,5 @@
 import React from 'react'
-import "./GalleryPage.scss"
+import "./GalleriesPage.scss"
 import { Row, Col, Card, Button, Spinner } from 'react-bootstrap'
 import galleryThumbJpg from '../images/gallery-thumb.jpg'
 import addBigSvg from '../icons/add_big.svg'
@@ -11,7 +11,7 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 import { getApiImageUrl, fetchApiData } from '../api/api'
 
-export function GalleryPage() {
+export function GalleriesPage() {
 
   const [show, hide] = useAppModal(() => <Card className="p-3">
     <h1>Jakub<br />ty bryndzový kokot.</h1>
@@ -20,7 +20,7 @@ export function GalleryPage() {
     </div>
   </Card>)
 
-  const qCategories = useQuery(
+  const qGalleries = useQuery(
     'fetchCategories',
     () => fetchApiData("gallery")
   )
@@ -28,9 +28,9 @@ export function GalleryPage() {
   return <>
     <PageHeader title="Kategórie" backButton={false} />
     
-    {qCategories.isSuccess && 
+    {qGalleries.isSuccess && 
       <Row>
-        {qCategories.data.galleries.map((gallery: any) =>
+        {qGalleries.data.galleries.map((gallery: any) =>
           <Col key={gallery.path} sm={6} lg={3}>
             <Link to={{
               pathname: "/test",
