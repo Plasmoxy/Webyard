@@ -11,19 +11,17 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 
 export function GalleryPage() {
-  
+
   const [show, hide] = useAppModal(() => <Card className="p-3">
-    <h1>Jakub<br/>ty bryndzový kokot.</h1>
+    <h1>Jakub<br />ty bryndzový kokot.</h1>
     <div className="d-flex justify-content-end">
       <Button onClick={hide}>Súhlasím</Button>
     </div>
   </Card>)
-  
+
   const qCategories = useQuery('fetchCategories', async () => {
     return (await axios.get('http://api.programator.sk/gallery'))?.data
   })
-  
-  console.log(qCategories.data)
 
   return <>
     <PageHeader title="Kategórie" backButton={false} />
@@ -53,5 +51,6 @@ export function GalleryPage() {
           </div>
         </Col>
       </Row>
-    </div></>
+    </div>
+  </>
 }
