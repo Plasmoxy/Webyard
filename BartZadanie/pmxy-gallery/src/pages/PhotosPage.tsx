@@ -5,6 +5,7 @@ import { useQuery } from 'react-query'
 import { fetchApiData, getApiImageUrl } from '../api/api'
 import { Row, Col } from 'react-bootstrap'
 import addBigSvg from '../icons/add_big.svg'
+import "./PhotosPage.scss"
 
 export function PhotosPage() {
   
@@ -26,9 +27,9 @@ export function PhotosPage() {
         )}
 
         <Col sm={6} lg={3} className="d-flex">
-          <div className="gallery-add-category-card">
+          <div className="gallery-add-photo-card">
             <img src={addBigSvg} className="my-3" />
-            <h2>Pridať kategóriu</h2>
+            <h2>Pridať fotky</h2>
           </div>
         </Col>
       </Row>
