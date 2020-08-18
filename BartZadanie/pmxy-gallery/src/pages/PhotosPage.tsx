@@ -6,6 +6,7 @@ import { fetchApiData, getApiImageUrl } from '../api/api'
 import { Row, Col } from 'react-bootstrap'
 import addBigSvg from '../icons/add_big.svg'
 import "./PhotosPage.scss"
+import { PhotoCard } from '../components/PhotoCard'
 
 export function PhotosPage() {
   
@@ -22,7 +23,7 @@ export function PhotosPage() {
       <Row>
         {qGallery.data.images.map((image: any) =>
           <Col key={image.fullpath} sm={6} lg={3}>
-            <img src={getApiImageUrl(image.fullpath)} />
+            <PhotoCard image={getApiImageUrl(image.fullpath, 290, 192)} />
           </Col>
         )}
 
