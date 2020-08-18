@@ -10,7 +10,7 @@ export const PhotoCard: React.FC<Props> = ({
   image, onClick
 }) => {
   
-  return <div className="photo-card m-1" onClick={onClick}>
+  return <div className="photo-card m-2" onClick={onClick}>
     <img src={image} />
   </div>
 }

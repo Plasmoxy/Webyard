@@ -22,7 +22,7 @@ export function PhotosPage() {
     {path && qGallery.isSuccess && 
       <Row>
         {qGallery.data.images.map((image: any) =>
-          <Col key={image.fullpath} sm={6} lg={3}>
+          <Col key={image.fullpath} sm={6} lg={3} className="d-flex justify-content-center p-0">
             <PhotoCard image={getApiImageUrl(image.fullpath, 290, 192)} />
           </Col>
         )}
