@@ -25,8 +25,7 @@ export function GalleryPage() {
 
   return <>
     <PageHeader title="Kategórie" backButton={false} />
-    <div className="gallery">
-      <Row>
+    <Row>
         {...(() => {
           const items = []
           for (let i = 0; i <= 5; i++) {
@@ -51,6 +50,5 @@ export function GalleryPage() {
           </div>
         </Col>
       </Row>
-    </div>
   </>
 }
