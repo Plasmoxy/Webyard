@@ -12,10 +12,12 @@ import nightcityJpg from './images/nightcity.jpg'
 import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { PageHeader } from './components/PageHeader'
 import { TestPage } from './pages/TestPage'
+import { PhotosPage } from './pages/PhotosPage'
 
 const routes = [
   { path: "/", component: GalleriesPage },
   { path: "/test/:path", component: TestPage },
+  { path: "/gallery/:path", component: PhotosPage },
 ]
 
 function App() {
