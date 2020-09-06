@@ -54,6 +54,10 @@ a:hover {
   text-decoration: none;
 }
 
+.clickable:hover {
+  cursor: pointer;
+}
+
 h1 {
   font-size: 1.3rem;
   letter-spacing: 0.13rem;
