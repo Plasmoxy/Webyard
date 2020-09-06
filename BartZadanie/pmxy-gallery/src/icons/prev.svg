@@ -4,7 +4,6 @@
       .cls-1 {
         fill: #f9f9f9;
         fill-rule: evenodd;
-        opacity: 0.5;
       }
     </style>
   </defs>

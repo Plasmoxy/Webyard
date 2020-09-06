@@ -26,6 +26,7 @@ export function PhotosPage() {
       idx={lightboxIdx}
       open={lightboxOpen}
       onClosed={() => setLightboxOpen(false)}
+      onSlideClick={(forward) => setLightboxIdx(lightboxIdx + (forward ? 1 : -1))}
     />
   
     <PageHeader title={qGallery.data?.gallery.name ?? ""} backButton={true} />

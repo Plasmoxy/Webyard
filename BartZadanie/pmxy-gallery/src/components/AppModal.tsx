@@ -9,11 +9,12 @@ interface Props {
   onClosed: () => any
   width?: number
   onExited?: () => any
+  closeButtonStyle?: any
 }
 
 // Modal component with support for TransitionGroup
 export const AppModal: React.FC<Props> = ({
-  open, children, onExited, onClosed, width
+  open, children, onExited, onClosed, width, closeButtonStyle
 }) => {
 
   const root = useRef<any>()
@@ -35,8 +36,8 @@ export const AppModal: React.FC<Props> = ({
     <div className="app-modal" ref={root} onClick={click}>
       <div className="app-modal-content" style={{width: width ?? 600}}>
         <div onClick={close} className="d-flex justify-content-end">
-          <span className="app-modal-close-btn ">
-            <img className="mx-2" src={closeSvg} width="22" height="22" />
+          <span style={closeButtonStyle} className="app-modal-close-btn">
+            <img  className="mx-2" src={closeSvg} width="22" height="22" />
             ZAVRIEŤ
           </span>
         </div>

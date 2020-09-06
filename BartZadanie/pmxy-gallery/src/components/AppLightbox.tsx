@@ -9,23 +9,48 @@ interface Props {
   idx: number
   open: boolean
   onClosed: () => any
+  onSlideClick: (forward: boolean) => any
 }
 
 export const AppLightbox: React.FC<Props> = ({
-  images, idx, open, onClosed
+  images, idx, open, onClosed, onSlideClick
 }) => {
   
-  return <AppModal width={700} open={open} onClosed={onClosed}>
-    <div className="d-flex">
-      <div style={{width: 40}} className="clickable d-flex justify-content-center align-items-center">
-        <img src={prevSvg} />
+  if (images) {
+    return <AppModal width={800} open={open} onClosed={onClosed} closeButtonStyle={{marginRight: 40}}>
+      <div className="d-flex">
+        
+        <div
+          onClick={() => {
+            if (idx > 0) onSlideClick(false)
+          }}
+          style={{width: 40}}
+          className={`${idx > 0 ? "clickable" : ""} d-flex justify-content-center align-items-center`}
+        >
+          <img style={{opacity: idx > 0 ? 1 : 0.5}} src={prevSvg} />
+        </div>
+        
+        <div style={{flex: 1}}>
+          {/* apply key in here, cause we need to diff entire img */}
+          <img
+            key={idx}
+            src={getApiImageUrl(images[idx].fullpath, 720, 0)}
+            style={{borderRadius: 5}}
+          />
+        </div>
+        
+        <div
+          onClick={() => {
+            if (idx < images.length - 1) onSlideClick(true)
+          }}
+          style={{width: 40}}
+          className={`${idx < images.length - 1 ? "clickable" : ""} d-flex justify-content-center align-items-center`}
+        >
+          <img style={{opacity: idx < images.length - 1 ? 1 : 0.5}} src={nextSvg} />
+        </div>
       </div>
-      <div style={{flex: 1}}>
-        {images && <img width="100%" src={getApiImageUrl(images[idx].fullpath, 620, 0)} />}
-      </div>
-      <div style={{width: 40}} className="clickable d-flex justify-content-center align-items-center">
-        <img src={nextSvg} />
-      </div>
-    </div>
-  </AppModal>
+    </AppModal>
+  } else {
+    return <></>
+  }
 }
