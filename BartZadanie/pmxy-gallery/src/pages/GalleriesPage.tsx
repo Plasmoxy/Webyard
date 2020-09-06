@@ -3,6 +3,7 @@ import "./GalleriesPage.scss"
 import { Row, Col, Card, Button, Spinner } from 'react-bootstrap'
 import galleryThumbJpg from '../images/gallery-thumb.jpg'
 import addBigSvg from '../icons/add_big.svg'
+import addSvg from '../icons/add.svg'
 import { Link } from 'react-router-dom'
 import { CategoryCard } from '../components/CategoryCard'
 import { PageHeader } from '../components/PageHeader'
@@ -14,9 +15,9 @@ import { getApiImageUrl, fetchApiData } from '../api/api'
 export function GalleriesPage() {
 
   const [show, hide] = useAppModal(() => <Card className="p-3">
-    <h1>Jakub<br />ty bryndzový kokot.</h1>
+    <h1>YES.</h1>
     <div className="d-flex justify-content-end">
-      <Button onClick={hide}>Súhlasím</Button>
+      <Button className="p-2" onClick={hide}><img src={addSvg} /> Pridať</Button>
     </div>
   </Card>)
 
