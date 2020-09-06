@@ -7,12 +7,13 @@ import closeSvg from '../icons/close.svg'
 interface Props {
   open: boolean
   onClosed: () => any
+  width?: number
   onExited?: () => any
 }
 
 // Modal component with support for TransitionGroup
 export const AppModal: React.FC<Props> = ({
-  open, children, onExited, onClosed
+  open, children, onExited, onClosed, width
 }) => {
 
   const root = useRef<any>()
@@ -32,7 +33,7 @@ export const AppModal: React.FC<Props> = ({
     onExited={onExited}
   >
     <div className="app-modal" ref={root} onClick={click}>
-      <div className="app-modal-content">
+      <div className="app-modal-content" style={{width: width ?? 500}}>
         <div onClick={close} className="d-flex justify-content-end">
           <span className="app-modal-close-btn ">
             <img className="mx-2" src={closeSvg} width="22" height="22" />

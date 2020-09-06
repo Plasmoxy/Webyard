@@ -7,10 +7,14 @@ import { Row, Col } from 'react-bootstrap'
 import addBigSvg from '../icons/add_big.svg'
 import "./PhotosPage.scss"
 import { PhotoCard } from '../components/PhotoCard'
+import { useAppModal } from '../components/AppModal'
+import nightCityJpg from '../images/nightcity.jpg'
 
 export function PhotosPage() {
   
   const { path } = useParams()
+  
+  const [showLightbox, hideLightbox] = useAppModal(() => <img width="100%"  src={nightCityJpg} />)
   
   const qGallery = useQuery(["fetchGallery", path], () => {
     if (path) return fetchApiData(`gallery/${path}`)
@@ -23,7 +27,10 @@ export function PhotosPage() {
       <Row>
         {qGallery.data.images.map((image: any) =>
           <Col key={image.fullpath} sm={6} lg={3} className="d-flex justify-content-center p-0">
-            <PhotoCard image={getApiImageUrl(image.fullpath, 290, 192)} />
+            <PhotoCard
+              image={getApiImageUrl(image.fullpath, 290, 192)}
+              onClick={() => showLightbox()}
+            />
           </Col>
         )}
 

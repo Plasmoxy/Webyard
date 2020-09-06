@@ -14,7 +14,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   
   .app-modal-content {    
-    width: 500px;
+    // width: 500px; // nope, set it inside code!
     @include media-breakpoint-down(sm) {
       width: 90%;
     }
