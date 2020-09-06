@@ -16,7 +16,7 @@ export const AppLightbox: React.FC<Props> = ({
   images, idx, open, onClosed, onSlideClick
 }) => {
   
-  if (images) {
+  if (images && images.length > 0) {
     return <AppModal width={800} open={open} onClosed={onClosed} closeButtonStyle={{marginRight: 40}}>
       <div className="d-flex">
         
