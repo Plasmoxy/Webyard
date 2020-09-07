@@ -7,7 +7,7 @@ export const defaultStore = {
 }
 
 export const useStore = create(combine(defaultStore, (set, get) => ({
-  modify: (fn: any) => set(produce(fn)),
+  set: (fn: (state: typeof defaultStore) => void) => set(ss => produce(ss, fn)),
   
   increment: () => set(s => ({ count: s.count + 1 })),
   decrement: () => set(s => ({ count: s.count - 1 })),

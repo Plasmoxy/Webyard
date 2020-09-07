@@ -11,6 +11,28 @@ import { useAppModal } from '../components/AppModal'
 import axios from 'axios'
 import { useQuery } from 'react-query'
 import { getApiImageUrl, fetchApiData } from '../api/api'
+import { useStore } from '../model/Store'
+
+function A() {
+  const count = useStore(s => s.count)
+  
+  return <p>
+    A count : {count}
+  </p>
+}
+
+function B() {
+  const count = useStore(s => s.count)
+  
+  const increment = useStore(s => s.increment)
+  const decrement = useStore(s => s.decrement)
+  
+  return <p>
+    B count : {count} <br/>
+    <Button variant="primary" onClick={increment}>Increment</Button> <br />
+    <Button variant="danger" onClick={decrement}>Decrement</Button> <br />
+  </p>
+}
 
 export function GalleriesPage() {
 
@@ -47,5 +69,8 @@ export function GalleriesPage() {
         </Col>
       </Row>
     }
+    
+    <A />
+    <B />
   </>
 }
