@@ -43,6 +43,11 @@ body, html {
   box-shadow: 0 4px 8px 0 rgba(black, 0.2);
 }
 
+input, input:focus {
+  outline: none;
+  border: none;
+}
+
 // some margin on small devices
 @include media-breakpoint-down(sm) {
   .container {

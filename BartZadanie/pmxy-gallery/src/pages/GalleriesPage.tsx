@@ -13,14 +13,24 @@ import { useQuery } from 'react-query'
 import { getApiImageUrl, fetchApiData } from '../api/api'
 import { useStore } from '../model/Store'
 
-export function GalleriesPage() {
-
-  const [show, hide] = useAppModal(() => <Card className="p-3">
-    <h1>YES.</h1>
-    <div className="d-flex justify-content-end">
+function NewCategoryForm({hide}: {hide: () => any}) {
+  
+  return <Card className="p-3">
+    <h1>PRIDAŤ KATEGÓRIU</h1>
+    
+    
+    
+    <div className="d-flex justify-content-end my-2">
+      <input style={{flex: 1, fontSize: 18}} className="mx-1" type="text"></input>
       <Button className="p-2" onClick={hide}><img src={addSvg} /> Pridať</Button>
     </div>
-  </Card>)
+    <hr style={{margin: 0, borderTop: "solid 0.2rem rgba(0, 0, 0, 0.1)"}}/>
+  </Card>
+}
+
+export function GalleriesPage() {
+
+  const [show, hide] = useAppModal(() => <NewCategoryForm hide={hide} />)
 
   const qGalleries = useQuery(
     'fetchCategories',
@@ -48,5 +58,7 @@ export function GalleriesPage() {
         </Col>
       </Row>
     }
+    
+    
   </>
 }
