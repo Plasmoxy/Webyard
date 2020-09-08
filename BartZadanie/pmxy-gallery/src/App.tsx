@@ -13,6 +13,7 @@ import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { PageHeader } from './components/PageHeader'
 import { TestPage } from './pages/TestPage'
 import { PhotosPage } from './pages/PhotosPage'
+import { AppLightbox } from './components/AppLightbox'
 
 const routes = [
   { path: "/", component: GalleriesPage },
@@ -35,6 +36,8 @@ function App() {
 
   return <>
     <ReactQueryDevtools />
+    
+    <AppLightbox />
   
     <div className="background-container">
       <img src={nightcityJpg} />

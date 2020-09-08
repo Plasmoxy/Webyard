@@ -9,25 +9,18 @@ import "./PhotosPage.scss"
 import { PhotoCard } from '../components/PhotoCard'
 import nightCityJpg from '../images/nightcity.jpg'
 import { AppLightbox } from '../components/AppLightbox'
+import { useStore } from '../model/Store'
 
 export function PhotosPage() {
+  
+  const update = useStore(s => s.update)
   
   const { path } = useParams()
   const qGallery = useQuery(["fetchGallery", path], () => {
     if (path) return fetchApiData(`gallery/${path}`)
   })
   
-  const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [lightboxIdx, setLightboxIdx] = useState(0)
-  
   return <>
-    <AppLightbox
-      images={qGallery.data?.images}
-      idx={lightboxIdx}
-      open={lightboxOpen}
-      onClosed={() => setLightboxOpen(false)}
-      onSlideClick={(forward) => setLightboxIdx(lightboxIdx + (forward ? 1 : -1))}
-    />
   
     <PageHeader title={qGallery.data?.gallery.name ?? ""} backButton={true} />
     
@@ -38,8 +31,13 @@ export function PhotosPage() {
             <PhotoCard
               image={getApiImageUrl(image.fullpath, 290, 192)}
               onClick={() => {
-                setLightboxIdx(imageIdx)
-                setLightboxOpen(true)
+                update(s=>{
+                  s.lightbox.images = qGallery.data.images
+                  s.lightbox.idx = imageIdx
+                  s.lightbox.open = true
+                })
+                // setLightboxIdx(imageIdx)
+                // setLightboxOpen(true)
               }}
             />
           </Col>

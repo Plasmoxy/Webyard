@@ -2,13 +2,25 @@ import create from 'zustand'
 import { combine, devtools } from 'zustand/middleware'
 import produce from 'immer'
 
-export const defaultStore = {
-  count: 0
+export type StoreState = {
+  count: number
+  lightbox: {
+    images: any[]
+    idx: number
+    open: boolean
+  }
 }
 
-export const useStore = create(devtools(combine(defaultStore, (set, get, api) => ({
-  set: (recipe: (state: typeof defaultStore) => void) => set(ss => produce(ss, recipe)),
-  
-  increment: () => set(s => ({ count: s.count + 1 })),
-  decrement: () => set(s => ({ count: s.count - 1 })),
-}))))
+export const defaultStore: StoreState = {
+  count: 0,
+  lightbox: {
+    images: [],
+    idx: 0,
+    open: false,
+  },
+}
+
+export const useStore = create(combine(defaultStore, (set, get, api) => ({
+  set, get, api,
+  update: (recipe: (state: typeof defaultStore) => void) => set(ss => produce(ss, recipe)),
+})))

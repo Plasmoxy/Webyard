@@ -3,18 +3,31 @@ import {AppModal} from './AppModal'
 import prevSvg from '../icons/prev.svg'
 import nextSvg from '../icons/next.svg'
 import { getApiImageUrl } from '../api/api'
+import { useStore } from '../model/Store'
 
-interface Props {
-  images: any[]
-  idx: number
-  open: boolean
-  onClosed: () => any
-  onSlideClick: (forward: boolean) => any
-}
+/*
+images={qGallery.data?.images}
+idx={lightboxIdx}
+open={lightboxOpen}
+onClosed={() => setLightboxOpen(false)}
+onSlideClick={(forward) => setLightboxIdx(lightboxIdx + (forward ? 1 : -1))}
 
-export const AppLightbox: React.FC<Props> = ({
-  images, idx, open, onClosed, onSlideClick
-}) => {
+*/
+
+export const AppLightbox: React.FC = () => {
+  
+  const update = useStore(s => s.update)
+  const images = useStore(s => s.lightbox.images)
+  const idx = useStore(s => s.lightbox.idx)
+  const open = useStore(s => s.lightbox.open)
+  
+  const onClosed = () => {
+    update(s=>{ s.lightbox.open = false })
+  }
+  
+  const onSlideClick = (idxDiff: number) => {
+    update(s=>{ s.lightbox.idx += idxDiff })
+  }
   
   if (images && images.length > 0) {
     return <AppModal width={800} open={open} onClosed={onClosed} closeButtonStyle={{marginRight: 40}}>
@@ -22,7 +35,7 @@ export const AppLightbox: React.FC<Props> = ({
         
         <div
           onClick={() => {
-            if (idx > 0) onSlideClick(false)
+            if (idx > 0) onSlideClick(-1)
           }}
           style={{width: 40}}
           className={`${idx > 0 ? "clickable" : ""} d-flex justify-content-center align-items-center`}
@@ -41,7 +54,7 @@ export const AppLightbox: React.FC<Props> = ({
         
         <div
           onClick={() => {
-            if (idx < images.length - 1) onSlideClick(true)
+            if (idx < images.length - 1) onSlideClick(1)
           }}
           style={{width: 40}}
           className={`${idx < images.length - 1 ? "clickable" : ""} d-flex justify-content-center align-items-center`}
