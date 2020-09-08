@@ -13,32 +13,6 @@ import { useQuery } from 'react-query'
 import { getApiImageUrl, fetchApiData } from '../api/api'
 import { useStore } from '../model/Store'
 
-function A() {
-  const count = useStore(s => s.count)
-  
-  return <p>
-    A count : {count}
-  </p>
-}
-
-function B() {
-  const count = useStore(s => s.count)
-  const set = useStore(s => s.set)
-  
-  return <p>
-    B count : {count} <br/>
-    
-    <Button variant="primary" onClick={() => set(s => {s.count++})}>Increment</Button>
-    <br />
-    <Button variant="danger" onClick={() => set(s => {s.count--})}>Decrement</Button>
-    <br />
-    <Button variant="danger" onClick={() => {
-      set(s => {s.count = 5})
-    }}>Set</Button>
-    <br />
-  </p>
-}
-
 export function GalleriesPage() {
 
   const [show, hide] = useAppModal(() => <Card className="p-3">
@@ -74,8 +48,5 @@ export function GalleriesPage() {
         </Col>
       </Row>
     }
-    
-    <A />
-    <B />
   </>
 }
