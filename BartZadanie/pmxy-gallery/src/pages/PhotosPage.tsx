@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { PageHeader } from '../components/PageHeader'
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { fetchApiData, getApiImageUrl } from '../api/api'
+import { apiGet, apiPost, getApiImageUrl } from '../api/api'
 import { Row, Col } from 'react-bootstrap'
 import addBigSvg from '../icons/add_big.svg'
 import "./PhotosPage.scss"
@@ -17,7 +17,7 @@ export function PhotosPage() {
   
   const { path } = useParams()
   const qGallery = useQuery(["fetchGallery", path], () => {
-    if (path) return fetchApiData(`gallery/${path}`)
+    if (path) return apiGet(`gallery/${path}`)
   })
   
   return <>
