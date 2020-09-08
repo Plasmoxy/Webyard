@@ -8,6 +8,7 @@
     "deploy": "rm -r dist & parcel build src/index.html && cp dist/index.html dist/200.html && surge dist pmxy-bartgallery.surge.sh"
   },
   "dependencies": {
+    "@types/parcel-env": "0.0.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",
     "core-js": "^3.6.5",

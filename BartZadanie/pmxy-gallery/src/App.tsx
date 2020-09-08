@@ -67,3 +67,8 @@ render(
   </ModalProvider>,
   document.getElementById("reactRoot")
 )
+
+// HMR
+if (module.hot) {
+  module.hot.accept()
+}
