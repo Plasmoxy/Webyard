@@ -9,7 +9,7 @@ import { CategoryCard } from '../components/CategoryCard'
 import { PageHeader } from '../components/PageHeader'
 import { useAppModal } from '../components/AppModal'
 import axios from 'axios'
-import { useQuery } from 'react-query'
+import { useQuery, queryCache } from 'react-query'
 import { getApiImageUrl, apiGet, apiPost } from '../api/api'
 import { useStore } from '../model/Store'
 
@@ -26,11 +26,15 @@ function NewCategoryForm({hide}: {hide: () => any}) {
     }
     
     try {
-      const resp = await apiPost("gallery", {name})
-      console.log(resp)
+      await apiPost("gallery", {name})
+      await queryCache.invalidateQueries("fetchCategories")
+      hide()
     } catch(e) {
-      console.log(e)
-      setError("Vyskytla sa chyba pri pridaní kategórie.")
+      if (e.response?.status === 409) { // key conflict
+        setError("Galéria s takýmto názvom už existuje!")
+      } else {
+        setError("Vyskytla sa chyba pri pridaní kategórie.")
+      }
     }
   }
   
