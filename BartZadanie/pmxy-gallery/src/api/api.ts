@@ -3,15 +3,15 @@ import axios from 'axios'
 export const HOST = "http://api.programator.sk"
 
 export async function apiGet<T = any>(path: string) {
-  return <T> (await axios.get(`${HOST}/${path}`))?.data
+  return (await axios.get<T>(`${HOST}/${path}`))?.data
 }
 
 export async function apiPost<T = any>(path: string, data: any) {
-  return <T> (await axios.post(`${HOST}/${path}`, data))?.data
+  return (await axios.post<T>(`${HOST}/${path}`, data))?.data
 }
 
 export async function apiDelete<T = any>(path: string) {
-  return <T> (await axios.delete(`${HOST}/${path}`))?.data
+  return (await axios.delete<T>(`${HOST}/${path}`))?.data
 }
 
 export function getApiImageUrl(path: string, w = 300, h = 150) {
