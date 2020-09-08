@@ -26,7 +26,8 @@ function NewCategoryForm({hide}: {hide: () => any}) {
     }
     
     try {
-      
+      const resp = await apiPost("gallery", {name})
+      console.log(resp)
     } catch(e) {
       console.log(e)
       setError("Vyskytla sa chyba pri pridaní kategórie.")
@@ -53,7 +54,7 @@ export function GalleriesPage() {
 
   const qGalleries = useQuery(
     'fetchCategories',
-    async () => (await apiGet("gallery"))?.data
+    () => apiGet("gallery")
   )
 
   return <>

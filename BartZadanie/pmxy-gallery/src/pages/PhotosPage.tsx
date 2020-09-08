@@ -16,8 +16,8 @@ export function PhotosPage() {
   const update = useStore(s => s.update)
   
   const { path } = useParams()
-  const qGallery = useQuery(["fetchGallery", path], async () => {
-    if (path) return (await apiGet(`gallery/${path}`))?.data
+  const qGallery = useQuery(["fetchGallery", path], () => {
+    if (path) return apiGet(`gallery/${path}`)
   })
   
   return <>
