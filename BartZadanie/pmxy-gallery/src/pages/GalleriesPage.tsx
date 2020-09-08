@@ -23,14 +23,19 @@ function A() {
 
 function B() {
   const count = useStore(s => s.count)
-  
-  const increment = useStore(s => s.increment)
-  const decrement = useStore(s => s.decrement)
+  const set = useStore(s => s.set)
   
   return <p>
     B count : {count} <br/>
-    <Button variant="primary" onClick={increment}>Increment</Button> <br />
-    <Button variant="danger" onClick={decrement}>Decrement</Button> <br />
+    
+    <Button variant="primary" onClick={() => set(s => {s.count++})}>Increment</Button>
+    <br />
+    <Button variant="danger" onClick={() => set(s => {s.count--})}>Decrement</Button>
+    <br />
+    <Button variant="danger" onClick={() => {
+      set(s => {s.count = 5})
+    }}>Set</Button>
+    <br />
   </p>
 }
 
