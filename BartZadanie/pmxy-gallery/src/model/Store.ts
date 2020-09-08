@@ -22,5 +22,5 @@ export const defaultStore: StoreState = {
 
 export const useStore = create(combine(defaultStore, (set, get, api) => ({
   set, get, api,
-  update: (recipe: (state: typeof defaultStore) => void) => set(ss => produce(ss, recipe)),
+  update: (recipe: (state: StoreState) => void) => set(ss => produce(ss, recipe)),
 })))
