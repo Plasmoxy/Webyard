@@ -42,7 +42,13 @@ export const AppLightbox: React.FC = () => {
           <img style={{ opacity: idx > 0 ? 1 : 0.5 }} src={prevSvg} />
         </div>
 
-        <div style={{ flex: 1 }}>
+        <div
+          className="d-flex align-items-center"
+          style={{ flex: 1, minHeight: 480 }}
+          onClick={() => {
+            if (idx < images.length - 1) onSlideClick(1)
+          }}
+        >
           {/* apply key in here, cause we need to diff entire img */}
           <img
             key={idx}
