@@ -10,7 +10,7 @@ import { PageHeader } from '../components/PageHeader'
 import { useAppModal } from '../components/AppModal'
 import axios from 'axios'
 import { useQuery } from 'react-query'
-import { getApiImageUrl, fetchApiData } from '../api/api'
+import { getApiImageUrl, apiGet, apiPost } from '../api/api'
 import { useStore } from '../model/Store'
 
 function NewCategoryForm({hide}: {hide: () => any}) {
@@ -18,8 +18,20 @@ function NewCategoryForm({hide}: {hide: () => any}) {
   const [name, setName] = useState("")
   const [error, setError] = useState("")
   
-  const submit = () => {
+  const submit = async () => {
     
+    if (name === "") {
+      setError("Musíte zadať meno kategórie")
+      return
+    }
+    
+    try {
+      const resp = await apiPost("gallery", {name})
+      console.log(resp)
+    } catch(e) {
+      console.log(e)
+      setError("Vyskytla sa chyba pri pridaní kategórie.")
+    }
   }
   
   return <Card className="p-4">
@@ -42,7 +54,7 @@ export function GalleriesPage() {
 
   const qGalleries = useQuery(
     'fetchCategories',
-    () => fetchApiData("gallery")
+    () => apiGet("gallery")
   )
 
   return <>
@@ -53,7 +65,7 @@ export function GalleriesPage() {
         {qGalleries.data.galleries.map((gallery: any) =>
           <Col key={gallery.path} sm={6} lg={3}>
             <Link to={`/gallery/${gallery.path}`}>
-              <CategoryCard title={gallery.name} image={getApiImageUrl(gallery.image.fullpath)} />
+              <CategoryCard title={gallery.name} image={gallery.image ? getApiImageUrl(gallery.image.fullpath) : galleryThumbJpg} />
             </Link>
           </Col>
         )}
