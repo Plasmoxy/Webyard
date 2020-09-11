@@ -4,4 +4,4 @@ function setup() {
 function draw() {
     background(255, 0, 0);
 }
-//# sourceMappingURL=../src/src/build.js.map
+//# sourceMappingURL=build.js.map
