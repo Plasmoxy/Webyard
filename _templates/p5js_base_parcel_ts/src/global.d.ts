@@ -14,4 +14,6 @@ declare global {
         setup: () => void
         draw: () => void
     }
+    
+    function setup();
 }
