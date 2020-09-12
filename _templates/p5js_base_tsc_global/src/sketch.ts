@@ -1,10 +1,8 @@
-import { Vector } from "p5"
 
-let t: p5.Vector
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
-  Vector
+  
 }
 
 function draw() {
