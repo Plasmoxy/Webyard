@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
     "module": "none",
+    "checkJs": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "noImplicitAny": true,
     "outFile": "./build/build.js",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
-    "target": "es5",
+    "target": "ESNext",
   }
 }
