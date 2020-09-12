@@ -8,7 +8,5 @@ import * as p5Global from 'p5/global'
 export = p5module;
 export as namespace p5;
 declare global {
-    interface Window {
-        p5: typeof p5module,
-    }
+    type Window = typeof p5module
 }

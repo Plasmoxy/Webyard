@@ -1,10 +1,6 @@
-async function t() {
-}
-function preload() {
-}
+let t;
 function setup() {
     createCanvas(windowWidth, windowHeight);
-    t();
 }
 function draw() {
     background(255, 0, 0);

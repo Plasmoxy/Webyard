@@ -1,19 +1,14 @@
+import { Vector } from "p5"
 
-async function t() {
-  
-}
-
-function preload() {
-  
-}
+let t: p5.Vector
 
 function setup() {
   createCanvas(windowWidth, windowHeight)
-  t()
+  Vector
 }
 
 function draw() {
-  background(255, 0, 0)
+  background(255, 0, 220)
   
 }
 
