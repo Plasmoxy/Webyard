@@ -23,7 +23,7 @@ const SpinningMesh = ({ position, color, speed, args }: any) => {
   const [expand, setExpand] = useState(false);
   // React spring expand animation
   const props = useSpring({
-    scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1],
+    scale: expand ? [4, 0.5, 1.4] : [1, 1, 1],
   });
   
   return (
@@ -31,6 +31,12 @@ const SpinningMesh = ({ position, color, speed, args }: any) => {
       position={position}
       ref={mesh}
       onClick={() => setExpand(!expand)}
+      onPointerOver={() => {
+        document.body.style.cursor = "pointer"
+      }}
+      onPointerOut={() => {
+        document.body.style.cursor = "auto"
+      }}
       scale={props.scale as any}
       castShadow>
       <boxBufferGeometry attach='geometry' args={args} />
@@ -77,7 +83,7 @@ function App() {
       />
       {/* A light to help illumnate the spinning boxes */}
       <pointLight position={[-10, 0, -20]} intensity={0.5}  />
-      <pointLight position={[0, -10, 0]} intensity={1.5} />
+      <pointLight position={[0, -10, 0]} intensity={0.5} />
       <group>
         {/* This mesh is the plane (The floor) */}
         <mesh
@@ -85,7 +91,7 @@ function App() {
           position={[0, -3, 0]}
           receiveShadow>
           <planeBufferGeometry attach='geometry' args={[100, 100]} />
-          <meshBasicMaterial attach='material' color="#fff" />
+          <meshStandardMaterial attach='material' color="#111" />
         </mesh>
         <SpinningMesh
           position={[0, 1, 0]}
@@ -94,10 +100,10 @@ function App() {
           speed={2}
         />
         <SpinningMesh position={[-2, 1, -5]} color='#ff8000' speed={6} />
-        <SpinningMesh position={[5, 1, -2]} color='#03a1fc' speed={6} />
+        <SpinningMesh position={[5, 1, -2]} color='#03a1fc' speed={50} />
       </group>
       {/* Allows us to move the canvas around for different prespectives */}
-      <OrbitControls />
+      <OrbitControls target={[3, 1, -3]}/>
     </Canvas>
   </>
 }
