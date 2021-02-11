@@ -7,16 +7,18 @@
     <hr/>
     
     <!-- strongs ul -->
+    <h4>Strongs:</h4>
     <ul>
-      <li v-for="x in strongs" :key="x">
-        {{x}}  
+      <li v-for="(x, idx) in strongs" :key="x">
+      (index: {{idx}}) {{x}} 
       </li>
     </ul>
     <hr/>
     
     <!-- reversing -->
     <input type="text" v-model="message" /> <br/>
-    <button @click="reverseMessage">Reverse</button>
+    <button @click="reverseMessage">Reverse</button> <br/>
+    <button @click="addToStrongs">Add to strongs</button> <br/>
     <h2>Reversed: {{reversedMsg}}</h2>
     <hr/>
     
@@ -70,6 +72,15 @@ export default {
     
     increaseKolorful() {
       this.kolorfulStyleData.fontSize = '' + (parseInt(this.kolorfulStyleData.fontSize)+1) + 'rem'
+    },
+    
+    addToStrongs() {
+      if (this.strongs.includes(this.message)) {
+        alert('Strong is already in strongs xdd')
+        return
+      }
+      this.strongs.push(this.message)
+      this.message = ''
     }
   },
   
@@ -94,4 +105,8 @@ hr {
   margin-bottom: 16px;
   border: solid 1px rgba(0, 0, 0, 0.1);
 }
+
+button { margin: 3px; }
+input { margin: 3px; }
+
 </style>
