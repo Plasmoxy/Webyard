@@ -26,16 +26,36 @@
     <span :style="kolorfulStyleData" @click="increaseKolorful">KOLORFUL</span><br/>
     <hr/>
     
+    <h4>Object pront:</h4>
+    <ul>
+      <li v-for="(value, key) in object" :key="key">
+        {{key}}: {{value}}  
+      </li>
+    </ul>
+    <hr />
+    
+    <!-- petersonnen -->
+    <h1>PETTERSONNEN !!!!</h1>
+    <button @click="nummerOfPetersons++">MORE PETERSONSNS</button>
+    <div style="text-align: center;">
+      <petterson v-for="n in nummerOfPetersons" :key="n" />
+    </div>
+    <hr />
+    
+    
+       
   </div>
 </template>
 
 <script>
 import Counter from '@/components/Counter.vue'
+import Petterson from './components/Petterson.vue'
 
 export default {
   name: 'App',
   components: {
-    Counter
+    Counter,
+    Petterson
   },
   
   data: () => ({
@@ -48,7 +68,13 @@ export default {
       fontSize: '2rem',
       cursor: 'pointer',
       userSelect: 'none',
-    }
+    },
+    object: {
+      name: 'yes',
+      password: 'secretttt',
+      age: 18,
+    },
+    nummerOfPetersons: 3,
   }),
   
   computed: {
