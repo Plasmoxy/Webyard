@@ -15,8 +15,9 @@ export async function apiDelete<T = any>(path: string) {
   return (await axios.delete<T>(`${APPHOST}/${path}`))?.data
 }
 
-export function getApiImageUrl(path: string, w = 300, h = 150) {
-  return `${APPHOST}/images/${w}x${h}/${path}`
+
+export async function getStatus() {
+  return await apiGet<{status: string}>("/");
 }
 
 export function getImageUrl(path: string) {
@@ -24,7 +25,7 @@ export function getImageUrl(path: string) {
 }
 
 export function getThumbnailUrl(path: string) {
-  return `${APPHOST}/thumbnails/{path}`
+  return `${APPHOST}/thumbs/{path}`
 }
 
 export async function createGallery(name: string) {
@@ -38,3 +39,25 @@ export async function fetchGallery(path: string) {
 export async function fetchAllGalleries() {
   return await apiGet("gallery")
 }
+
+export async function deleteGallery(path: string) {
+  return await apiDelete(`gallery/${path}`)
+}
+
+export async function uploadImage(galleryPath: string, file: any) {
+  const url = `${APPHOST}/gallery/${galleryPath}`
+  const formData = new FormData();
+  formData.append('image', file)
+  const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+  }
+  
+  return axios.post(url, formData, config)
+}
+
+export async function deleteImageFromGallery(galleryPath: string, imagePath: string) {
+  return await apiDelete(`gallery/${galleryPath}/${imagePath}`)
+}
+

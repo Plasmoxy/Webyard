@@ -92,12 +92,6 @@ async function init() {
     res.sendStatus(StatusCodes.OK)
   })
   
-  
-  // images
-  app.get("/images", (req, res) => {
-    res.json(db.get("images").value())
-  })
-  
   app.post("/gallery/:galleryPath", imageUpload.single('image'), async (req, res) => {
     
     // find gallery
