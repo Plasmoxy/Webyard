@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 
 export function TestPage() {
 
-  const { path } = useParams()
+  const { path } = useParams<{path: string}>()
   
   return <>
     <PageHeader title="Test" backButton={true} />
