@@ -1,6 +1,8 @@
-import React from 'react'
+import Axios from 'axios'
+import React, { useCallback } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { useQuery } from 'react-query'
+import { useDropzone } from 'react-dropzone'
+import { useQuery, queryCache } from 'react-query'
 import { useParams } from 'react-router-dom'
 import { PageHeader } from '../components/PageHeader'
 import { PhotoCard } from '../components/PhotoCard'
@@ -17,6 +19,23 @@ export function PhotosPage() {
   const qGallery = useQuery(["fetchGallery", path], () => {
     if (path) return gservice.fetchGallery(path)
   })
+  
+  // file drop
+  const onDrop = useCallback(async (files) => {
+    
+    if (!qGallery.data) {
+      alert("Chyba: kategória nebola načítaná.")
+      return
+    }
+    
+    for (const file of files) {
+      await gservice.uploadImage(path, file)
+    }
+    
+    await queryCache.invalidateQueries(["fetchGallery", path])
+  }, [qGallery.data])
+  
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop, accept: 'image/*'})
   
   return <>
     <PageHeader title={qGallery.data?.name ?? ""} backButton={true} />
@@ -42,8 +61,9 @@ export function PhotosPage() {
           </Col>
         )}
 
-        <Col sm={6} lg={3} className="d-flex">
-          <div className="gallery-add-photo-card">
+        <Col {...getRootProps()} sm={6} lg={3} className="d-flex">
+          <input {...getInputProps()} />
+          <div className={`gallery-add-photo-card`}>
             <img src={addBigSvg} className="my-3" />
             <h2>Pridať fotky</h2>
           </div>

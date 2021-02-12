@@ -52,7 +52,7 @@ export async function uploadImage(galleryPath: string, file: any) {
   formData.append('image', file)
   const config = {
       headers: {
-          'content-type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data'
       }
   }
   
