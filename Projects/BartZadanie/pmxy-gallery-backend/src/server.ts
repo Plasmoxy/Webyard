@@ -4,10 +4,13 @@ import bodyParser from 'body-parser'
 import low from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
 import { Gallery, GalleryImage, DbModel } from './model'
-import fs from 'fs'
+import fs, { readFileSync } from 'fs'
 import { StatusCodes } from 'http-status-codes'
 import multer from 'multer'
 import sharp from 'sharp'
+import dotenv from 'dotenv'
+import https from 'https'
+dotenv.config()
 
 // setup
 const PORT = 8099
@@ -144,7 +147,28 @@ async function init() {
   
 }
 
-init().then(() => app.listen(PORT, () => {
-  console.log("=== Pmxy Gallery Server ===")
-  console.log(`Listening on port ${PORT}`)
-}))
+init().then(() => {
+  
+  const port = process.env.port ?? 8089
+  
+  if (process.env.dev === "true") {
+    
+    app.listen(port, () => {
+      console.log("=== Pmxy Gallery Server ===")
+      console.log(`Listening on development port ${port}`)
+    })
+  
+  } else {
+    // vps-specific key locations (add them in your .env)
+    https.createServer({
+      key: readFileSync(process.env.key ?? ""),
+      cert: readFileSync(process.env.cert ?? "")
+    }, app)
+    .listen(port, () => {
+      console.log("=== Pmxy Gallery Server ===")
+      console.log(`Listening on development port ${port}`)
+    })
+  }
+  
+})
+
