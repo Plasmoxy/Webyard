@@ -57,6 +57,10 @@ export function PhotosPage() {
                 // setLightboxIdx(imageIdx)
                 // setLightboxOpen(true)
               }}
+              onDelete={async () => {
+                await gservice.deleteImageFromGallery(path, encodeURI(image.name))
+                await queryCache.invalidateQueries(["fetchGallery", path])
+              }}
             />
           </Col>
         )}
