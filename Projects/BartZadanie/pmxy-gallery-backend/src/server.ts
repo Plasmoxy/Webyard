@@ -27,7 +27,7 @@ const imageUploadStorage = multer.diskStorage({
     cb(null, 'images/')
   },
   filename: (req, file, cb) => {
-    cb(null, encodeURI(file.originalname.replace('.', `-${Date.now()}.`)))
+    cb(null, file.originalname.replace('.', `-${Date.now()}.`))
   }
 })
 const imageUpload = multer({storage: imageUploadStorage})
@@ -87,15 +87,15 @@ async function init() {
     }
   })
   
-  app.delete("/gallery/:path", (req, res) => {
-    db.get("galleries").remove({path: encodeURI(req.params.path)}).write()
+  app.delete("/gallery/:name", (req, res) => {
+    db.get("galleries").remove({name: req.params.name}).write()
     res.sendStatus(StatusCodes.OK)
   })
   
-  app.post("/gallery/:galleryPath", imageUpload.single('image'), async (req, res) => {
+  app.post("/gallery/:galleryName", imageUpload.single('image'), async (req, res) => {
     
     // find gallery
-    const targetGallery = db.get("galleries").find({path: encodeURI(req.params.galleryPath)})
+    const targetGallery = db.get("galleries").find({name: req.params.galleryName})
     
     // that gallery was not found
     if (!targetGallery.value()) {
@@ -103,8 +103,8 @@ async function init() {
       return
     }
     
-    // path processing, req.file.filename is processed with formatted URI and date stamp
-    const newPath = req.file.filename
+    // path processing
+    const newPath = encodeURI(req.file.filename)
     let originalNameArr = req.file.originalname.split('.')
     originalNameArr.length--;
     const originalName = originalNameArr.join('')
@@ -132,16 +132,16 @@ async function init() {
   })
   
   // delete image inside gallery
-  app.delete("/gallery/:galleryPath/:imagePath", (req, res) => {
+  app.delete("/gallery/:galleryName/:imageName", (req, res) => {
     // find gallery
-    const gal = db.get("galleries").find({path: encodeURI(req.params.galleryPath)})
+    const gal = db.get("galleries").find({name: req.params.galleryName})
     if (!gal.value()) {
       res.sendStatus(StatusCodes.NOT_FOUND)
       return
     }
     
     // find the image inside gallery and delete it
-    gal.get("images").remove({path: encodeURI(req.params.imagePath)}).write()
+    gal.get("images").remove({name: req.params.imageName}).write()
     
     res.sendStatus(StatusCodes.OK)
   })

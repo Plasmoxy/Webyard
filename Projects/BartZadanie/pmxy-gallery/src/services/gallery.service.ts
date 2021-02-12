@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const APPHOST = 'localhost:8099'
+export const APPHOST = 'http://localhost:8099'
 
 /* Helpers */
 
@@ -23,11 +23,11 @@ export async function getStatus() {
 }
 
 export function getImageUrl(path: string) {
-  return `${APPHOST}/images/{path}`
+  return `${APPHOST}/images/${path}`
 }
 
 export function getThumbnailUrl(path: string) {
-  return `${APPHOST}/thumbs/{path}`
+  return `${APPHOST}/thumbs/${path}`
 }
 
 export async function createGallery(name: string) {
