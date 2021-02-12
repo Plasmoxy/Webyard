@@ -3,7 +3,7 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import low from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
-import { Gallery, GalleryImage } from './model'
+import { Gallery, GalleryImage, DbModel } from './model'
 import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
 
@@ -11,11 +11,6 @@ const PORT = 8099
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-
-interface DbModel {
-  galleries: Gallery[],
-  imags: GalleryImage[],
-}
 
 const adapter = new FileSync<DbModel>("db.json")
 const db = low(adapter)
@@ -43,11 +38,21 @@ async function init() {
     res.json(db.get("galleries").value())
   })
   
+  app.get("/gallery/:path", (req, res) => {
+    const gal = db.get("galleries").find({path: req.params.path}).value()
+    if (gal) {
+      res.json(gal)
+    } else {
+      res.sendStatus(StatusCodes.NOT_FOUND)
+    }
+  })
+  
   app.post("/gallery", (req, res) => {
     if (!req.body || !req.body.name) {
       res.sendStatus(StatusCodes.BAD_REQUEST)
     }
-    else if (!db.get("galleries").find({name: req.body.name}).isEmpty()) {
+    // if exits some gallery like this
+    else if (db.get("galleries").some({name: req.body.name}).value()) {
       res.sendStatus(StatusCodes.CONFLICT)
     }
     else {

@@ -1,4 +1,7 @@
-
+export type DbModel = {
+  galleries: Gallery[],
+  imags: GalleryImage[],
+}
 
 export type GalleryImage = {
   path: string,
