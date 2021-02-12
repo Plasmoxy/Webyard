@@ -7,7 +7,7 @@ import closeSvg from '../icons/close.svg'
 interface Props {
   open: boolean
   onClosed: () => any
-  width?: number
+  width?: number | string
   onExited?: () => any
   closeButtonStyle?: any
 }

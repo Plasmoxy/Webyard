@@ -9,6 +9,7 @@ import { ReactQueryDevtools} from 'react-query-devtools'
 import 'regenerator-runtime/runtime'
 import './App.scss'
 import nightcityJpg from './images/nightcity.jpg'
+import cameraSvg from './icons/camera.svg'
 import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { PageHeader } from './components/PageHeader'
 import { TestPage } from './pages/TestPage'
@@ -44,7 +45,7 @@ function App() {
     </div>
 
     <div className="container content-container px-0">
-      <h1 className="text-light">Fotogaléria</h1>
+      <h1 className="d-flex align-items-center text-light" ><img className="pb-1 mr-3" src={cameraSvg} />PMXY GALLERY</h1>
       
       {routes.map(r => <Route key={r.path} exact path={r.path}>{({ match }) => (
         <CSSTransition

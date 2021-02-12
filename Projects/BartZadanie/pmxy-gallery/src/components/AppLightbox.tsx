@@ -29,7 +29,7 @@ export const AppLightbox: React.FC = () => {
     update(s => { s.lightbox.idx += idxDiff })
   }
 
-  return <AppModal width={800} open={open} onClosed={onClosed} closeButtonStyle={{ marginRight: 40 }}>
+  return <AppModal width="70vw" open={open} onClosed={onClosed} closeButtonStyle={{ marginRight: 40 }}>
     {images && images.length > 0 &&
       <div className="d-flex">
         <div
@@ -54,7 +54,7 @@ export const AppLightbox: React.FC = () => {
           <img
             key={idx}
             src={gservice.getImageUrl(images[idx].name)}
-            style={{ borderRadius: 5 }}
+            style={{ borderRadius: 5, width: '100%' }}
           />
         </div>
 
