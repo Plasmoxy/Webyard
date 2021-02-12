@@ -52,7 +52,7 @@ async function init() {
   
   // get galleries just name paths
   app.get("/gallery", (req, res) => {
-    res.json(db.get("galleries").map(({name, path}) => ({name, path})).value())
+    res.json(db.get("galleries").map(({name, path, image}) => ({name, path, image})).value())
   })
   
   app.get("/gallery/:path", (req, res) => {
@@ -98,7 +98,7 @@ async function init() {
     res.json(db.get("images").value())
   })
   
-  app.post("/galleryUpload/:galleryPath", imageUpload.single('image'), async (req, res) => {
+  app.post("/gallery/:galleryPath", imageUpload.single('image'), async (req, res) => {
     
     // find gallery
     const targetGallery = db.get("galleries").find({path: encodeURI(req.params.galleryPath)})
@@ -128,8 +128,28 @@ async function init() {
     
     // save to gallery
     targetGallery.get("images").push(newImage).write()
+    
+    // set gallery image if this one is the first
+    if (targetGallery.get("images").size().value() == 1) {
+      targetGallery.set("image", newImage).write()
+    }
         
     res.json(newImage)
+  })
+  
+  // delete image inside gallery
+  app.delete("/gallery/:galleryPath/:imagePath", (req, res) => {
+    // find gallery
+    const gal = db.get("galleries").find({path: encodeURI(req.params.galleryPath)})
+    if (!gal.value()) {
+      res.sendStatus(StatusCodes.NOT_FOUND)
+      return
+    }
+    
+    // find the image inside gallery and delete it
+    gal.get("images").remove({path: encodeURI(req.params.imagePath)}).write()
+    
+    res.sendStatus(StatusCodes.OK)
   })
   
 }
