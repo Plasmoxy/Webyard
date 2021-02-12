@@ -3,12 +3,11 @@ export type DbModel = {
 }
 
 export type GalleryImage = {
-  path: string,
   name: string,
+  title: string,
 }
 
 export type Gallery = {
-  path: string,
   name: string,
   image?: GalleryImage,
   images: GalleryImage[]

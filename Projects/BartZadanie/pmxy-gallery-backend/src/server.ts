@@ -50,13 +50,13 @@ async function init() {
   
   /* Galleries */
   
-  // get galleries just name paths
+  // get galleries just name and image
   app.get("/gallery", (req, res) => {
-    res.json(db.get("galleries").map(({name, path, image}) => ({name, path, image})).value())
+    res.json(db.get("galleries").map(({name, image}) => ({name, image})).value())
   })
   
-  app.get("/gallery/:path", (req, res) => {
-    const gal = db.get("galleries").find({path: req.params.path}).value()
+  app.get("/gallery/:name", (req, res) => {
+    const gal = db.get("galleries").find({name: req.params.name}).value()
     if (gal) {
       res.json(gal)
     } else {
@@ -77,7 +77,6 @@ async function init() {
       const name = req.body?.name ?? "error"
       const newGallery: Gallery = {
         name,
-        path: encodeURI(name),
         image: undefined,
         images: [],
       }
@@ -103,21 +102,18 @@ async function init() {
       return
     }
     
-    // path processing
-    const newPath = encodeURI(req.file.filename)
+    // new image
+    const name = req.file.filename
     let originalNameArr = req.file.originalname.split('.')
     originalNameArr.length--;
-    const originalName = originalNameArr.join('')
+    const title = originalNameArr.join('')
     
-    const newImage: GalleryImage = {
-      name: originalName,
-      path: newPath,
-    }
+    const newImage: GalleryImage = { name, title }
     
     // construct thumbnail
-    const resized = await sharp(`images/${newPath}`)
+    const resized = await sharp(`images/${name}`)
         .resize({width: 300})
-        .toFile(`thumbs/${newPath}`)
+        .toFile(`thumbs/${name}`)
     
     
     // save to gallery
