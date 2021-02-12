@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
-import { PageHeader } from '../components/PageHeader'
-import { useParams, Link } from 'react-router-dom'
+import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 import { useQuery } from 'react-query'
-import { Row, Col } from 'react-bootstrap'
-import addBigSvg from '../icons/add_big.svg'
-import "./PhotosPage.scss"
+import { useParams } from 'react-router-dom'
+import { PageHeader } from '../components/PageHeader'
 import { PhotoCard } from '../components/PhotoCard'
-import nightCityJpg from '../images/nightcity.jpg'
-import { AppLightbox } from '../components/AppLightbox'
+import addBigSvg from '../icons/add_big.svg'
 import { useStore } from '../model/Store'
 import * as gservice from '../services/gallery.service'
+import "./PhotosPage.scss"
 
 export function PhotosPage() {
   
@@ -21,7 +19,6 @@ export function PhotosPage() {
   })
   
   return <>
-  
     <PageHeader title={qGallery.data?.name ?? ""} backButton={true} />
     
     {path && qGallery.isSuccess && 
