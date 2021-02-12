@@ -22,12 +22,12 @@ export async function getStatus() {
   return await apiGet<{status: string}>("/");
 }
 
-export function getImageUrl(path: string) {
-  return `${APPHOST}/images/${path}`
+export function getImageUrl(imageName: string) {
+  return `${APPHOST}/images/${encodeURI(imageName)}`
 }
 
-export function getThumbnailUrl(path: string) {
-  return `${APPHOST}/thumbs/${path}`
+export function getThumbnailUrl(thumbName: string) {
+  return `${APPHOST}/thumbs/${encodeURI(thumbName)}`
 }
 
 export async function createGallery(name: string) {

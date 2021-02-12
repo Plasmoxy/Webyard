@@ -27,11 +27,11 @@ export function PhotosPage() {
     {path && qGallery.isSuccess && 
       <Row>
         {(qGallery.data.images as any[]).map((image: any, imageIdx) =>
-          <Col key={image.path} sm={6} lg={3} className="d-flex justify-content-center p-0">
+          <Col key={image.name} sm={6} lg={3} className="d-flex justify-content-center p-0">
             
             {/* TODO: 290x192 PHOTO ??? resize thumbnail ? */}
             <PhotoCard
-              image={gservice.getThumbnailUrl(image.path)}
+              image={gservice.getThumbnailUrl(image.name)}
               onClick={() => {
                 update(s=>{
                   s.lightbox.images = qGallery.data.images

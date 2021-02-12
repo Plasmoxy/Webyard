@@ -64,12 +64,12 @@ export function GalleriesPage() {
   return <>
     <PageHeader title="Kategórie" backButton={false} />
     
-    {qGalleries.isSuccess && 
+    {qGalleries.isSuccess &&
       <Row>
         {qGalleries.data.map((gallery: any) =>
-          <Col key={gallery.path} sm={6} lg={3}>
-            <Link to={`/gallery/${gallery.path}`}>
-              <CategoryCard title={gallery.name} image={gallery.image ? gservice.getThumbnailUrl(gallery.image.path) : galleryThumbJpg} />
+          <Col key={gallery.name} sm={6} lg={3}>
+            <Link to={`/gallery/${encodeURI(gallery.name)}`}>
+              <CategoryCard title={gallery.name} image={gallery.image ? gservice.getThumbnailUrl(gallery.image.name) : galleryThumbJpg} />
             </Link>
           </Col>
         )}
