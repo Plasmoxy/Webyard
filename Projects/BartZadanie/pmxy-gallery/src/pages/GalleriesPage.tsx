@@ -66,10 +66,10 @@ export function GalleriesPage() {
     
     {qGalleries.isSuccess && 
       <Row>
-        {qGalleries.data.galleries.map((gallery: any) =>
+        {qGalleries.data.map((gallery: any) =>
           <Col key={gallery.path} sm={6} lg={3}>
             <Link to={`/gallery/${gallery.path}`}>
-              <CategoryCard title={gallery.name} image={gallery.image ? gservice.getThumbnailUrl(gallery.image.fullpath) : galleryThumbJpg} />
+              <CategoryCard title={gallery.name} image={gallery.image ? gservice.getThumbnailUrl(gallery.image.path) : galleryThumbJpg} />
             </Link>
           </Col>
         )}

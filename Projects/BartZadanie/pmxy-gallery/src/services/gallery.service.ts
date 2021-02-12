@@ -2,19 +2,21 @@ import axios from 'axios'
 
 export const APPHOST = 'localhost:8099'
 
+/* Helpers */
 
-export async function apiGet<T = any>(path: string) {
+async function apiGet<T = any>(path: string) {
   return (await axios.get<T>(`${APPHOST}/${path}`))?.data
 }
 
-export async function apiPost<T = any>(path: string, data: any) {
+async function apiPost<T = any>(path: string, data: any) {
   return (await axios.post<T>(`${APPHOST}/${path}`, data))?.data
 }
 
-export async function apiDelete<T = any>(path: string) {
+async function apiDelete<T = any>(path: string) {
   return (await axios.delete<T>(`${APPHOST}/${path}`))?.data
 }
 
+/* Api */
 
 export async function getStatus() {
   return await apiGet<{status: string}>("/");
