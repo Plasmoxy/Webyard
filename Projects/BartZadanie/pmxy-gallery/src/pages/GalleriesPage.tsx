@@ -69,7 +69,18 @@ export function GalleriesPage() {
         {qGalleries.data.map((gallery: any) =>
           <Col key={gallery.name} sm={6} lg={3}>
             <Link to={`/gallery/${encodeURI(gallery.name)}`}>
-              <CategoryCard title={gallery.name} image={gallery.image ? gservice.getThumbnailUrl(gallery.image.name) : galleryThumbJpg} />
+              <CategoryCard
+                title={gallery.name}
+                image={gallery.image ? gservice.getThumbnailUrl(gallery.image.name) : galleryThumbJpg}
+                onDelete={async () => {
+                  try {
+                    await gservice.deleteGallery(encodeURI(gallery.name))
+                  } catch(e) {
+                    alert("Chyba pri vymazávani kategórie.")
+                  }
+                  await queryCache.invalidateQueries("fetchCategories")
+                }}
+              />
             </Link>
           </Col>
         )}
