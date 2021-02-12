@@ -1,6 +1,5 @@
 export type DbModel = {
   galleries: Gallery[],
-  imags: GalleryImage[],
 }
 
 export type GalleryImage = {
@@ -11,6 +10,7 @@ export type GalleryImage = {
 export type Gallery = {
   path: string,
   name: string,
-  image?: GalleryImage
+  image?: GalleryImage,
+  images: GalleryImage[]
 }
 

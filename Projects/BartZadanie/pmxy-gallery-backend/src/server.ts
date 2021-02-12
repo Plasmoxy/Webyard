@@ -6,23 +6,39 @@ import FileSync from 'lowdb/adapters/FileSync'
 import { Gallery, GalleryImage, DbModel } from './model'
 import fs from 'fs'
 import { StatusCodes } from 'http-status-codes'
+import multer from 'multer'
+import sharp from 'sharp'
 
+// setup
 const PORT = 8099
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
+// static dirs
+if (!fs.existsSync('images')) fs.mkdirSync('images')
+if (!fs.existsSync('thumbs')) fs.mkdirSync('thumbs')
+app.use('/images', express.static('images'))
+app.use('/thumbs', express.static('thumbs'))
+
+// uploads
+const imageUploadStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, encodeURI(file.originalname.replace('.', `-${Date.now()}.`)))
+  }
+})
+const imageUpload = multer({storage: imageUploadStorage})
+
+// db
 const adapter = new FileSync<DbModel>("db.json")
 const db = low(adapter)
 
-// dirs
-if (!fs.existsSync('images')) fs.mkdirSync('images')
-if (!fs.existsSync('thumbs')) fs.mkdirSync('thumbs')
-
 // db defaults
 db.defaults({
-  galleries: [] as Gallery[],
-  images: [] as GalleryImage[],
+  galleries: [] as Gallery[]
 }).write()
 
 async function init() {
@@ -58,14 +74,61 @@ async function init() {
     else {
       // new gallerry
       const name = req.body?.name ?? "error"
-      const newGallery = {
+      const newGallery: Gallery = {
         name,
         path: encodeURI(name),
+        image: undefined,
+        images: [],
       }
       db.get("galleries").push(newGallery).write()
       
       res.json(newGallery)
     }
+  })
+  
+  app.delete("/gallery/:path", (req, res) => {
+    db.get("galleries").remove({path: encodeURI(req.params.path)}).write()
+    res.sendStatus(StatusCodes.OK)
+  })
+  
+  
+  // images
+  app.get("/images", (req, res) => {
+    res.json(db.get("images").value())
+  })
+  
+  app.post("/galleryUpload/:galleryPath", imageUpload.single('image'), async (req, res) => {
+    
+    // find gallery
+    const targetGallery = db.get("galleries").find({path: encodeURI(req.params.galleryPath)})
+    
+    // that gallery was not found
+    if (!targetGallery.value()) {
+      res.sendStatus(StatusCodes.NOT_FOUND)
+      return
+    }
+    
+    // path processing, req.file.filename is processed with formatted URI and date stamp
+    const newPath = req.file.filename
+    let originalNameArr = req.file.originalname.split('.')
+    originalNameArr.length--;
+    const originalName = originalNameArr.join('')
+    
+    const newImage: GalleryImage = {
+      name: originalName,
+      path: newPath,
+    }
+    
+    // construct thumbnail
+    const resized = await sharp(`images/${newPath}`)
+        .resize({width: 300})
+        .toFile(`thumbs/${newPath}`)
+    
+    
+    // save to gallery
+    targetGallery.get("images").push(newImage).write()
+        
+    res.json(newImage)
   })
   
 }
