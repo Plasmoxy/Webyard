@@ -50,8 +50,9 @@ async function init() {
   
   /* Galleries */
   
+  // get galleries just name paths
   app.get("/gallery", (req, res) => {
-    res.json(db.get("galleries").value())
+    res.json(db.get("galleries").map(({name, path}) => ({name, path})).value())
   })
   
   app.get("/gallery/:path", (req, res) => {
