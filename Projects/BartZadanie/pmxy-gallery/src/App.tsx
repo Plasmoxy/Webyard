@@ -9,6 +9,7 @@ import { ReactQueryDevtools} from 'react-query-devtools'
 import 'regenerator-runtime/runtime'
 import './App.scss'
 import nightcityJpg from './images/nightcity.jpg'
+import northernImage from './images/northern.png'
 import cameraSvg from './icons/camera.svg'
 import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import { PageHeader } from './components/PageHeader'
@@ -41,7 +42,7 @@ function App() {
     <AppLightbox />
   
     <div className="background-container">
-      <img src={nightcityJpg} />
+      <img src={northernImage} />
     </div>
 
     <div className="container content-container px-0">
