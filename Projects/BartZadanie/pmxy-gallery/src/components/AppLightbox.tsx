@@ -43,7 +43,7 @@ export const AppLightbox: React.FC = () => {
         </div>
 
         <div
-          className="d-flex align-items-center"
+          className="d-flex align-items-center justify-content-center"
           style={{ flex: 1, minHeight: 480 }}
           onClick={() => {
             if (idx < images.length - 1) onSlideClick(1)
@@ -53,7 +53,7 @@ export const AppLightbox: React.FC = () => {
           {/* TODO: image size was 720x0 */}
           <img
             key={idx}
-            src={gservice.getImageUrl(images[idx].fullpath)}
+            src={gservice.getImageUrl(images[idx].name)}
             style={{ borderRadius: 5 }}
           />
         </div>

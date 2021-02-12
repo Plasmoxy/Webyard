@@ -22,7 +22,7 @@ export function PhotosPage() {
   
   return <>
   
-    <PageHeader title={qGallery.data?.gallery.name ?? ""} backButton={true} />
+    <PageHeader title={qGallery.data?.name ?? ""} backButton={true} />
     
     {path && qGallery.isSuccess && 
       <Row>
