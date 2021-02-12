@@ -10,8 +10,8 @@ import { PageHeader } from '../components/PageHeader'
 import { useAppModal } from '../components/AppModal'
 import axios from 'axios'
 import { useQuery, queryCache } from 'react-query'
-import { getApiImageUrl, apiGet, apiPost } from '../api/api'
 import { useStore } from '../model/Store'
+import * as gservice from '../services/gallery.service'
 
 function NewCategoryForm({hide}: {hide: () => any}) {
   
@@ -26,7 +26,7 @@ function NewCategoryForm({hide}: {hide: () => any}) {
     }
     
     try {
-      await apiPost("gallery", {name})
+      await gservice.createGallery(name)
       await queryCache.invalidateQueries("fetchCategories")
       hide()
     } catch(e) {
@@ -58,7 +58,7 @@ export function GalleriesPage() {
 
   const qGalleries = useQuery(
     'fetchCategories',
-    () => apiGet("gallery")
+    () => gservice.fetchAllGalleries()
   )
 
   return <>
@@ -69,7 +69,7 @@ export function GalleriesPage() {
         {qGalleries.data.galleries.map((gallery: any) =>
           <Col key={gallery.path} sm={6} lg={3}>
             <Link to={`/gallery/${gallery.path}`}>
-              <CategoryCard title={gallery.name} image={gallery.image ? getApiImageUrl(gallery.image.fullpath) : galleryThumbJpg} />
+              <CategoryCard title={gallery.name} image={gallery.image ? gservice.getThumbnailUrl(gallery.image.fullpath) : galleryThumbJpg} />
             </Link>
           </Col>
         )}

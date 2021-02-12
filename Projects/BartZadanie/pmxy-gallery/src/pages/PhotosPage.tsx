@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { PageHeader } from '../components/PageHeader'
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from 'react-query'
-import { apiGet, apiPost, getApiImageUrl } from '../api/api'
 import { Row, Col } from 'react-bootstrap'
 import addBigSvg from '../icons/add_big.svg'
 import "./PhotosPage.scss"
@@ -10,6 +9,7 @@ import { PhotoCard } from '../components/PhotoCard'
 import nightCityJpg from '../images/nightcity.jpg'
 import { AppLightbox } from '../components/AppLightbox'
 import { useStore } from '../model/Store'
+import * as gservice from '../services/gallery.service'
 
 export function PhotosPage() {
   
@@ -17,7 +17,7 @@ export function PhotosPage() {
   
   const { path } = useParams<{path: string}>()
   const qGallery = useQuery(["fetchGallery", path], () => {
-    if (path) return apiGet(`gallery/${path}`)
+    if (path) return gservice.fetchGallery(path)
   })
   
   return <>
@@ -28,8 +28,10 @@ export function PhotosPage() {
       <Row>
         {(qGallery.data.images as any[]).map((image: any, imageIdx) =>
           <Col key={image.fullpath} sm={6} lg={3} className="d-flex justify-content-center p-0">
+            
+            {/* TODO: 290x192 PHOTO ??? resize thumbnail ? */}
             <PhotoCard
-              image={getApiImageUrl(image.fullpath, 290, 192)}
+              image={gservice.getThumbnailUrl(image.fullpath)}
               onClick={() => {
                 update(s=>{
                   s.lightbox.images = qGallery.data.images

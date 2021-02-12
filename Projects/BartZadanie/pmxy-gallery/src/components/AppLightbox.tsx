@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { AppModal } from './AppModal'
 import prevSvg from '../icons/prev.svg'
 import nextSvg from '../icons/next.svg'
-import { getApiImageUrl } from '../api/api'
+import * as gservice from '../services/gallery.service'
 import { useStore } from '../model/Store'
 
 /*
@@ -50,9 +50,10 @@ export const AppLightbox: React.FC = () => {
           }}
         >
           {/* apply key in here, cause we need to diff entire img */}
+          {/* TODO: image size was 720x0 */}
           <img
             key={idx}
-            src={getApiImageUrl(images[idx].fullpath, 720, 0)}
+            src={gservice.getImageUrl(images[idx].fullpath)}
             style={{ borderRadius: 5 }}
           />
         </div>
