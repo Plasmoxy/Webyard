@@ -8,6 +8,6 @@ export type GalleryImage = {
 export type Gallery = {
   path: string,
   name: string,
-  thumbnail: GalleryImage
+  image?: GalleryImage
 }
 
