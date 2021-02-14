@@ -29,6 +29,7 @@ const styles = makeStyles(theme => ({
       borderRadius: 10,
       marginTop: 10,
     },
+    
   },
   search: {
      opacity: 1,
@@ -67,8 +68,8 @@ export default function Header({}: Props): ReactElement {
           </Grid>
           <Grid item>
             <Box display="flex" alignItems="center" ml={1} mr={2} >
-              <Typography color="textPrimary">
-                App
+              <Typography color="textPrimary" variant="h6">
+                Halušky
               </Typography>
             </Box>
           </Grid>

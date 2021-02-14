@@ -8,8 +8,11 @@ import Ipsum from '../components/Ipsum'
 const appTheme = createMuiTheme({
   palette: {
     background: {
-      default: '#f4f5fd'
+      default: '#f4f5f6'
     }
+  },
+  typography: {
+    h2: {}
   }
 })
 
@@ -27,7 +30,8 @@ const classes = makeStyles({
     left: 0,
     right: 0,
     */
-  }
+  },
+  
 })
 
 function App() {
@@ -38,7 +42,7 @@ function App() {
     <div className={cs.bg}></div>
     <Header />
     <Container className={cs.app}>
-      <PageHeader icon={<PeopleOutline/>} title="Titlell" subtitle="Subtitel!" />
+      <PageHeader icon={<PeopleOutline/>} title="Bryndzové halušky" subtitle="Veru fajné halušky predávame zdarma." />
       <Typography variant="body1">Yyayaya</Typography>
       <Ipsum />
     </Container>
