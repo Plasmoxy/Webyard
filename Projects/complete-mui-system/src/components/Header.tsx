@@ -10,14 +10,25 @@ import {
   makeStyles,
   SvgIcon,
   Toolbar,
+  Typography,
 } from "@material-ui/core"
 import { ChatBubbleOutline, NotificationsNone, PowerSettingsNew, SearchOutlined, Layers } from "@material-ui/icons"
 
 
-const styles = makeStyles({
+const styles = makeStyles(theme => ({
   appBar: {
+    marginBottom: 15,
     minHeight: 36,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    
+    // special appbar on big screen
+    [theme.breakpoints.up('md')]: {
+      maxWidth: 800,
+      marginRight: "auto",
+      marginLeft: "auto",
+      borderRadius: 10,
+      marginTop: 10,
+    },
   },
   search: {
      opacity: 1,
@@ -37,7 +48,8 @@ const styles = makeStyles({
   logo: {
     marginRight: '14px',
   },
-})
+  
+}))
 
 interface Props {}
 
@@ -48,7 +60,18 @@ export default function Header({}: Props): ReactElement {
     <AppBar position="static" className={cs.appBar}>
       <Toolbar>
         <Grid container alignItems="center" >
-          <Layers className={cs.logo} color="primary" />
+          <Grid item>
+            <Box display="flex" alignItems="center">
+              <Layers color="primary" />
+            </Box>
+          </Grid>
+          <Grid item>
+            <Box display="flex" alignItems="center" ml={1} mr={2} >
+              <Typography color="textPrimary">
+                App
+              </Typography>
+            </Box>
+          </Grid>
           <Grid item>
             <InputBase
               className={cs.search}
@@ -56,7 +79,7 @@ export default function Header({}: Props): ReactElement {
               startAdornment={<SearchOutlined fontSize="small" />}
             />
           </Grid>
-          <Grid item sm></Grid>
+          <Grid item xs></Grid>
           <Grid item>
             <IconButton>
               <Badge badgeContent={4} color="secondary">
