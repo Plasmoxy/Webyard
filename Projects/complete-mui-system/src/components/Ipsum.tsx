@@ -8,6 +8,8 @@ interface Props {
 export default function Ipsum({}: Props): ReactElement {
   return (
     <Typography variant="body1" align="justify">
+      Vitajce u nas! Dnes še naučime ako varic halušky. Njaprv prevarime vodu. Potom haluški polejeme sos vodu. Kec voda bars žimna tak ju prevarime vof harčku. Vof talianksu je ale voda draha. Kec nemac harček tak je velmi dobre obetovac dušu satanovi.
+      
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero volutpat sed cras ornare arcu dui vivamus. Sem integer vitae justo eget magna fermentum iaculis. Porta non pulvinar neque laoreet. Vulputate eu scelerisque felis imperdiet. Tortor consequat id porta nibh venenatis. Ipsum dolor sit amet consectetur. Ut etiam sit amet nisl purus in mollis nunc. A pellentesque sit amet porttitor eget dolor morbi non. Pellentesque nec nam aliquam sem et tortor consequat.
 
 Neque vitae tempus quam pellentesque. Sit amet porttitor eget dolor morbi non arcu risus. Dignissim diam quis enim lobortis scelerisque fermentum dui. Fames ac turpis egestas maecenas pharetra convallis posuere morbi leo. Egestas erat imperdiet sed euismod nisi porta lorem mollis. Gravida cum sociis natoque penatibus et magnis dis parturient montes. Eu volutpat odio facilisis mauris sit amet massa. Donec ultrices tincidunt arcu non sodales neque sodales ut. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula. Et malesuada fames ac turpis egestas integer. Elementum curabitur vitae nunc sed velit dignissim sodales ut. Proin libero nunc consequat interdum varius sit. Habitant morbi tristique senectus et netus et malesuada.
