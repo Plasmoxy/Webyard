@@ -58,24 +58,26 @@ export default {
     Petterson
   },
   
-  data: () => ({
-    strongs: [
-      "Yes", "No", "mejbi", "yosh", "ananas"
-    ],
-    message: "",
-    kolorfulStyleData: {
-      color: 'red',
-      fontSize: '2rem',
-      cursor: 'pointer',
-      userSelect: 'none',
-    },
-    object: {
-      name: 'yes',
-      password: 'secretttt',
-      age: 18,
-    },
-    nummerOfPetersons: 3,
-  }),
+  data() {
+    return {
+      strongs: [
+        "Yes", "No", "mejbi", "yosh", "ananas"
+      ],
+      message: "",
+      kolorfulStyleData: {
+        color: 'red',
+        fontSize: '2rem',
+        cursor: 'pointer',
+        userSelect: 'none',
+      },
+      object: {
+        name: 'yes',
+        password: 'secretttt',
+        age: 18,
+      },
+      nummerOfPetersons: 3,
+    }
+  },
   
   computed: {
     reversedMsg() {
