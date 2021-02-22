@@ -42,22 +42,51 @@
     </div>
     <hr />
     
+    <h1>Conditional rendering</h1>
+    Peterson showww <input type="checkbox" v-model="petersonVisibel" /><br/>
+    <petterson v-if="petersonVisibel" />
+    <p v-else>Peterson slepp :(</p>
+    <!-- IF v-if and v-else share same components, use key if they shouldnt be reused -->
     
-       
+    <hr />
+    <input type="checkbox" value="Jack" v-model="checkedNames" />
+    <label>Jack</label>
+    <input type="checkbox" value="Valkyrie" v-model="checkedNames" />
+    <label>Valkyrie</label>
+    <input type="checkbox" value="Aurora" v-model="checkedNames" />
+    <label>Aurora</label>
+    <p>Checked names: {{checkedNames}}</p>
+    
+    <hr />
+    <ul>
+        <note
+          v-for="(note, idx) of notes"
+          :text="note"
+          :key="idx"
+          @input="$set(notes, idx, $event)"
+          @delete="$delete(notes, idx)"
+        />
+    </ul>
+    <button @click="notes.push('')">New Note</button>
+    {{notes}}
+    
+    <hr />
+    <button @click="showBigText = !showBigText">Show big text</button>
+    <transition name="fade">
+      <h1 v-show="showBigText">Big Text !!!</h1>
+    </transition>
+     
   </div>
 </template>
 
 <script>
 import Counter from '@/components/Counter.vue'
 import Petterson from './components/Petterson.vue'
+import Note from './components/Note.vue'
 
 export default {
   name: 'App',
-  components: {
-    Counter,
-    Petterson
-  },
-  
+  components: { Counter, Petterson, Note },
   data() {
     return {
       strongs: [
@@ -76,6 +105,10 @@ export default {
         age: 18,
       },
       nummerOfPetersons: 3,
+      petersonVisibel: false,
+      checkedNames: [],
+      notes: ["Yes"],
+      showBigText: false,
     }
   },
   
@@ -109,21 +142,33 @@ export default {
       }
       this.strongs.push(this.message)
       this.message = ''
-    }
+    },
+    
+    hello() {
+      console.log("HELLO!")
+    },
   },
   
   created() {
     console.log("App created!")
-  }
+  },
+  
+  
 }
 </script>
 
 <style>
+
+body {
+  background: #030304;
+  color: white;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  /* color: #2c3e50;*/
   margin-top: 60px;
   
   margin-bottom: 100px;
@@ -136,5 +181,13 @@ hr {
 
 button { margin: 3px; }
 input { margin: 3px; }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 
 </style>

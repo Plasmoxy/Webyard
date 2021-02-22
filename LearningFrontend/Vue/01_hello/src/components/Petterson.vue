@@ -1,10 +1,15 @@
 <template>
-  <img src="https://pbs.twimg.com/media/C27JpJvWQAA07y-?format=jpg&name=900x900" />
+  <span>
+    <img src="https://pbs.twimg.com/media/C27JpJvWQAA07y-?format=jpg&name=900x900" />
+    {{title}}
+  </span>
 </template>
 
 <script>
 export default {
-  
+  props: {
+    title: {type: String},
+  }
 }
 </script>
 
