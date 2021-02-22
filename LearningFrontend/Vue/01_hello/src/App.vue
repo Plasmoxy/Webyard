@@ -79,12 +79,13 @@
   </div>
 </template>
 
-<script>
-import Counter from '@/components/Counter.vue'
+<script lang="ts">
+import Vue from 'vue'
+import Counter from './components/Counter.vue'
 import Petterson from './components/Petterson.vue'
 import Note from './components/Note.vue'
 
-export default {
+export default Vue.extend({
   name: 'App',
   components: { Counter, Petterson, Note },
   data() {
@@ -154,7 +155,7 @@ export default {
   },
   
   
-}
+})
 </script>
 
 <style>
