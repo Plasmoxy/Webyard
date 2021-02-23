@@ -62,7 +62,7 @@
         <note
           v-for="(note, idx) of notes"
           :text="note"
-          :key="idx"
+          :key="note"
           @input="$set(notes, idx, $event)"
           @delete="$delete(notes, idx)"
         />
@@ -75,7 +75,12 @@
     <transition name="fade">
       <h1 v-show="showBigText">Big Text !!!</h1>
     </transition>
-     
+    
+    <hr />
+    User name: {{user.name}}<br/>
+    User age: {{user.age}}<br />
+    <button @click="user.age++">inc age</button>
+    
   </div>
 </template>
 
@@ -110,6 +115,10 @@ export default Vue.extend({
       checkedNames: [],
       notes: ["Yes"],
       showBigText: false,
+      user: {
+        name: 'Seb',
+        age: 19,
+      },
     }
   },
   
@@ -152,6 +161,7 @@ export default Vue.extend({
   
   created() {
     console.log("App created!")
+    console.log(this)
   },
   
   
