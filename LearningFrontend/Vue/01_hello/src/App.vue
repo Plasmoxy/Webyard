@@ -61,13 +61,13 @@
     <ul>
         <note
           v-for="(note, idx) of notes"
-          :text="note"
-          :key="note"
-          @input="$set(notes, idx, $event)"
-          @delete="$delete(notes, idx)"
+          :text="note.text"
+          :key="note.id"
+          @input="note.text = $event"
+          @delete="notes.splice(idx, 1)"
         />
     </ul>
-    <button @click="notes.push('')">New Note</button>
+    <button @click="createNewNote()">New Note</button>
     {{notes}}
     
     <hr />
@@ -85,6 +85,7 @@
 </template>
 
 <script lang="ts">
+import {v4 as uuid} from 'uuid'
 import Vue from 'vue'
 import Counter from './components/Counter.vue'
 import Petterson from './components/Petterson.vue'
@@ -113,7 +114,10 @@ export default Vue.extend({
       nummerOfPetersons: 3,
       petersonVisibel: false,
       checkedNames: [],
-      notes: ["Yes"],
+      notes: [
+        {id: uuid(), text: "Yes" },
+        {id: uuid(), text: "No" },
+      ],
       showBigText: false,
       user: {
         name: 'Seb',
@@ -137,6 +141,11 @@ export default Vue.extend({
   },
   
   methods: {
+    
+    createNewNote() {
+      this.notes.push({id: uuid(), text: ""})
+    },
+    
     reverseMessage() {
       this.message = this.reversedMsg
     },
@@ -157,6 +166,7 @@ export default Vue.extend({
     hello() {
       console.log("HELLO!")
     },
+  
   },
   
   created() {
