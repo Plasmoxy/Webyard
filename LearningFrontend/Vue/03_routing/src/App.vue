@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
     </div>
     <transition name="fade" mode="out-in">
@@ -12,6 +12,7 @@
     </div>
     <button @click="increment()">Increment</button>
     <button @click="incrementDelay({delay: 2000})">Increment delay</button>
+    
   </div>
 </template>
 
@@ -23,6 +24,13 @@ export default Vue.extend({
   
   methods: {
     ...mapActions(['incrementDelay', 'increment']),
+    
+  },
+  
+  errorCaptured(err, vm, info) {
+    console.log("EROR")
+    console.log(err)
+    return false
   },
   
 })

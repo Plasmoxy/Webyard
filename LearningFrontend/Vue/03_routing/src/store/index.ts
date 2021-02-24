@@ -7,8 +7,8 @@ export default new Vuex.Store({
   state: {
     count: 0,
     notes: [
-      { id: "1", text: "yes"},
-      { id: "2", text: "no"},
+      { id: "1", text: "yes" },
+      { id: "2", text: "no"  },
     ],
   },
   getters: {
@@ -34,5 +34,6 @@ export default new Vuex.Store({
     } 
   },
   modules: {
+    
   },
 });

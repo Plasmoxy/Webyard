@@ -4,6 +4,8 @@
     {{rtName}}<br/>
     Store {{$store.state}}<br />
     yesnotes: {{$store.getters.yesNotes}}
+    
+    <button @click="trow()">YESYES</button>
   </div>
 </template>
 
@@ -14,11 +16,17 @@ export default Vue.extend({
   name: 'Home',
   components: {},
   
-  watch: {
-    
+  
+  
+  methods: {
+    trow() {
+      throw new Error("YES")
+    },
   },
   
   computed: {
+    
+    
     rtName() {
       return this.$route.name;
     },
