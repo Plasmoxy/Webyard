@@ -4,9 +4,29 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
+    <div>
+      Route: {{$route.name}}
+    </div>
+    <button @click="increment()">Increment</button>
+    <button @click="incrementDelay({delay: 2000})">Increment delay</button>
   </div>
 </template>
+
+
+<script lang="ts">
+import Vue from 'vue'
+import { mapActions } from 'vuex'
+export default Vue.extend({
+  
+  methods: {
+    ...mapActions(['incrementDelay', 'increment']),
+  },
+  
+})
+</script>
 
 <style>
 #app {
@@ -29,4 +49,13 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 </style>

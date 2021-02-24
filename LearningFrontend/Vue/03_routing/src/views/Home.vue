@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    {{rtName}}<br/>
+    Store {{$store.state}}<br />
+    yesnotes: {{$store.getters.yesNotes}}
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 export default Vue.extend({
   name: 'Home',
-  components: {
-    HelloWorld,
+  components: {},
+  
+  watch: {
+    
+  },
+  
+  computed: {
+    rtName() {
+      return this.$route.name;
+    },
   },
 });
 </script>
