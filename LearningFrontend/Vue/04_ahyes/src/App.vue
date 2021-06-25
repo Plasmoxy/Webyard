@@ -1,21 +1,13 @@
 <template>
   <v-app>
     <v-app-bar
+      id="appbar"
       app
       dark
       dense
       elevate-on-scroll
     >
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
         <v-img
           alt="Vuetify Name"
           class="shrink mt-1 hidden-sm-and-down"
@@ -51,7 +43,6 @@ import Ipsum from './components/Ipsum.vue';
 
 export default {
   name: 'App',
-
   components: {Ipsum},
 
   data: () => ({
@@ -60,31 +51,25 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import '~vuetify/src/styles/styles.sass';
+
+
+@media #{map-get($display-breakpoints, 'md-and-up')} {
+  .v-toolbar {
+    max-width: 50vw !important;
+    border-radius: 10px !important;
+    margin: auto;
+    margin-top: 3px !important;
+  }
+  
+  .container {
+    max-width: 50vw !important;
+  }
+}
 
 html {
   overflow-y: auto !important;
 }
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
