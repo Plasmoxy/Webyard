@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const APPHOST = process.env.NODE_ENV === 'development' ? 'http://localhost:8099' : 'https://shardbytes.com:10044'
+export const APPHOST = process.env.NODE_ENV === 'development' ? 'http://localhost:8089' : 'https://shardbytes.com:10044'
 
 /* Helpers */
 
