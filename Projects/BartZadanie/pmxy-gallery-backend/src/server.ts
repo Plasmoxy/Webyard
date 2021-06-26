@@ -10,6 +10,7 @@ import multer from 'multer'
 import sharp from 'sharp'
 import dotenv from 'dotenv'
 import https from 'https'
+import basicAuth from 'express-basic-auth'
 dotenv.config()
 
 // setup
@@ -44,6 +45,15 @@ db.defaults({
   galleries: [] as Gallery[]
 }).write()
 
+
+// auth middleware:
+const authorize = basicAuth({
+  authorizeAsync: true,
+  authorizer: async (uname, pass, auth) => {
+    auth(null, uname === "admin" && pass === "ihlicnan")
+  },
+})
+
 async function init() {
   
   /* Root */
@@ -67,7 +77,7 @@ async function init() {
     }
   })
   
-  app.post("/gallery", (req, res) => {
+  app.post("/gallery", authorize, (req, res) => {
     if (!req.body || !req.body.name) {
       res.sendStatus(StatusCodes.BAD_REQUEST)
     }
@@ -89,12 +99,12 @@ async function init() {
     }
   })
   
-  app.delete("/gallery/:name", (req, res) => {
+  app.delete("/gallery/:name", authorize, (req, res) => {
     db.get("galleries").remove({name: req.params.name}).write()
     res.sendStatus(StatusCodes.OK)
   })
   
-  app.post("/gallery/:galleryName", imageUpload.single('image'), async (req, res) => {
+  app.post("/gallery/:galleryName", authorize, imageUpload.single('image'), async (req, res) => {
     
     // find gallery
     const targetGallery = db.get("galleries").find({name: req.params.galleryName})
@@ -131,7 +141,7 @@ async function init() {
   })
   
   // delete image inside gallery
-  app.delete("/gallery/:galleryName/:imageName", (req, res) => {
+  app.delete("/gallery/:galleryName/:imageName", authorize, (req, res) => {
     // find gallery
     const gal = db.get("galleries").find({name: req.params.galleryName})
     if (!gal.value()) {
@@ -166,7 +176,7 @@ init().then(() => {
     }, app)
     .listen(port, () => {
       console.log("=== Pmxy Gallery Server ===")
-      console.log(`Listening on development port ${port}`)
+      console.log(`Listening on port ${port}`)
     })
   }
   
