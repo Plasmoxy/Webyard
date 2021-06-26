@@ -8,7 +8,8 @@ export type StoreState = {
     images: any[]
     idx: number
     open: boolean
-  }
+  },
+  errorModal: string,
 }
 
 export const defaultStore: StoreState = {
@@ -18,6 +19,7 @@ export const defaultStore: StoreState = {
     idx: 0,
     open: false,
   },
+  errorModal: ""
 }
 
 export const useStore = create(combine(defaultStore, (set, get, api) => ({

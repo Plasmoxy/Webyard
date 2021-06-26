@@ -16,6 +16,7 @@ import { PageHeader } from './components/PageHeader'
 import { TestPage } from './pages/TestPage'
 import { PhotosPage } from './pages/PhotosPage'
 import { AppLightbox } from './components/AppLightbox'
+import { ErrorModal } from './components/ErrorModal'
 
 const routes = [
   { path: "/", component: GalleriesPage },
@@ -40,6 +41,7 @@ function App() {
     <ReactQueryDevtools />
     
     <AppLightbox />
+    <ErrorModal />
   
     <div className="background-container">
       <img src={northernImage} />

@@ -55,6 +55,7 @@ function NewCategoryForm({hide}: {hide: () => any}) {
 export function GalleriesPage() {
 
   const [show, hide] = useAppModal(() => <NewCategoryForm hide={hide} />)
+  const update = useStore(s => s.update);
 
   const qGalleries = useQuery(
     'fetchCategories',
@@ -63,6 +64,7 @@ export function GalleriesPage() {
 
   return <>
     <PageHeader title="Kategórie" backButton={false} />
+    <button onClick={() => update(s => {s.errorModal = "YEET"})}>YET</button>
     
     {qGalleries.isSuccess &&
       <Row>
@@ -76,7 +78,7 @@ export function GalleriesPage() {
                   try {
                     await gservice.deleteGallery(encodeURI(gallery.name))
                   } catch(e) {
-                    alert("Chyba pri vymazávani kategórie.")
+                    update(s => {s.errorModal = "Chyba pri vymazávaní galérie"})
                   }
                   await queryCache.invalidateQueries("fetchCategories")
                 }}
