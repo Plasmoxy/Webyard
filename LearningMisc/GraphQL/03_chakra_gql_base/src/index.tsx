@@ -5,7 +5,17 @@ import React from 'react'
 import { render } from 'react-dom'
 import App from './components/App'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { ChakraProvider } from "@chakra-ui/react"
+import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+
+const theme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        bg: "gray.100",
+      }
+    }
+  }
+})
 
 export const apolloClient = new ApolloClient({
   uri: process.env.uri ?? '',
@@ -19,7 +29,7 @@ export const apolloClient = new ApolloClient({
 
 render(
   <ApolloProvider client={apolloClient}>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
   </ApolloProvider>,
