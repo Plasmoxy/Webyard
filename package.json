@@ -6,7 +6,9 @@
   "author": "Sebastián Petrík <sebohacker@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@shopify/draggable": "^1.0.0-beta.8",
     "glob": "^7.1.4",
+    "react-draggable": "^4.4.3",
     "rimraf": "^3.0.0"
   }
 }
