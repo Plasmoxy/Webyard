@@ -8,13 +8,11 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { ChakraProvider, extendTheme } from "@chakra-ui/react"
 
 const theme = extendTheme({
-  styles: {
-    global: {
-      body: {
-        bg: "gray.100",
-      }
-    }
-  }
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
+  },
+
 })
 
 export const apolloClient = new ApolloClient({
