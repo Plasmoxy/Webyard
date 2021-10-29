@@ -10,5 +10,10 @@
     "glob": "^7.1.4",
     "react-draggable": "^4.4.3",
     "rimraf": "^3.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19"
   }
 }
