@@ -14,8 +14,12 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">Next.js xdd!</a>
         </h1>
+        
+        <div className="p-6 select-none cursor-pointer rounded-xl bg-white transition duration-300 shadow-md hover:shadow-xl transform hover:scale-125 ">
+          Yosh
+        </div>
 
         <p className={styles.description}>
           Get started by editing{' '}
