@@ -1,10 +1,15 @@
-import { InferGetStaticPropsType } from "next"
-import React from "react"
+import React, { ReactElement } from 'react'
 
-export default function HomePage() {
-  return <div>
-    <span className="text-6xl">
-      Home
-    </span>
-  </div>
+interface Props {
+  
+}
+
+export default function home({}: Props): ReactElement {
+  return (
+    <div>
+      <span className="text-6xl">
+        Home
+      </span>
+    </div>
+  )
 }
