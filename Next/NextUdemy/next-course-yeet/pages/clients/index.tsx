@@ -22,7 +22,7 @@ export default function index({}: Props): ReactElement {
         {clients.map(c => <li key={c.id}>
           <Link href={{
             pathname: '/clients/[id]',
-            query: { id: c.id }, // this approach auto parses ! very nice
+            query: { id: c.id}, // this approach auto parses ! very nice
           }}>{c.name}</Link>
         </li>)}
       </ul>

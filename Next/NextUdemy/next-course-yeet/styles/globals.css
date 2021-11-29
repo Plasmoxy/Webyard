@@ -23,5 +23,5 @@ h1 {
 }
 
 .btn {
-  @apply text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3;
+  @apply text-white bg-blue-700  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 transition duration-200 hover:bg-blue-800;
 }
