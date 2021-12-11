@@ -91,7 +91,7 @@ export const Layout: FC<Props> = (props) => {
       </LayoutDrawer>
       
       {/* content */}
-      <main className='p-5'>
+      <main className='container mx-auto max-w-screen-xl p-10'>
         <Toolbar variant='dense' />
         {props.children}
       </main>
