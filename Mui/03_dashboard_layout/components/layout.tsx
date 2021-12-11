@@ -1,12 +1,25 @@
-import { Box, AppBar, Button, IconButton, Toolbar, Typography, Drawer, Divider, List, ListItemText, ListItem, ListItemIcon, AppBarProps, DrawerProps} from '@mui/material'
+import { Box, AppBar, Button, IconButton, Toolbar, Typography, Drawer, Divider, List, ListItemText, ListItem, ListItemIcon, AppBarProps, DrawerProps, useTheme} from '@mui/material'
 import LayersIcon from '@mui/icons-material/Layers'
 import InboxIcon from '@mui/icons-material/Inbox'
 import MailIcon from '@mui/icons-material/Mail'
 import React, { FC } from 'react'
 import styled from '@emotion/styled'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 interface Props {
   
+}
+
+export const routesData = {
+  '/': {
+    title: 'Home',
+    icon: LayersIcon
+  },
+  '/helo': {
+    title: 'Hello',
+    icon: LayersIcon
+  },
 }
 
 const drawerWidth = 200
@@ -25,8 +38,16 @@ const LayoutDrawer = styled(Drawer)(({theme}) => ({
 }))
 
 export const Layout: FC<Props> = (props) => {
+  
+  const router = useRouter()
+  const theme = useTheme()
+  console.log(router.pathname)
+  
   return (
     <div className='flex'>
+      
+      
+      {/* appbar */}
       <LayoutAppBar>
         <Toolbar variant='dense'>
           <IconButton
@@ -44,32 +65,30 @@ export const Layout: FC<Props> = (props) => {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </LayoutAppBar>
+      
+      {/* drawer */}
       <LayoutDrawer variant="permanent" anchor="left" >
         <Toolbar variant='dense'/>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
+          {Object.entries(routesData).map(([path, data]) => (
+            
+            <Link key={path} href={path}>
+              <ListItem button>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <data.icon color={router.pathname == path ? 'primary' : undefined} />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <Typography color={router.pathname == path ? 'primary' : undefined} >
+                {data.title}
+              </Typography>
             </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+            </Link>
+            
           ))}
         </List>
       </LayoutDrawer>
       
+      {/* content */}
       <main className='p-5'>
         <Toolbar variant='dense' />
         {props.children}
