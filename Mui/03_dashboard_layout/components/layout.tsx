@@ -1,8 +1,8 @@
 import { Box, AppBar, Button, IconButton, Toolbar, Typography, Drawer, Divider, List, ListItemText, ListItem, ListItemIcon, AppBarProps, DrawerProps, useTheme} from '@mui/material'
 import LayersIcon from '@mui/icons-material/Layers'
 import InboxIcon from '@mui/icons-material/Inbox'
-import MailIcon from '@mui/icons-material/Mail'
-import React, { FC } from 'react'
+import PersonIcon from '@mui/icons-material/Person'
+import React, { FC, useCallback } from 'react'
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -20,6 +20,10 @@ export const routesData: {[key: string]: {title: string, icon: any}} = {
     title: 'Hello',
     icon: InboxIcon
   },
+  '/users': {
+    title: 'Users',
+    icon: PersonIcon
+  }
 }
 
 const drawerWidth = 200
@@ -40,10 +44,13 @@ const LayoutDrawer = styled(Drawer)(({theme}) => ({
 export const Layout: FC<Props> = (props) => {
   
   const router = useRouter()
-  const theme = useTheme()
-  console.log(router.pathname)
   
-  const RouteIcon = routesData[router.pathname].icon
+  const basePath = '/' + router.pathname.split('/')[1]
+  const isCurrentPath = useCallback(
+    path => basePath === path,
+    [basePath]
+  )
+  const currentPathData = routesData[basePath]
   
   return (
     <div className='flex'>
@@ -59,18 +66,23 @@ export const Layout: FC<Props> = (props) => {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <RouteIcon />
+            <currentPathData.icon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-           {routesData[router.pathname].title}
+           {currentPathData.title}
           </Typography>
           <Button color="inherit">A</Button>
         </Toolbar>
       </LayoutAppBar>
       
       {/* drawer */}
-      <LayoutDrawer variant="permanent" anchor="left" >
-        <Toolbar variant='dense'/>
+      <LayoutDrawer variant="permanent" anchor="left">
+        <Toolbar>
+          <LayersIcon />
+          <Typography variant='h6' sx={{ px: 1}}>
+            Dashboard
+          </Typography>
+        </Toolbar>
         <Divider />
         <List>
           {Object.entries(routesData).map(([path, data]) => (
@@ -78,9 +90,9 @@ export const Layout: FC<Props> = (props) => {
             <Link key={path} href={path}>
               <ListItem button>
               <ListItemIcon>
-                <data.icon color={router.pathname == path ? 'primary' : undefined} />
+                <data.icon color={isCurrentPath(path) ? 'primary' : undefined} />
               </ListItemIcon>
-              <Typography color={router.pathname == path ? 'primary' : undefined} >
+              <Typography color={isCurrentPath(path) ? 'primary' : undefined} >
                 {data.title}
               </Typography>
             </ListItem>

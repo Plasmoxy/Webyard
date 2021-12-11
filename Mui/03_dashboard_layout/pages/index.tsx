@@ -1,11 +1,15 @@
-import { Container } from '@mui/material'
+import { Box, Card, Container, Paper, Typography } from '@mui/material'
 import type { NextPage } from 'next'
-import { Layout } from '../components/layout'
+import { Layout } from '../components/Layout'
 
 
 const Home: NextPage = () => {
   return <Layout>
-    Helo
+    <Typography variant='h4' sx={{py: 1}}>Welcome</Typography>
+    
+    
+    
+    
   </Layout>
 }
 
