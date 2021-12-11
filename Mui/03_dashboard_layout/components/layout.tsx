@@ -11,11 +11,11 @@ interface Props {
 
 const drawerWidth = 200
 
-const LayoutAppBar = styled(AppBar)<AppBarProps>(({theme}) => ({
+const LayoutAppBar = styled(AppBar)(({theme}) => ({
   width: `calc(100% - ${drawerWidth}px)`
 }))
 
-const LayoutDrawer = styled(Drawer)<DrawerProps>(({theme}) => ({
+const LayoutDrawer = styled(Drawer)(({theme}) => ({
   width: drawerWidth,
   flexShrink: 0,
   '& .MuiDrawer-paper': {
