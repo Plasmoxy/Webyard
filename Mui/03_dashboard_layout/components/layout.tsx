@@ -11,14 +11,14 @@ interface Props {
   
 }
 
-export const routesData = {
+export const routesData: {[key: string]: {title: string, icon: any}} = {
   '/': {
     title: 'Home',
     icon: LayersIcon
   },
   '/helo': {
     title: 'Hello',
-    icon: LayersIcon
+    icon: InboxIcon
   },
 }
 
@@ -43,6 +43,8 @@ export const Layout: FC<Props> = (props) => {
   const theme = useTheme()
   console.log(router.pathname)
   
+  const RouteIcon = routesData[router.pathname].icon
+  
   return (
     <div className='flex'>
       
@@ -57,12 +59,12 @@ export const Layout: FC<Props> = (props) => {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <LayersIcon />
+            <RouteIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+           {routesData[router.pathname].title}
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">A</Button>
         </Toolbar>
       </LayoutAppBar>
       
