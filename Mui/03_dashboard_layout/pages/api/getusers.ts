@@ -1,10 +1,10 @@
 import { NextApiHandler } from "next"
-import { fbAuth } from "../../firebase/fbAdmin"
+import { fbAdminAuth } from "../../firebase/fbAdmin"
 
 
 const handler: NextApiHandler = async (req, res) => {
   
-  const listed = await fbAuth.listUsers()
+  const listed = await fbAdminAuth.listUsers()
   res.json(listed.users.map(u => ({
     uid: u.uid,
     email: u.email,

@@ -1,9 +1,9 @@
 import { NextApiHandler } from "next"
-import { fbFirestore } from "../../firebase/fbAdmin"
+import { fbAdminFirestore } from "../../firebase/fbAdmin"
 import { collection, getDocs } from 'firebase/firestore'
 
 const handler: NextApiHandler = async (req, res) => {
-  const dogsCol = fbFirestore.collection('dogs')
+  const dogsCol = fbAdminFirestore.collection('dogs')
   const docsQuery = await dogsCol.get()
   
   const l: any[] = []

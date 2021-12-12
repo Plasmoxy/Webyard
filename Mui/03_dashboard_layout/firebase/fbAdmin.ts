@@ -10,7 +10,7 @@ if (fbAdmin.apps.length == 0) {
   console.log('Firebase admin app already present.')
 }
 
-export const fbFirestore = fbAdmin.firestore()
-export const fbAuth = fbAdmin.auth()
+export const fbAdminFirestore = fbAdmin.firestore()
+export const fbAdminAuth = fbAdmin.auth()
 
 export default fbAdmin
