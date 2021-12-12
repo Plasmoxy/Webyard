@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React, { FC } from 'react'
-import { Layout } from '../../components/Layout'
+import { Layout } from '../../components/layout/Layout'
 import UserTable from '../../components/UserTable'
 
 interface Props {

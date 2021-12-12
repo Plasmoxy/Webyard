@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React, { FC } from 'react'
-import { Layout } from '../../components/Layout'
+import { Layout } from '../../components/layout/Layout'
 import UserTable from '../../components/UserTable'
 
 interface Props {

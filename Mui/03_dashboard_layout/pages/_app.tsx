@@ -8,6 +8,9 @@ const muiTheme = createTheme({
   palette: {
     mode: 'dark'
   },
+  shape: {
+    borderRadius: 8,
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: {},
