@@ -1,5 +1,5 @@
 import fbAdmin from 'firebase-admin'
-import credentials from '../service-account.json'
+import credentials from './service-account.json'
 
 if (fbAdmin.apps.length == 0) {
   fbAdmin.initializeApp({

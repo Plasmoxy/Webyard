@@ -2,6 +2,7 @@
 
 # fb admin
 service-account.json
+firebase-config.js
 
 # dependencies
 /node_modules
